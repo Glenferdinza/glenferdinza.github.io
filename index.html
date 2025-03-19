@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asya's Web - Home</title>
+    <style>
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1f2126;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+ /* HERO SECTION */
+ .hero-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background-image: url('glen.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        margin-top: -75px; /* Adjust based on your navbar height */
+        z-index: 1;
+        padding-left: 40px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+        z-index: -1;
+    }
+
+    .hero-content {
+        z-index: 10;
+        padding: 20px;
+        max-width: 800px;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .typing-container {
+        min-height: 40px;
+    }
+
+    .text-slider {
+        color: #f8f8f8;
+        font-weight: 600;
+        position: relative;
+        font-size: 2rem;
+    }
+
+    /* Scroll effect - content that covers the image */
+    .container {
+        position: relative;
+        background-color: #1f2126;
+        z-index: 2;
+        margin-top: -100px; /* This creates the overlap effect */
+        padding-top: 100px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .hero-content h1 {
+            font-size: 3rem;
+        }
+        
+        .text-slider {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .text-slider {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Light mode adjustments */
+    .light-mode .hero-section::after {
+        background: rgba(18, 16, 16, 0.3);
+    }
+
+    .light-mode .container {
+        background-color: #f0f0f0;
+    }
+        /* LOADING SCREEN */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1f2126;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #58a6ff;
+        }
+
+        /* HAMSTER LOADING ANIMATION */
+        /* From Uiverse.io by Nawsome */ 
+        .wheel-and-hamster {
+          --dur: 2s;
+          position: relative;
+          width: 12em;
+          height: 12em;
+          font-size: 14px;
+        }
+
+        .wheel,
+        .hamster,
+        .hamster div,
+        .spoke {
+          position: absolute;
+        }
+
+        .wheel,
+        .spoke {
+          border-radius: 50%;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .wheel {
+          background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+          z-index: 2;
+        }
+
+        .hamster {
+          animation: hamster var(--dur) ease-in-out infinite;
+          top: 50%;
+          left: calc(50% - 3.5em);
+          width: 7em;
+          height: 3.75em;
+          transform: rotate(4deg) translate(-0.8em,1.85em);
+          transform-origin: 50% 0;
+          z-index: 1;
+        }
+
+        .hamster__head {
+          animation: hamsterHead var(--dur) ease-in-out infinite;
+          background: hsl(30,90%,55%);
+          border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+          box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+                0.75em -1.55em 0 hsl(30,90%,90%) inset;
+          top: 0;
+          left: -2em;
+          width: 2.75em;
+          height: 2.5em;
+          transform-origin: 100% 50%;
+        }
+
+        .hamster__ear {
+          animation: hamsterEar var(--dur) ease-in-out infinite;
+          background: hsl(0,90%,85%);
+          border-radius: 50%;
+          box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+          top: -0.25em;
+          right: -0.25em;
+          width: 0.75em;
+          height: 0.75em;
+          transform-origin: 50% 75%;
+        }
+
+        .hamster__eye {
+          animation: hamsterEye var(--dur) linear infinite;
+          background-color: hsl(0,0%,0%);
+          border-radius: 50%;
+          top: 0.375em;
+          left: 1.25em;
+          width: 0.5em;
+          height: 0.5em;
+        }
+
+        .hamster__nose {
+          background: hsl(0,90%,75%);
+          border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+          top: 0.75em;
+          left: 0;
+          width: 0.2em;
+          height: 0.25em;
+        }
+
+        .hamster__body {
+          animation: hamsterBody var(--dur) ease-in-out infinite;
+          background: hsl(30,90%,90%);
+          border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+          box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+                0.15em -0.5em 0 hsl(30,90%,80%) inset;
+          top: 0.25em;
+          left: 2em;
+          width: 4.5em;
+          height: 3em;
+          transform-origin: 17% 50%;
+          transform-style: preserve-3d;
+        }
+
+        .hamster__limb--fr,
+        .hamster__limb--fl {
+          clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+          top: 2em;
+          left: 0.5em;
+          width: 1em;
+          height: 1.5em;
+          transform-origin: 50% 0;
+        }
+
+        .hamster__limb--fr {
+          animation: hamsterFRLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+          transform: rotate(15deg) translateZ(-1px);
+        }
+
+        .hamster__limb--fl {
+          animation: hamsterFLLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+          transform: rotate(15deg);
+        }
+
+        .hamster__limb--br,
+        .hamster__limb--bl {
+          border-radius: 0.75em 0.75em 0 0;
+          clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+          top: 1em;
+          left: 2.8em;
+          width: 1.5em;
+          height: 2.5em;
+          transform-origin: 50% 30%;
+        }
+
+        .hamster__limb--br {
+          animation: hamsterBRLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+          transform: rotate(-25deg) translateZ(-1px);
+        }
+
+        .hamster__limb--bl {
+          animation: hamsterBLLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+          transform: rotate(-25deg);
+        }
+
+        .hamster__tail {
+          animation: hamsterTail var(--dur) linear infinite;
+          background: hsl(0,90%,85%);
+          border-radius: 0.25em 50% 50% 0.25em;
+          box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+          top: 1.5em;
+          right: -0.5em;
+          width: 1em;
+          height: 0.5em;
+          transform: rotate(30deg) translateZ(-1px);
+          transform-origin: 0.25em 0.25em;
+        }
+
+        .spoke {
+          animation: spoke var(--dur) linear infinite;
+          background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+                linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+        }
+
+        /* Animations */
+        @keyframes hamster {
+          from, to {
+            transform: rotate(4deg) translate(-0.8em,1.85em);
+          }
+
+          50% {
+            transform: rotate(0) translate(-0.8em,1.85em);
+          }
+        }
+
+        @keyframes hamsterHead {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(8deg);
+          }
+        }
+
+        @keyframes hamsterEye {
+          from, 90%, to {
+            transform: scaleY(1);
+          }
+
+          95% {
+            transform: scaleY(0);
+          }
+        }
+
+        @keyframes hamsterEar {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(12deg);
+          }
+        }
+
+        @keyframes hamsterBody {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-2deg);
+          }
+        }
+
+        @keyframes hamsterFRLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(50deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-30deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes hamsterFLLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(-30deg);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(50deg);
+          }
+        }
+
+        @keyframes hamsterBRLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(-60deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(20deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes hamsterBLLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(20deg);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-60deg);
+          }
+        }
+
+        @keyframes hamsterTail {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(30deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(10deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes spoke {
+          from {
+            transform: rotate(0);
+          }
+
+          to {
+            transform: rotate(-1turn);
+          }
+        }
+
+        /* MAIN CONTENT - INITIALLY HIDDEN */
+        .content-wrapper {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        /* NAVBAR - FIXED */
+        nav {
+            padding: 15px 5%;
+            background-color: #2c2f34;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #58a6ff;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* PROFILE */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .profile img {
+    width: 1000px;
+    height: 500px;
+    border-radius: 0;
+    border: 2px dashed #58a6ff;
+    object-fit: cover;
+}
+        .greeting {
+            font-size: 1.0rem;
+            margin-bottom: 10px;
+        }
+
+        /* TYPING ANIMATION */
+        .intro-subtitle {
+            min-height: 28px;
+        }
+
+        .text-slider-items {
+            display: none;
+        }
+
+        .text-slider { 
+            color: #fafcff;
+            font-weight: 600;
+            position: relative;
+            font-size: 25px;
+        }
+
+        .text-slider::after {
+            content: "|";
+            position: absolute;
+            right: -4px;
+            color: #eef6ff;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        /* ABOUT PAGE */
+        .about-content {
+            line-height: 1.6;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        /* WORK PAGE */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background-color: #2c2f34;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 150px;
+            background-color: #3a3d42;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #58a6ff;
+            font-size: 2rem;
+        }
+
+        .project-info {
+            padding: 15px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: #58a6ff;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #58a6ff;
+            color: #1f2126 !important;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .project-link:hover {
+            background-color: #4090e0;
+            text-decoration: none !important;
+        }
+
+        /* LINKS */
+        .section a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        /* LIST STYLING */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* New styles for the interactive markers */
+        .marker {
+            display: inline-block;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+            user-select: none;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Default arrow style */
+        .marker:before {
+            content: "»";
+            color: #696060;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for entire list item */
+        ul li:hover .marker:before {
+            content: "•";
+            color: #58a6ff;
+            text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
+            font-size: 1.5rem;
+        }
+
+
+        /* STATS BOX */
+        .stats-box {
+            border: 1px dashed #58a6ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .stats-box p {
+            margin: 5px 0;
+        }
+
+        /* LIGHT MODE */
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        .light-mode .loading-container {
+            background-color: #f0f0f0;
+        }
+
+        .light-mode .loading-text {
+            color: #0066cc;
+        }
+
+        .light-mode nav {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a {
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a.active,
+        .light-mode .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .light-mode .nav-links a.active::after {
+            background-color: #0066cc;
+        }
+
+        .light-mode .section a {
+            color: #0066cc;
+        }
+
+        .light-mode .text-slider {
+            color: #f7fbff;
+        }
+
+        .light-mode .text-slider::after {
+            color: #b1cae4;
+        }
+
+        .light-mode .stats-box {
+            border-color: #333333;
+        }
+
+        .light-mode ul li::before {
+            color: #1b1818;
+        }
+        
+        .light-mode .project-card {
+            background-color: #e0e0e0;
+        }
+        
+        .light-mode .project-img {
+            background-color: #d0d0d0;
+            color: #0066cc;
+        }
+        
+        .light-mode .project-info h3 {
+            color: #0066cc;
+        }
+        
+        .light-mode .project-link {
+            background-color: #0066cc;
+            color: #ffffff !important;
+        }
+        
+        .light-mode .project-link:hover {
+            background-color: #0055aa;
+        }
+        .light-mode footer {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 5%;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .container {
+                width: 95%;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .text-slider {
+                font-size: 0.9rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="clickSound" preload="auto">
+        <source src="mixkit-light-switch-sound-2579.wav" type="audio/wav">
+        <!-- Alternatif jika file pertama tidak bisa dimuat -->
+        <source src="mixkit-on-or-off-light-switch-tap-2585.wav" type="audio/wav">
+    </audio>
+    <!-- Loading Screen -->
+    <div class="loading-container">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+        <div class="loading-text"><b>Loading Asya's Web...</b></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <nav>
+            <h1>Asya's Web</h1>
+            <div class="nav-links">
+                <a href="index.html" class="active" onclick="setInternalNavigation()">Home</a>
+                <a href="about.html" onclick="setInternalNavigation()">About</a>
+                <a href="work.html" onclick="setInternalNavigation()">Work</a>
+            </div>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                🌙
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Hey there! I'm Asyaa</h1>
+                <div class="typing-container">
+                    <span class="text-slider-items">Backend-Engineer, AI Researcher, Problem Solver</span>
+                    <strong class="text-slider"></strong>
+                </div>
+            </div>
+        </div>
+            <div class="section">
+                <h2># Current Status</h2>
+                <div class="stats-box">
+                    <p><b>Asya 👀</b> Just Hopped Online</p>
+                    <p>↪ sleepy until graduate😴</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2># Random Things</h2>
+                <ul>
+                    <li><span class="marker"></span>📚<a href="books.html"> Books read</a></li>
+                    <li><span class="marker"></span>🕹️<a href="games.html"> Games played</a></li>
+                    <li><span class="marker"></span>🎞️<a href="movies.html"> Movies & series I've watched</a></li>
+                    <li><span class="marker"></span>🎼<a href="music.html"> Music that I usually play</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2># Explore My Network!</h2>
+                <ul>
+                    <li><span class="marker"></span>LinkedIn : <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank">@Glenferdinza Efian</a></li>
+                    <li><span class="marker"></span>Instagram : <a href="https://www.instagram.com/g.syaaaa" target="_blank">@g.syaaaa</a></li>
+                    <li><span class="marker"></span>Github : <a href="https://github.com/Glenferdinza" target="_blank">@Glenferdinza</a></li>
+                    <li><span class="marker"></span>Phone : <a href="https://wa.me/6281225495018" target="_blank">(+62)812-2549-5018</a></li>
+                </ul>
+            </div>
+        </div>
+        <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
+            Asya's &copy; 2025
+        </footer>
+    </div>
+    <script>
+        function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}       
+// STEP 1: Remove these conflicting functions
+// Remove this entire block:
+// STEP 1: Use sessionStorage to track first visit
+function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}
+
+// STEP 2: Add event listeners to all internal links
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click event to all internal links 
+    const internalLinks = document.querySelectorAll('a[href^="/"]:not([target="_blank"]), a[href^="./"]:not([target="_blank"]), a[href^="#"]:not([target="_blank"])');
+    
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            setInternalNavigation();
+        });
+    });
+    
+    // Reset navigation state when clicking external links
+    const externalLinks = document.querySelectorAll('a:not([href^="/"]):not([href^="./"]):not([href^="#"]):not([href^="javascript:"])');
+    externalLinks.forEach(link => {
+        if (link.getAttribute('target') === '_blank') return; // Skip links that open in new tab
+        
+        link.addEventListener('click', function() {
+            sessionStorage.removeItem('internalNavigation');
+        });
+    });
+    
+    // Handle loading screen
+    const loadingContainer = document.querySelector('.loading-container');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    // Check if this is the first visit or a navigation within the site
+    const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
+    
+    if (isInternalNavigation) {
+        // If navigating within the site, show content immediately
+        loadingContainer.style.opacity = '0';
+        loadingContainer.style.visibility = 'hidden';
+        contentWrapper.style.opacity = '1';
+        contentWrapper.style.visibility = 'visible';
+    } else {
+        // If coming from outside (new visit), show loading screen
+        const minLoadTime = 2000; // 3 seconds
+        const startTime = new Date().getTime();
+        
+        // Function to hide loader and show content
+        function hideLoader() {
+            loadingContainer.style.opacity = '0';
+            contentWrapper.style.opacity = '1';
+            contentWrapper.style.visibility = 'visible';
+            
+            // Completely remove the loader after transition completes
+            setTimeout(() => {
+                loadingContainer.style.visibility = 'hidden';
+            }, 500);
+            
+            // Set flag that we're now in the site
+            setInternalNavigation();
+        }
+        
+        // Calculate remaining time to meet minimum load time
+        window.addEventListener('load', function() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+            
+            // Hide loader after remaining time
+            setTimeout(hideLoader, remainingTime);
+        });
+        
+        // Fallback in case window.load doesn't trigger
+        setTimeout(hideLoader, minLoadTime + 1000);
+    }
+});
+
+// STEP 3: Let sessionStorage naturally expire when browser is closed
+// No need for beforeunload event - sessionStorage will automatically be cleared 
+// when the browser/tab is closed
+
+// STEP 2: Modify your setInternalNavigation function
+function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}
+
+// STEP 3: Add a clearInternalNavigation function for external links
+function clearInternalNavigation() {
+    sessionStorage.removeItem('internalNavigation');
+}
+
+// STEP 4: In DOMContentLoaded, modify your loading code
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingContainer = document.querySelector('.loading-container');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    // Check if this is a navigation within the site
+    const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
+    
+    if (isInternalNavigation) {
+        // If navigating within the site, show content immediately
+        loadingContainer.style.opacity = '0';
+        loadingContainer.style.visibility = 'hidden';
+        contentWrapper.style.opacity = '1';
+        contentWrapper.style.visibility = 'visible';
+    } else {
+        // If coming from outside (new visit), show loading screen
+        const minLoadTime = 3000; // 3 seconds
+        const startTime = new Date().getTime();
+        
+        // Function to hide loader and show content
+        function hideLoader() {
+            loadingContainer.style.opacity = '0';
+            contentWrapper.style.opacity = '1';
+            contentWrapper.style.visibility = 'visible';
+            
+            // Completely remove the loader after transition completes
+            setTimeout(() => {
+                loadingContainer.style.visibility = 'hidden';
+            }, 500);
+            
+            // Set flag that we're now in the site
+            sessionStorage.setItem('internalNavigation', 'true');
+        }
+        
+        // Calculate remaining time to meet minimum load time
+        window.addEventListener('load', function() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+            
+            // Hide loader after remaining time
+            setTimeout(hideLoader, remainingTime);
+        });
+        
+        // Fallback in case window.load doesn't trigger
+        setTimeout(hideLoader, minLoadTime + 1000);
+    }
+});
+        // Theme toggle function
+        function toggleTheme() {
+    // Mainkan suara klik
+    const clickSound = document.getElementById('clickSound');
+    clickSound.currentTime = 0; // Reset posisi audio ke awal
+    clickSound.play();
+    
+    // Kode tema yang sudah ada
+    document.body.classList.toggle('light-mode');
+    
+    // Change moon/sun icon
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (document.body.classList.contains('light-mode')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+        // Check for saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+            
+            // Initialize typing animation
+            const textElement = document.querySelector('.text-slider');
+            const words = document.querySelector('.text-slider-items').textContent.split(', ');
+            new TypeWriter(textElement, words, 2000);
+        });
+
+        // Update footer when theme is toggled
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const footer = document.querySelector('footer');
+            
+            // Apply light mode to footer if needed on page load
+            if (localStorage.getItem('theme') === 'light') {
+                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.color = '#1a1a1a';
+            }
+            
+            // Update footer when theme is toggled
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('light-mode')) {
+                    footer.style.backgroundColor = '#e0e0e0';
+                    footer.style.color = '#1a1a1a';
+                } else {
+                    footer.style.backgroundColor = '#2c2f34';
+                    footer.style.color = '#c9d1d9';
+                }
+            });
+        });
+
+        // Text typing animation
+        class TypeWriter {
+            constructor(textElement, words, wait = 3000) {
+                this.textElement = textElement;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+
+            type() {
+                // Current index of word
+                const current = this.wordIndex % this.words.length;
+                // Get full text of current word
+                const fullTxt = this.words[current];
+
+                // Check if deleting
+                if (this.isDeleting) {
+                    // Remove character
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    // Add character
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                // Insert txt into element
+                this.textElement.innerHTML = this.txt;
+
+                // Initial Type Speed
+                let typeSpeed = 100;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2; // Faster when deleting
+                }
+
+                // If word is complete
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    // Make pause at end
+                    typeSpeed = this.wait;
+                    // Set delete to true
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    // Move to next word
+                    this.wordIndex++;
+                    // Pause before start typing
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+        // Function untuk sanitasi input (tambahkan di bagian script)
+function sanitizeInput(input) {
+    if (!input) return input;
+    
+    // Konversi input menjadi string jika bukan string
+    if (typeof input !== 'string') {
+        input = String(input);
+    }
+    
+    // Escape karakter khusus HTML
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    
+    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// Fungsi untuk memvalidasi input
+function validateInput(input, pattern) {
+    if (!pattern) {
+        // Pattern default untuk text biasa (alfanumerik, spasi dan tanda baca umum)
+        pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
+    }
+    return pattern.test(input);
+}
+
+// Contoh penggunaan untuk form (tambahkan jika ada form)
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Validasi semua input dalam form
+            const inputs = this.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                const value = input.value;
+                const sanitized = sanitizeInput(value);
+                
+                // Jika ada perbedaan setelah sanitasi, berarti ada karakter mencurigakan
+                if (value !== sanitized) {
+                    isValid = false;
+                    input.classList.add('error');
+                    
+                    // Opsional: tambahkan pesan error
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.textContent = 'Input mengandung karakter yang tidak diperbolehkan';
+                    input.parentNode.appendChild(errorMsg);
+                }
+            });
+            
+            // Hentikan submit jika tidak valid
+            if (!isValid) {
+                e.preventDefault();
+                alert('Form mengandung input yang tidak valid. Mohon periksa kembali.');
+            }
+        });
+    });
+});
+
+    // Kode untuk mempersulit akses konsol dan modifikasi kode
+(function() {
+    // 1. Deteksi dan kembalikan jika konsol dibuka
+    let devtoolsOpen = false;
+    
+    // Metode 1: Deteksi melalui ukuran jendela (pendeteksi konsol samping)
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        devtoolsOpen = true;
+    }
+    
+    // Metode 2: Deteksi debugger
+    const div = document.createElement('div');
+    Object.defineProperty(div, 'id', {
+        get: function() {
+            devtoolsOpen = true;
+            return 'x';
+        }
+    });
+    console.log(div);
+    console.clear();
+    
+    // Metode 3: Periksa fungsi console.log
+    const originalConsoleLog = console.log;
+    console.log = function() {
+        if (arguments[0] === div && !arguments[0].id) {
+            devtoolsOpen = true;
+        }
+        originalConsoleLog.apply(console, arguments);
+    };
+    
+    // Fungsi untuk bertindak ketika developer tools terdeteksi
+    function handleDevTools() {
+        if (devtoolsOpen) {
+            // Redirect atau tutup jendela atau tampilkan pesan peringatan
+            document.body.innerHTML = "<h1>Developer tools detected. This action has been logged.</h1>";
+            // Atau sebagai alternatif:
+            // window.location.href = "blocked.html";
+            return true;
+        }
+        return false;
+    }
+    
+    // 2. Mencegah inspect element melalui klik kanan
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("Yaela mau nyoba inspect ya ka? xixixi😝");
+        return false;
+    });
+    
+    // 3. Mencegah shortcut keyboard umum untuk developer tools
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+        if (
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+            (e.keyCode === 123)
+        ) {
+            e.preventDefault();
+            alert("Shortcut untuk developer tools dinonaktifkan!");
+            return false;
+        }
+        
+        // Ctrl+U (Lihat source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Melihat source code dinonaktifkan!");
+            return false;
+        }
+    });
+    
+    // 4. Pencegahan copy-paste (opsional, sesuai kebutuhan)
+    document.addEventListener('copy', function(e) {
+        // Komentar baris berikut jika Anda ingin mengizinkan pengguna untuk menyalin teks
+        // e.preventDefault();
+        // alert("Menyalin konten dari website ini dinonaktifkan!");
+    });
+    
+    // 5. Self-defending code
+    setInterval(function() {
+        handleDevTools();
+        
+        // Periksa modifikasi DOM
+        const checkDOM = document.querySelectorAll('script').length;
+        if (window.scriptCount === undefined) {
+            window.scriptCount = checkDOM;
+        } else if (window.scriptCount !== checkDOM) {
+            alert("Modifikasi DOM terdeteksi!");
+            window.location.reload();
+        }
+    }, 1000);
+    
+    // 6. Obfuskasi kode
+    // Gunakan layanan seperti https://obfuscator.io/ untuk mengobfuskasi kode JS Anda sebelum di-deploy
+    
+    // 7. Anti-debugging
+    function antiDebug() {
+        const startTime = new Date().getTime();
+        debugger;
+        const endTime = new Date().getTime();
+        
+        // Jika debugger sedang aktif, ini akan menghabiskan waktu lebih lama
+        if (endTime - startTime > 100) {
+            // Debugger terdeteksi
+            document.body.innerHTML = "<h1>Debugging detected. This action has been logged.</h1>";
+        }
+        
+        setTimeout(antiDebug, 1000);
+    }
+    antiDebug();
+    
+    // 8. Membuat script non-inspectable
+    (() => {
+        // Kode penting disini
+        const message = "Modified environment detected. This action has been logged.";
+        
+        // Deteksi perubahan fungsi native
+        const nativeToString = Object.prototype.toString;
+        const nativeFnToString = Function.prototype.toString;
+        const nativeSymbol = Symbol.prototype.toString;
+        
+        // Fungsi untuk memvalidasi integritas lingkungan
+        function checkEnvIntegrity() {
+            try {
+                if (
+                    Object.prototype.toString !== nativeToString ||
+                    Function.prototype.toString !== nativeFnToString ||
+                    Symbol.prototype.toString !== nativeSymbol
+                ) {
+                    throw new Error("Environment modified");
+                }
+                
+                return true;
+            } catch (e) {
+                document.body.innerHTML = message;
+                return false;
+            }
+        }
+        
+        // Pemeriksaan integritas secara berkala
+        setInterval(checkEnvIntegrity, 2000);
+    })();
+})();
+
+    // Servise Worker
+    // Daftarkan service worker (tambahkan pada script utama)
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+        console.log('ServiceWorker registration successful');
+    })
+    .catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // Sisipkan watermark tersembunyi
+    const watermark = document.createElement('div');
+    watermark.style.display = 'none';
+    watermark.setAttribute('data-owner', 'Website milik [Nama Anda] - Mencuri kode ini melanggar hukum');
+    watermark.setAttribute('data-timestamp', new Date().toISOString());
+    watermark.setAttribute('data-id', 'wm-' + Math.random().toString(36).substring(2, 15));
+    document.body.appendChild(watermark);
+});
+    // hidden watermark 
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    // Tambahkan ke script utama
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+//honyepot variable
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    </script>
+</body>
+</html>
