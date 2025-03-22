@@ -10,15 +10,57 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-padding-inline-start: 400px;
         }
 
         body {
             background-color: #1f2126;
-            color: #c9d1d9;
-            font-family: 'Courier New', monospace;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
+                
         }
+        nav {
+    padding: 10px 10%;
+    background-color: transparent; /* Changed from #2c2f34 to transparent */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+.scrolled-nav {
+    background-color: #1f2126; /* Dark mode color when scrolled */
+    transform: translateY(0px);
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0.5px 20px #2f2f2f;
+}
+/* Add this to your existing CSS */
+.light-mode nav {
+    background-color: transparent; /* Changed from #2c2f34 to transparent */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+.light-mode .scrolled-nav {
+    background-color: #f9f9f9; /* Dark mode color when scrolled */
+}
+
+.profile img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px; /* Make it responsive */
+    height: 100px;
+}
+
  /* HERO SECTION */
  .hero-section {
         position: relative;
@@ -32,10 +74,10 @@
         justify-content: center;
         color: white;
         text-align: center;
-        margin-top: -75px; /* Adjust based on your navbar height */
+        margin-top: -50px; /* Adjust based on your navbar height */
         z-index: 1;
         padding-left: 40px;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 
     .hero-section::after {
@@ -45,7 +87,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+        background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text visibility */
         z-index: -1;
     }
 
@@ -56,7 +98,7 @@
     }
 
     .hero-content h1 {
-        font-size: 4rem;
+        font-size: 2rem;
         margin-bottom: 20px;
         font-weight: 700;
     }
@@ -85,11 +127,11 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 1.5rem;
         }
         
         .text-slider {
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
     }
 
@@ -105,12 +147,14 @@
 
     /* Light mode adjustments */
     .light-mode .hero-section::after {
-        background: rgba(18, 16, 16, 0.3);
+        background: rgba(18, 16, 16, 0.6);
     }
 
     .light-mode .container {
-        background-color: #f0f0f0;
+        background-color: #f9f9f9;
     }
+
+    
         /* LOADING SCREEN */
         .loading-container {
             position: fixed;
@@ -414,21 +458,16 @@
             visibility: hidden;
             transition: opacity 0.5s, visibility 0.5s;
         }
-
-        /* NAVBAR - FIXED */
-        nav {
-            padding: 15px 5%;
-            background-color: #2c2f34;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+        
+        .content-wrapper h1{
+        font-size: 1.5rem;
         }
-
+        
+        .light-mode .content-wrapper h1{
+        font-size: 1.5rem;
+        color: #4594e4;
+        }
+        
         nav h1 {
             font-size: 1.5rem;
             white-space: nowrap;
@@ -444,6 +483,7 @@
             text-decoration: none;
             transition: color 0.3s;
             position: relative;
+            font-size: 1.2rem;
         }
 
         .nav-links a:hover {
@@ -451,7 +491,7 @@
         }
 
         .nav-links a.active {
-            color: #58a6ff;
+            color: #ffffff;
         }
 
         .nav-links a.active::after {
@@ -474,7 +514,6 @@
             width: 90%;
             max-width: 800px;
             margin: 30px auto;
-            padding: 0 20px;
             min-height: calc(100vh - 120px);
         }
 
@@ -531,12 +570,13 @@
 
         /* SECTIONS */
         .section {
-            margin-top: 30px;
+        padding-inline: 20%;
         }
 
         .section h2 {
-            color: #58a6ff;
-            margin-bottom: 15px;
+            color: #ffffff;
+            margin-top: 15px;
+            margin-bottom: 5px;
         }
 
         /* ABOUT PAGE */
@@ -660,20 +700,29 @@
 
         /* STATS BOX */
         .stats-box {
-            border: 1px dashed #58a6ff;
-            padding: 15px;
+            border: 2px dashed #58a6ff;
+            padding: 20px;
             border-radius: 5px;
             margin-bottom: 20px;
         }
 
         .stats-box p {
             margin: 5px 0;
+            font-size: 15px;
         }
 
         /* LIGHT MODE */
         .light-mode {
-            background-color: #f0f0f0;
+            background-color: #f9f9f9;
             color: #1a1a1a;
+        }
+
+        .light-mode .hero-content h1 {
+            color: #ffffff;
+        }
+
+        .light-mode.scrolled-nav .hero-content h1 {
+            color: #0066cc;
         }
 
         .light-mode .loading-container {
@@ -684,18 +733,20 @@
             color: #0066cc;
         }
 
-        .light-mode nav {
-            background-color: #e0e0e0;
-            color: #1a1a1a;
+        .light-mode nav:not(.scrolled-nav) .nav-links a {
+            color: #ffffff;
         }
 
-        .light-mode .nav-links a {
+        .light-mode nav.scrolled-nav .nav-links a {
             color: #1a1a1a;
         }
-
+        
+        .light-mode nav.scrolled-nav .nav-links h1 {
+            color: #1a1a1a;
+        }
         .light-mode .nav-links a.active,
         .light-mode .nav-links a:hover {
-            color: #0066cc;
+            color: #ffffff;
         }
 
         .light-mode .nav-links a.active::after {
@@ -788,6 +839,421 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Grid layout for Random Things section */
+.random-things h2 {
+    margin-bottom: 20px;
+}
+.light-mode .random-things h2 {
+    margin-bottom: 20px;
+    color: #0066cc;
+}
+
+.random-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Box styling for each item */
+.random-item {
+    background-color: #2d2d34; /* Dark mode default */
+    border-radius: 12px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.random-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px #4090e0;
+}
+
+.random-item a {
+    color: #fff; /* Dark mode default */
+    text-decoration: none; 
+    font-weight: 500;
+    width: 100%; /* Make the entire item clickable */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.random-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.random-item a {
+    color: #fff; /* Dark mode default */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+        /* Animation classes */
+        .lift-up {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px #20202b;
+        }
+        
+        .ready-to-navigate {
+            background-color: #20202b;
+        }
+
+/* Light mode styles */
+.light-mode .random-item {
+    background-color: #f7f7f7;
+    box-shadow: 0 0 1px 2px rgba(85, 85, 85, 0.2); /* Outline tipis default */
+}
+
+.light-mode .random-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 20px 10px rgba(85, 85, 85, 0.3); /* Outline lebih tebal saat hover */
+    transform: translateY(-5px);
+}
+
+.light-mode .random-item a {
+    color: #333;
+}
+
+.light-mode .random-icon {
+    color: #0066cc;
+}
+/* Card container */
+.connect-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    background: linear-gradient(135deg, #24262c, #2b2d34);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: 16px;
+    margin: 0;
+}
+
+.links-container {
+    padding: 20px;
+}
+
+/* Icon styles */
+.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.icon img {
+    width: 60%;
+    height: 60%;
+    filter: invert(1); /* Makes the SVG icons white */
+}
+
+/* Platform-specific backgrounds */
+.linkedin {
+    background-color: #0077b5;
+}
+
+.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.github {
+    background-color: #333;
+}
+
+.whatsapp {
+    background-color: #25d366;
+}
+
+/* Link item styles */
+.link-item {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    transform: translateY(0);
+}
+
+.link-item:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.link-item:last-child {
+    margin-bottom: 0;
+}
+
+.link-info {
+    flex-grow: 1;
+}
+
+.platform {
+    
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.username {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .connect-card {
+        background-color: #1f2937;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    
+    .link-item {
+        color: #e5e7eb;
+    }
+    
+    .link-item:hover {
+        background-color: #374151;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .username {
+        color: #9ca3af;
+    }
+}
+
+/* Light mode with explicit class */
+.light-mode .connect-card {
+    background-color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.light-mode .link-item {
+    color: #333;
+}
+
+.light-mode .link-item:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.light-mode .username {
+    color: #6b7280;
+}
+
+/* Add this to your existing CSS */
+.link-item {
+    /* Keep your existing styles and add: */
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.link-item:hover {
+    /* Keep your existing hover styles and add: */
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* For dark mode, modify the hover box-shadow */
+@media (prefers-color-scheme: dark) {
+    .link-item:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+}
+    
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        .connect-card {
+            background-color: #1f2126;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+        
+        .link-item {
+            color: #e5e7eb;
+        }
+        
+        .link-item:hover {
+            background-color: #353434;
+        }
+        
+        .username {
+            color: #9ca3af;
+        }
+    }
+    .status-section {
+        margin: 17px auto;
+        padding-inline: 20%;
+    }
+    
+    .status-heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    
+    .status-card {
+        border-radius: 12px;
+        padding: 18px;
+        position: relative;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .pulse-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #10b981;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .pulse-dot:after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        background-color: #10b981;
+        animation: pulse 2s infinite;
+        opacity: 0.7;
+        top: 0;
+        left: 0;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.7;
+        }
+        70% {
+            transform: scale(2);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .status-text {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .status-content {
+        padding-left: 5px;
+    }
+    
+    .status-name {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    
+    .status-message {
+        font-size: 0.95rem;
+        opacity: 0.85;
+    }
+    
+    /* Light mode (default) */
+    .light-mode .status-heading {
+    color: #0066cc;
+    }
+
+.light-mode .status-card {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .status-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.light-mode .status-text {
+    color: #059669;
+}
+
+.light-mode .status-name {
+    color: #111827;
+}
+
+.light-mode .status-message {
+    color: #4b5563;
+}
+    
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        .status-heading {
+            color: #f9fafb;
+        }
+        
+        .status-card {
+            background-color: #1f2937;
+            border-color: #374151;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .status-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-text {
+            color: #34d399;
+        }
+        
+        .status-name {
+            color: #f3f4f6;
+        }
+        
+        .status-message {
+            color: #9ca3af;
+        }
+    }
     </style>
 </head>
 <body>
@@ -835,46 +1301,148 @@
 
         <div class="hero-section">
             <div class="hero-content">
-                <h1>Hey there! I'm Asyaa</h1>
+                <h1>👋 Olaaa efwione! introduce me as a</h1>
                 <div class="typing-container">
                     <span class="text-slider-items">Backend-Engineer, AI Researcher, Problem Solver</span>
                     <strong class="text-slider"></strong>
                 </div>
             </div>
         </div>
-            <div class="section">
-                <h2># Current Status</h2>
-                <div class="stats-box">
-                    <p><b>Asya 👀</b> Just Hopped Online</p>
-                    <p>↪ sleepy until graduate😴</p>
+<div class="status-section">
+    <h2 class="status-heading"># Current Status</h2>
+    <div class="status-card">
+        <div class="status-indicator">
+            <span class="pulse-dot"></span>
+            <span class="status-text">Online</span>
+        </div>
+        <div class="status-content">
+            <p class="status-name"><b>Asya 👀</b> Just Hopped Online</p>
+            <p class="status-message">↪ sleepy until graduate😴</p>
+        </div>
+    </div>
+</div>
+            <div class="section random-things">
+                <h2># Random Things</h2>
+                <div class="random-items-grid">
+                    <div class="random-item" data-href="books.html">
+                        <span class="random-icon">📚</span>
+                        <a href="books.html">Books read</a>
+                    </div>
+                    <div class="random-item" data-href="games.html">
+                        <span class="random-icon">🕹️</span>
+                        <a href="games.html">Games played</a>
+                    </div>
+                    <div class="random-item" data-href="movies.html">
+                        <span class="random-icon">🎞️</span>
+                        <a href="movies.html">Movies & series I've watched</a>
+                    </div>
+                    <div class="random-item" data-href="music.html">
+                        <span class="random-icon">🎼</span>
+                        <a href="music.html">Music that I usually play</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2># Random Things</h2>
-                <ul>
-                    <li><span class="marker"></span>📚<a href="books.html"> Books read</a></li>
-                    <li><span class="marker"></span>🕹️<a href="games.html"> Games played</a></li>
-                    <li><span class="marker"></span>🎞️<a href="movies.html"> Movies & series I've watched</a></li>
-                    <li><span class="marker"></span>🎼<a href="music.html"> Music that I usually play</a></li>
-                </ul>
+            <div class="connect-card">
+                <div class="header">
+                    <h2>Connect With Me</h2>
+                    <p>Let's stay in touch!</p>
+                </div>
+                <div class="links-container">
+                    <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank" class="link-item">
+                        <div class="icon linkedin">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/linkedin.svg" alt="LinkedIn">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">LinkedIn</div>
+                            <div class="username">@Glenferdinza Efian</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/g.syaaaa" target="_blank" class="link-item">
+                        <div class="icon instagram">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/instagram.svg" alt="Instagram">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">Instagram</div>
+                            <div class="username">@g.syaaaa</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/Glenferdinza" target="_blank" class="link-item">
+                        <div class="icon github">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">GitHub</div>
+                            <div class="username">@Glenferdinza</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/6281225495018" target="_blank" class="link-item">
+                        <div class="icon whatsapp">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/whatsapp.svg" alt="WhatsApp">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">WhatsApp</div>
+                            <div class="username">(+62) 812-2549-5018</div>
+                        </div>
+                    </a>
+                </div>
             </div>
-
-            <div class="section">
-                <h2># Explore My Network!</h2>
-                <ul>
-                    <li><span class="marker"></span>LinkedIn : <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank">@Glenferdinza Efian</a></li>
-                    <li><span class="marker"></span>Instagram : <a href="https://www.instagram.com/g.syaaaa" target="_blank">@g.syaaaa</a></li>
-                    <li><span class="marker"></span>Github : <a href="https://github.com/Glenferdinza" target="_blank">@Glenferdinza</a></li>
-                    <li><span class="marker"></span>Phone : <a href="https://wa.me/6281225495018" target="_blank">(+62)812-2549-5018</a></li>
-                </ul>
-            </div>
-        </div>
+    </div>        
         <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
             Asya's &copy; 2025
         </footer>
     </div>
     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const randomItems = document.querySelectorAll('.random-item');
+            
+            randomItems.forEach(item => {
+                let clickCount = 0;
+                const link = item.getAttribute('data-href');
+                
+                item.addEventListener('click', function() {
+                    clickCount++;
+                    
+                    if (clickCount === 1) {
+                        // First click: show animation of lifting up
+                        item.classList.add('lift-up');
+                        item.classList.add('ready-to-navigate');
+                        
+                        // Reset click count if not clicked again within 3 seconds
+                        setTimeout(() => {
+                            if (clickCount === 1) {
+                                item.classList.remove('lift-up');
+                                item.classList.remove('ready-to-navigate');
+                                clickCount = 0;
+                            }
+                        }, 3000);
+                    } else if (clickCount === 2) {
+                        // Second click: navigate to the link
+                        window.location.href = link;
+                    }
+                });
+            });
+        });
+    // Function to handle scroll events
+    function handleScroll() {
+        const navbar = document.querySelector('nav');
+        if (window.scrollY > 50) { // Change background after scrolling 50px
+            navbar.classList.add('scrolled-nav');
+        } else {
+            navbar.classList.remove('scrolled-nav');
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        handleScroll(); // Check initial scroll position
+    });
         function setInternalNavigation() {
     sessionStorage.setItem('internalNavigation', 'true');
 }       
