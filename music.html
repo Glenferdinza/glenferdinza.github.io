@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asya's Web - Movies & series I've watched</title>
+    <style>
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1f2126;
+            color: #c9d1d9;
+            font-family: "Poppins", sans-serif;;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* NAVBAR - FIXED */
+        nav {
+            padding: 15px 5%;
+            background-color: #2c2f34;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #58a6ff;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        /* LINKS */
+        .section a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        /* LIST STYLING */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* LIGHT MODE */
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        .light-mode nav {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a {
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a.active,
+        .light-mode .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .light-mode .nav-links a.active::after {
+            background-color: #0066cc;
+        }
+
+        .light-mode .section a {
+            color: #0066cc;
+        }
+
+        .light-mode ul li::before {
+            color: #1b1818;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 5%;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+        }
+
+        .notes {
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+                /* New styles for the interactive markers */
+                .marker {
+            display: inline-block;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+            user-select: none;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Default arrow style */
+        .marker:before {
+            content: "»";
+            color: #696060;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for entire list item */
+        ul li:hover .marker:before {
+            content: "•";
+            color: #58a6ff;
+            text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="clickSound" preload="auto">
+        <source src="mixkit-light-switch-sound-2579.wav" type="audio/wav">
+        <!-- Alternatif jika file pertama tidak bisa dimuat -->
+        <source src="mixkit-on-or-off-light-switch-tap-2585.wav" type="audio/wav">
+    </audio>
+    <nav>
+        <h1>Asya's Web</h1>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+        </div>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            🌙
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2># My Music Playlist? 👀</h2>
+            <b>These are my favorite music playlist that I keep replaying over time, hopefully you like it (づ￣ 3￣)づ</b>
+        </div>
+
+        <div class="section">
+            <h2># Indonesian Music</h2>
+            <ul>
+                <li><span class="marker"></span>Siapkah Kau'Tuk Jatuh Cinta By Hivi!</li>
+                <li><span class="marker"></span>Nuansa Romansa By Danar</li>
+                <li><span class="marker"></span>Tak Satu Cerita By Rizwan Fadilah</li>
+                <li><span class="marker"></span>Tanpa Bicara By Rizwan Fadillah</li>
+                <li><span class="marker"></span>Evaluasi By Hindia</li>
+                <li><span class="marker"></span>Dancing In September By Ardhito Pramono</li>
+                <li><span class="marker"></span>Jatuh, Bangkit Kembali! By Hivi!</li>
+                <li><span class="marker"></span>Berpisah Itu Mudah By Mikha Tambayong, Rizky Febian</li>
+                <li><span class="marker"></span>Kaktus By Suara Kayu</li>
+                <li><span class="marker"></span>Senopati in the Rain By Jordan Susanto</li>
+                <li><span class="marker"></span>affa iyah (feat. Basboi) By Salma Salsabil, Basboi</li>
+                <li><span class="marker"></span>That Somebody By Rafi Sudirman</li>
+                <li><span class="marker"></span>Menawan By Adrian Khalif</li>
+                <li><span class="marker"></span>Perjalanan Singkat By Pendarra</li>
+                <li><span class="marker"></span>2112 By Reality Club</li>
+                <li><span class="marker"></span>Waking Up Togather With You By Ardhito Pramono</li>
+                <li><span class="marker"></span>Jungkir Balik By Maisha Kanna</li>
+                <li><span class="marker"></span>More Than Just a Friend By Ruth Garcia</li>
+                <li><span class="marker"></span>Lampu Kuning By Juicy Luicy</li>
+                <li><span class="marker"></span>Crolatte By Yunan Helmi, Nuca</li>
+                <li><span class="marker"></span>Sialan By Juicy Luicy</li>
+                <li><span class="marker"></span>Bumi dan Bulan By Hivi!</li>
+                <li><span class="marker"></span>Rusuk By Gery Gany</li>
+                <li><span class="marker"></span>Teruntuk Mia By Nuh...</li>
+                <li><span class="marker"></span>Now I Know By Kaleb J</li>
+                <li><span class="marker"></span>Bertaut By Nadin Amizah</li>
+                <li><span class="marker"></span>Taruh By Nadin Amizah</li>
+                <li><span class="marker"></span>star. By Nadin Amizah</li>
+                <li><span class="marker"></span>Pijaraya By Soegi Bornean</li>
+                <li><span class="marker"></span>if u could see me cry By Arash Buana, raissa anggiani</li>
+                <li><span class="marker"></span>Etc...</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2># Foreign Music</h2>
+            <ul>
+                <li><span class="marker"></span>All The Stars(with SZA) By Kendrick Lamar, SZA</li>
+                <li><span class="marker"></span>bloodline By Ariana Grande</li>
+                <li><span class="marker"></span>Obliterate By Micah Ariss, Chandler Burton</li>
+                <li><span class="marker"></span>One More Dance By d4vd</li>
+                <li><span class="marker"></span>Tell Me It's Not a Dream By 10CM</li>
+                <li><span class="marker"></span>Do you Think Of Me? By 10CM</li>
+                <li><span class="marker"></span>Stars By 10CM</li>
+                <li><span class="marker"></span>the cutest pair By Regina Song</li>
+                <li><span class="marker"></span>Drawer By 10CM</li>
+                <li><span class="marker"></span>Some By BOL4</li>
+                <li><span class="marker"></span>Spring Snow By 10CM</li>
+                <li><span class="marker"></span>Fly Me to the Moon By 10Rick Hale, Breaa Guttery</li>
+                <li><span class="marker"></span>Baby I'm Yours By Artic Monkeys</li>
+                <li><span class="marker"></span>Is There Someone Else By The Weeknd</li>
+                <li><span class="marker"></span>Marilag By Dionela</li>
+                <li><span class="marker"></span>Hold Me Down By Daniel Caesar</li>
+                <li><span class="marker"></span>I miss you, I'm sorry By Gracie Abrams</li>
+                <li><span class="marker"></span>STUPID IN LOVE By MAX, HUH YUNJIN</li>
+                <li><span class="marker"></span>Mean It By Lauv, LANY</li>
+                <li><span class="marker"></span>Isn,t She Lovely By Milos Foreman</li>
+                <li><span class="marker"></span>sining By Dionela, Jay R</li>
+                <li><span class="marker"></span>Etc...</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
+        Asya's &copy; 2025
+    </footer>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        const footer = document.querySelector('footer');
+        if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-toggle').textContent = '☀️';
+    }
+        // Apply light mode to footer if needed on page load
+        if (localStorage.getItem('theme') === 'light') {
+            footer.style.backgroundColor = '#e0e0e0';
+            footer.style.color = '#1a1a1a';
+        }
+        
+        // Update footer when theme is toggled
+        themeToggle.addEventListener('click', function() {
+            if (document.body.classList.contains('light-mode')) {
+                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.color = '#1a1a1a';
+            } else {
+                footer.style.backgroundColor = '#2c2f34';
+                footer.style.color = '#c9d1d9';
+            }
+        });
+    });
+        // Theme toggle function
+        function toggleTheme() {
+    // Mainkan suara klik
+    const clickSound = document.getElementById('clickSound');
+    clickSound.currentTime = 0; // Reset posisi audio ke awal
+    clickSound.play();
+    
+    // Kode tema yang sudah ada
+    document.body.classList.toggle('light-mode');
+    
+    // Change moon/sun icon
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (document.body.classList.contains('light-mode')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    }
+}        
+
+    // Add this to your existing JavaScript to update the footer in light mode
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        const footer = document.querySelector('footer');
+        
+        // Apply light mode to footer if needed on page load
+        if (localStorage.getItem('theme') === 'light') {
+            footer.style.backgroundColor = '#e0e0e0';
+            footer.style.color = '#1a1a1a';
+        }
+        
+        // Update footer when theme is toggled
+        themeToggle.addEventListener('click', function() {
+            if (document.body.classList.contains('light-mode')) {
+                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.color = '#1a1a1a';
+            } else {
+                footer.style.backgroundColor = '#2c2f34';
+                footer.style.color = '#c9d1d9';
+            }
+        });
+    });
+            // Function untuk sanitasi input (tambahkan di bagian script)
+function sanitizeInput(input) {
+    if (!input) return input;
+    
+    // Konversi input menjadi string jika bukan string
+    if (typeof input !== 'string') {
+        input = String(input);
+    }
+    
+    // Escape karakter khusus HTML
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    
+    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// Fungsi untuk memvalidasi input
+function validateInput(input, pattern) {
+    if (!pattern) {
+        // Pattern default untuk text biasa (alfanumerik, spasi dan tanda baca umum)
+        pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
+    }
+    return pattern.test(input);
+}
+
+// Contoh penggunaan untuk form (tambahkan jika ada form)
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Validasi semua input dalam form
+            const inputs = this.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                const value = input.value;
+                const sanitized = sanitizeInput(value);
+                
+                // Jika ada perbedaan setelah sanitasi, berarti ada karakter mencurigakan
+                if (value !== sanitized) {
+                    isValid = false;
+                    input.classList.add('error');
+                    
+                    // Opsional: tambahkan pesan error
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.textContent = 'Input mengandung karakter yang tidak diperbolehkan';
+                    input.parentNode.appendChild(errorMsg);
+                }
+            });
+            
+            // Hentikan submit jika tidak valid
+            if (!isValid) {
+                e.preventDefault();
+                alert('Form mengandung input yang tidak valid. Mohon periksa kembali.');
+            }
+        });
+    });
+});
+
+    // Kode untuk mempersulit akses konsol dan modifikasi kode
+(function() {
+    // 1. Deteksi dan kembalikan jika konsol dibuka
+    let devtoolsOpen = false;
+    
+    // Metode 1: Deteksi melalui ukuran jendela (pendeteksi konsol samping)
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        devtoolsOpen = true;
+    }
+    
+    // Metode 2: Deteksi debugger
+    const div = document.createElement('div');
+    Object.defineProperty(div, 'id', {
+        get: function() {
+            devtoolsOpen = true;
+            return 'x';
+        }
+    });
+    console.log(div);
+    console.clear();
+    
+    // Metode 3: Periksa fungsi console.log
+    const originalConsoleLog = console.log;
+    console.log = function() {
+        if (arguments[0] === div && !arguments[0].id) {
+            devtoolsOpen = true;
+        }
+        originalConsoleLog.apply(console, arguments);
+    };
+    
+    // Fungsi untuk bertindak ketika developer tools terdeteksi
+    function handleDevTools() {
+        if (devtoolsOpen) {
+            // Redirect atau tutup jendela atau tampilkan pesan peringatan
+            document.body.innerHTML = "<h1>Developer tools detected. This action has been logged.</h1>";
+            // Atau sebagai alternatif:
+            // window.location.href = "blocked.html";
+            return true;
+        }
+        return false;
+    }
+    
+    // 2. Mencegah inspect element melalui klik kanan
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("Yaela mau nyoba inspect ya ka? xixixi😝");
+        return false;
+    });
+    
+    // 3. Mencegah shortcut keyboard umum untuk developer tools
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+        if (
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+            (e.keyCode === 123)
+        ) {
+            e.preventDefault();
+            alert("Shortcut untuk developer tools dinonaktifkan!");
+            return false;
+        }
+        
+        // Ctrl+U (Lihat source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Melihat source code dinonaktifkan!");
+            return false;
+        }
+    });
+    
+    // 4. Pencegahan copy-paste (opsional, sesuai kebutuhan)
+    document.addEventListener('copy', function(e) {
+        // Komentar baris berikut jika Anda ingin mengizinkan pengguna untuk menyalin teks
+        // e.preventDefault();
+        // alert("Menyalin konten dari website ini dinonaktifkan!");
+    });
+    
+    // 5. Self-defending code
+    setInterval(function() {
+        handleDevTools();
+        
+        // Periksa modifikasi DOM
+        const checkDOM = document.querySelectorAll('script').length;
+        if (window.scriptCount === undefined) {
+            window.scriptCount = checkDOM;
+        } else if (window.scriptCount !== checkDOM) {
+            alert("Modifikasi DOM terdeteksi!");
+            window.location.reload();
+        }
+    }, 1000);
+    
+    // 6. Obfuskasi kode
+    // Gunakan layanan seperti https://obfuscator.io/ untuk mengobfuskasi kode JS Anda sebelum di-deploy
+    
+    // 7. Anti-debugging
+    function antiDebug() {
+        const startTime = new Date().getTime();
+        debugger;
+        const endTime = new Date().getTime();
+        
+        // Jika debugger sedang aktif, ini akan menghabiskan waktu lebih lama
+        if (endTime - startTime > 100) {
+            // Debugger terdeteksi
+            document.body.innerHTML = "<h1>Debugging detected. This action has been logged.</h1>";
+        }
+        
+        setTimeout(antiDebug, 1000);
+    }
+    antiDebug();
+    
+    // 8. Membuat script non-inspectable
+    (() => {
+        // Kode penting disini
+        const message = "Modified environment detected. This action has been logged.";
+        
+        // Deteksi perubahan fungsi native
+        const nativeToString = Object.prototype.toString;
+        const nativeFnToString = Function.prototype.toString;
+        const nativeSymbol = Symbol.prototype.toString;
+        
+        // Fungsi untuk memvalidasi integritas lingkungan
+        function checkEnvIntegrity() {
+            try {
+                if (
+                    Object.prototype.toString !== nativeToString ||
+                    Function.prototype.toString !== nativeFnToString ||
+                    Symbol.prototype.toString !== nativeSymbol
+                ) {
+                    throw new Error("Environment modified");
+                }
+                
+                return true;
+            } catch (e) {
+                document.body.innerHTML = message;
+                return false;
+            }
+        }
+        
+        // Pemeriksaan integritas secara berkala
+        setInterval(checkEnvIntegrity, 2000);
+    })();
+})();
+
+    // Servise Worker
+    // Daftarkan service worker (tambahkan pada script utama)
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+        console.log('ServiceWorker registration successful');
+    })
+    .catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // Sisipkan watermark tersembunyi
+    const watermark = document.createElement('div');
+    watermark.style.display = 'none';
+    watermark.setAttribute('data-owner', 'Website milik [Nama Anda] - Mencuri kode ini melanggar hukum');
+    watermark.setAttribute('data-timestamp', new Date().toISOString());
+    watermark.setAttribute('data-id', 'wm-' + Math.random().toString(36).substring(2, 15));
+    document.body.appendChild(watermark);
+});
+    // hidden watermark 
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    // Tambahkan ke script utama
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+//honyepot variable
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+</script>
+</body>
+</html>

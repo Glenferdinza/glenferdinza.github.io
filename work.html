@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asya's Web - Work</title>
+    <style>
+    /* Add the existing CSS you shared for the hamster animation */
+    .wheel-and-hamster {
+      --dur: 2s;
+      position: relative;
+      width: 12em;
+      height: 12em;
+      font-size: 14px;
+    }
+
+    .wheel,
+    .hamster,
+    .hamster div,
+    .spoke {
+      position: absolute;
+    }
+
+    .wheel,
+    .spoke {
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .wheel {
+      background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+      z-index: 2;
+    }
+
+    .hamster {
+      animation: hamster var(--dur) ease-in-out infinite;
+      top: 50%;
+      left: calc(50% - 3.5em);
+      width: 7em;
+      height: 3.75em;
+      transform: rotate(4deg) translate(-0.8em,1.85em);
+      transform-origin: 50% 0;
+      z-index: 1;
+    }
+
+    .hamster__head {
+      animation: hamsterHead var(--dur) ease-in-out infinite;
+      background: hsl(30,90%,55%);
+      border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+      box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+            0.75em -1.55em 0 hsl(30,90%,90%) inset;
+      top: 0;
+      left: -2em;
+      width: 2.75em;
+      height: 2.5em;
+      transform-origin: 100% 50%;
+    }
+
+    .hamster__ear {
+      animation: hamsterEar var(--dur) ease-in-out infinite;
+      background: hsl(0,90%,85%);
+      border-radius: 50%;
+      box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+      top: -0.25em;
+      right: -0.25em;
+      width: 0.75em;
+      height: 0.75em;
+      transform-origin: 50% 75%;
+    }
+
+    .hamster__eye {
+      animation: hamsterEye var(--dur) linear infinite;
+      background-color: hsl(0,0%,0%);
+      border-radius: 50%;
+      top: 0.375em;
+      left: 1.25em;
+      width: 0.5em;
+      height: 0.5em;
+    }
+
+    .hamster__nose {
+      background: hsl(0,90%,75%);
+      border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+      top: 0.75em;
+      left: 0;
+      width: 0.2em;
+      height: 0.25em;
+    }
+
+    .hamster__body {
+      animation: hamsterBody var(--dur) ease-in-out infinite;
+      background: hsl(30,90%,90%);
+      border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+      box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+            0.15em -0.5em 0 hsl(30,90%,80%) inset;
+      top: 0.25em;
+      left: 2em;
+      width: 4.5em;
+      height: 3em;
+      transform-origin: 17% 50%;
+      transform-style: preserve-3d;
+    }
+
+    .hamster__limb--fr,
+    .hamster__limb--fl {
+      clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+      top: 2em;
+      left: 0.5em;
+      width: 1em;
+      height: 1.5em;
+      transform-origin: 50% 0;
+    }
+
+    .hamster__limb--fr {
+      animation: hamsterFRLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+      transform: rotate(15deg) translateZ(-1px);
+    }
+
+    .hamster__limb--fl {
+      animation: hamsterFLLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+      transform: rotate(15deg);
+    }
+
+    .hamster__limb--br,
+    .hamster__limb--bl {
+      border-radius: 0.75em 0.75em 0 0;
+      clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+      top: 1em;
+      left: 2.8em;
+      width: 1.5em;
+      height: 2.5em;
+      transform-origin: 50% 30%;
+    }
+
+    .hamster__limb--br {
+      animation: hamsterBRLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+      transform: rotate(-25deg) translateZ(-1px);
+    }
+
+    .hamster__limb--bl {
+      animation: hamsterBLLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+      transform: rotate(-25deg);
+    }
+
+    .hamster__tail {
+      animation: hamsterTail var(--dur) linear infinite;
+      background: hsl(0,90%,85%);
+      border-radius: 0.25em 50% 50% 0.25em;
+      box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+      top: 1.5em;
+      right: -0.5em;
+      width: 1em;
+      height: 0.5em;
+      transform: rotate(30deg) translateZ(-1px);
+      transform-origin: 0.25em 0.25em;
+    }
+
+    .spoke {
+      animation: spoke var(--dur) linear infinite;
+      background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+            linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+    }
+
+    /* Animations */
+    @keyframes hamster {
+      from, to {
+        transform: rotate(4deg) translate(-0.8em,1.85em);
+      }
+
+      50% {
+        transform: rotate(0) translate(-0.8em,1.85em);
+      }
+    }
+
+    @keyframes hamsterHead {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(0);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(8deg);
+      }
+    }
+
+    @keyframes hamsterEye {
+      from, 90%, to {
+        transform: scaleY(1);
+      }
+
+      95% {
+        transform: scaleY(0);
+      }
+    }
+
+    @keyframes hamsterEar {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(0);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes hamsterBody {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(0);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(-2deg);
+      }
+    }
+
+    @keyframes hamsterFRLimb {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(50deg) translateZ(-1px);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(-30deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes hamsterFLLimb {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(-30deg);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(50deg);
+      }
+    }
+
+    @keyframes hamsterBRLimb {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(-60deg) translateZ(-1px);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(20deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes hamsterBLLimb {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(20deg);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(-60deg);
+      }
+    }
+
+    @keyframes hamsterTail {
+      from, 25%, 50%, 75%, to {
+        transform: rotate(30deg) translateZ(-1px);
+      }
+
+      12.5%, 37.5%, 62.5%, 87.5% {
+        transform: rotate(10deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes spoke {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(-1turn);
+      }
+    }
+
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1f2126;
+            color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* NAVBAR - FIXED */
+        nav {
+            padding: 15px 5%;
+            background-color: #2c2f34;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #58a6ff;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        /* WORK PAGE - PROJECT GRID */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: #2c2f34;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .project-front, .project-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .project-front {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img {
+            height: 100%;
+            width: 100%;
+            background-color: #3a3d42;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #58a6ff;
+        }
+
+        .project-img:hover {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: #58a6ff;
+            text-align: left;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .project-tag {
+            background-color: #3a3d42;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .project-back {
+            background-color: #2c2f34;
+            transform: rotateY(180deg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .project-description h3 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px;
+            background-color: #58a6ff;
+            color: #e4e4e4 !important; /* Changed to white */
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .project-link:hover {
+            background-color: #4090e0;
+            text-decoration: none !important;
+        }
+
+        .project-back-btn {
+            background-color: transparent;
+            border: 1px solid #58a6ff;
+            color: #58a6ff;
+        }
+
+        .project-back-btn:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+        }
+
+        .flipped .project-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* FILTER CONTROLS */
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: #2c2f34;
+            border: 1px solid #58a6ff;
+            color: #c9d1d9;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+        }
+
+        .filter-btn.active {
+            background-color: #58a6ff;
+            color: #1f2126;
+        }
+
+        /* Coming Soon Label */
+        .coming-soon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(88, 166, 255, 0.8);
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #1f2126;
+        }
+
+        /* LIGHT MODE */
+        .light-mode {
+            background-color: #f6f6f6;
+            color: #1a1a1a;
+        }
+
+        .light-mode .warnaheader h1{
+            color: #0066cc;
+        }
+        .light-mode nav {
+            background-color: #f6f6f6;
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a {
+            color: #1a1a1a;
+        }
+
+        .light-mode .nav-links a.active,
+        .light-mode .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .light-mode .nav-links a.active::after {
+            background-color: #0066cc;
+        }
+
+        .light-mode .section h2 {
+            color: #0066cc;
+        }
+
+        .light-mode .project-card {
+            background-color: #f6f6f6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-mode .project-img {
+            background-color: #d0d0d0;
+            color: #0066cc;
+        }
+
+        .light-mode .project-info h3 {
+            color: #0066cc;
+        }
+
+        .light-mode .project-tag {
+            background-color: #dddddd;
+        }
+
+        .light-mode .project-back {
+            background-color: #f6f6f6;
+        }
+
+        .light-mode .project-link {
+            background-color: #0066cc;
+            color: #ffffff !important;
+        }
+
+        .light-mode .project-link:hover {
+            background-color: #0055aa;
+        }
+
+        .light-mode .project-back-btn {
+            border: 1px solid #0066cc;
+            color: #0066cc;
+        }
+
+        .light-mode .project-back-btn:hover {
+            background-color: rgba(0, 102, 204, 0.1);
+        }
+
+        .light-mode .filter-btn {
+            background-color: #e0e0e0;
+            border: 1px solid #0066cc;
+            color: #1a1a1a;
+        }
+
+        .light-mode .filter-btn:hover {
+            background-color: rgba(0, 102, 204, 0.1);
+        }
+
+        .light-mode .filter-btn.active {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+        .light-mode .project-links {
+        background-color: #e0e0e0; /* Match light mode background */
+        border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light mode divider */
+}
+
+        .light-mode .coming-soon {
+            background-color: rgba(0, 102, 204, 0.8);
+            color: #ffffff;
+        }
+
+        /* Hide projects when filtered */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 5%;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .container {
+                width: 95%;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        .project-back {
+    background-color: #2c2f34;
+    transform: rotateY(180deg);
+    padding: 20px 30px 20px 20px; /* Increase right padding to make room for scrollbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.project-description {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 10px; /* Add some padding on the right side for the text */
+}
+.project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: sticky; /* Keep buttons visible */
+    bottom: 0; /* Stick to bottom */
+    background-color: #2c2f34; /* Match background */
+    padding-top: 10px; /* Add some padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional divider */
+}
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    min-height: calc(100vh - 120px); /* Increase this value to account for the footer */
+}
+    </style>
+</head>
+<body>
+    <audio id="clickSound" preload="auto">
+        <source src="mixkit-light-switch-sound-2579.wav" type="audio/wav">
+        <!-- Alternatif jika file pertama tidak bisa dimuat -->
+        <source src="mixkit-on-or-off-light-switch-tap-2585.wav" type="audio/wav">
+    </audio>
+    <nav>
+        <div class="warnaheader">
+        <h1>Asya's Web</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="work.html" class="active">Work</a>
+        </div>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            🌙
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section">
+            <h2># My Projects</h2>
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="figma">Figma</button>
+            </div>
+            <div class="project-grid">
+                
+                <!-- Project 1 - AI -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-inner">
+                        <div class="project-front">
+                            <div class="project-img" style="background-image: url('cpp.png');">
+                                <!-- Gambar proyek -->
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <h3>Classification of Car Price Predicion</h3>
+                                    <p>Classification of Car Price Predicion using Machine Learning</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Flask</span>
+                                    <span class="project-tag">Machine Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back">
+                            <div class="project-description">
+                                <h3>Classification of Car Price Predicion</h3>
+                                <p>I manage to developed a machine learning model using Classification algorithms to predict the price of a car based on its features.</p>
+                            </div>
+                            <div class="project-links">
+                                <a href="maintenance.html" class="project-link" target="_blank">View Project</a>
+                                <button class="project-link project-back-btn">Back to Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 - Figma -->
+                <div class="project-card" data-category="figma">
+                    <div class="project-inner">
+                        <div class="project-front">
+                            <div class="project-img" style="background-image: url('figmaa.png');">
+                                <!-- Gambar proyek -->
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <h3>ATASIN</h3>
+                                    <p>An Smart City Application based on Artificial Intelligence to Achieve Inclusive and Sustainable Development</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag">Figma</span>
+                                    <span class="project-tag">Corel Draw</span>
+                                    <span class="project-tag">Canva</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back">
+                            <div class="project-description">
+                                <h3>ATASIN</h3>
+                                <p>I was successfully developed the prototype of ATASIN application together with my two teammates. Also 'bout ATASIN itself is a smart city application based on Artificial Intelligence (AI) that designed to create 
+                                    a more inclusive and sustainable urban environment. This application integrates various public services, including real-time transportation tracking, transparent budget monitoring, public reporting, job listings,
+                                    event updates, and security surveillance through CCTV access. With AI-driven data processing, ATASIN enhances accessibility for all citizens, including people with disabilities, ensuring that everyone can actively participate in urban development.🌍</p>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.figma.com/proto/br6ivDxx9mvJammsKlcfPz/Untitled?node-id=0-1&t=4F2Md8zGMBL79Cvb-1" class="project-link" target="_blank">View Project</a>
+                                <button class="project-link project-back-btn">Back to Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Backend -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-inner">
+                        <div class="project-front">
+                            <div class="project-img" style="background-image: url('project.png');">
+                                <!-- Gambar proyek -->
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <h3>Coming Soon</h3>
+                                    <p>Coming Soon</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag"></span>
+                                    <span class="project-tag"></span>
+                                    <span class="project-tag"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back">
+                            <div class="project-description">
+                                <h3>Coming Soon</h3>
+                                <p>Coming Soon!</p>
+                            </div>
+                            <div class="project-links">
+                                <button class="project-link project-back-btn">Back to Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project 3 - Web Dev -->
+     <div class="footerr">
+            <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #ffffff;">
+                Asya's@copyright
+            </footer>
+    </div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const footer = document.querySelector('footer');
+            if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-toggle').textContent = '☀️';
+    } 
+            // Apply light mode to footer if needed on page load
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+                themeToggle.textContent = '☀️';
+                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.color = '#1a1a1a';
+            }
+            
+            // Update footer when theme is toggled
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('light-mode')) {
+                    footer.style.backgroundColor = '#e0e0e0';
+                    footer.style.color = '#1a1a1a';
+                } else {
+                    footer.style.backgroundColor = '#2c2f34';
+                    footer.style.color = '#c9d1d9';
+                }
+            });
+        });
+
+ // Add this to your existing JavaScript to update the footer in light mode
+ document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    const footer = document.querySelector('footer');
+    
+    // Function to update theme
+    function updateTheme(isLight) {
+        if (isLight) {
+            body.classList.add('light-mode');
+            themeToggle.textContent = '☀️';
+            footer.style.backgroundColor = '#e0e0e0';
+            footer.style.color = '#1a1a1a';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.remove('light-mode');
+            themeToggle.textContent = '🌙';
+            footer.style.backgroundColor = '#2c2f34';
+            footer.style.color = '#c9d1d9';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    
+    // Check saved theme on page load
+    const savedTheme = localStorage.getItem('theme');
+    updateTheme(savedTheme === 'light');
+    
+    // Theme toggle click event
+    themeToggle.addEventListener('click', function() {
+        // Play sound
+        const clickSound = document.getElementById('clickSound');
+        clickSound.currentTime = 0;
+        clickSound.play().catch(err => console.log('Audio error:', err));
+        
+        // Toggle theme
+        const isNowLight = !body.classList.contains('light-mode');
+        updateTheme(isNowLight);
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter buttons functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get the filter category
+            const filterCategory = this.getAttribute('data-filter');
+            
+            // Simulate loading delay (you can remove this in production)
+            setTimeout(function() {
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filterCategory === 'all' || card.getAttribute('data-category') === filterCategory) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }, 1600); // Show loading for 1.6 Sec untuk hamsterr
+        });
+    });
+        
+    // Project card flip functionality
+    const projectCardFronts = document.querySelectorAll('.project-front');
+    const projectLinks = document.querySelectorAll('.project-link:not(.project-back-btn)');
+    const backButtons = document.querySelectorAll('.project-back-btn');
+    
+    // Flip to back when clicking on the front
+    projectCardFronts.forEach(front => {
+        front.addEventListener('click', function(e) {
+            // Prevent flipping if clicking on links
+            if (e.target.tagName === 'A') return;
+            
+            const card = this.closest('.project-card');
+            card.classList.add('flipped');
+        });
+    });
+    
+    // Make sure project links work without flipping back
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to parent elements
+            // Let the default behavior happen (follow the link)
+        });
+    });
+    
+    // Return to front when clicking back button
+    backButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent the card click event
+            const card = this.closest('.project-card');
+            card.classList.remove('flipped');
+        });
+    });
+});
+        // Function untuk sanitasi input (tambahkan di bagian script)
+        function sanitizeInput(input) {
+    if (!input) return input;
+    
+    // Konversi input menjadi string jika bukan string
+    if (typeof input !== 'string') {
+        input = String(input);
+    }
+    
+    // Escape karakter khusus HTML
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    
+    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// Fungsi untuk memvalidasi input
+function validateInput(input, pattern) {
+    if (!pattern) {
+        // Pattern default untuk text biasa (alfanumerik, spasi dan tanda baca umum)
+        pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
+    }
+    return pattern.test(input);
+}
+
+// Contoh penggunaan untuk form (tambahkan jika ada form)
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Validasi semua input dalam form
+            const inputs = this.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                const value = input.value;
+                const sanitized = sanitizeInput(value);
+                
+                // Jika ada perbedaan setelah sanitasi, berarti ada karakter mencurigakan
+                if (value !== sanitized) {
+                    isValid = false;
+                    input.classList.add('error');
+                    
+                    // Opsional: tambahkan pesan error
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.textContent = 'Input mengandung karakter yang tidak diperbolehkan';
+                    input.parentNode.appendChild(errorMsg);
+                }
+            });
+            
+            // Hentikan submit jika tidak valid
+            if (!isValid) {
+                e.preventDefault();
+                alert('Form mengandung input yang tidak valid. Mohon periksa kembali.');
+            }
+        });
+    });
+});
+
+    // Kode untuk mempersulit akses konsol dan modifikasi kode
+(function() {
+    // 1. Deteksi dan kembalikan jika konsol dibuka
+    let devtoolsOpen = false;
+    
+    // Metode 1: Deteksi melalui ukuran jendela (pendeteksi konsol samping)
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        devtoolsOpen = true;
+    }
+    
+    // Metode 2: Deteksi debugger
+    const div = document.createElement('div');
+    Object.defineProperty(div, 'id', {
+        get: function() {
+            devtoolsOpen = true;
+            return 'x';
+        }
+    });
+    console.log(div);
+    console.clear();
+    
+    // Metode 3: Periksa fungsi console.log
+    const originalConsoleLog = console.log;
+    console.log = function() {
+        if (arguments[0] === div && !arguments[0].id) {
+            devtoolsOpen = true;
+        }
+        originalConsoleLog.apply(console, arguments);
+    };
+    
+    // Fungsi untuk bertindak ketika developer tools terdeteksi
+    function handleDevTools() {
+        if (devtoolsOpen) {
+            // Redirect atau tutup jendela atau tampilkan pesan peringatan
+            document.body.innerHTML = "<h1>Developer tools detected. This action has been logged.</h1>";
+            // Atau sebagai alternatif:
+            // window.location.href = "blocked.html";
+            return true;
+        }
+        return false;
+    }
+    
+    // 2. Mencegah inspect element melalui klik kanan
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("Yaela mau nyoba inspect ya ka? xixixi😝");
+        return false;
+    });
+    
+    // 3. Mencegah shortcut keyboard umum untuk developer tools
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+        if (
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+            (e.keyCode === 123)
+        ) {
+            e.preventDefault();
+            alert("Shortcut untuk developer tools dinonaktifkan!");
+            return false;
+        }
+        
+        // Ctrl+U (Lihat source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Melihat source code dinonaktifkan!");
+            return false;
+        }
+    });
+    
+    // 4. Pencegahan copy-paste (opsional, sesuai kebutuhan)
+    document.addEventListener('copy', function(e) {
+        // Komentar baris berikut jika Anda ingin mengizinkan pengguna untuk menyalin teks
+        // e.preventDefault();
+        // alert("Menyalin konten dari website ini dinonaktifkan!");
+    });
+    
+    // 5. Self-defending code
+    setInterval(function() {
+        handleDevTools();
+        
+        // Periksa modifikasi DOM
+        const checkDOM = document.querySelectorAll('script').length;
+        if (window.scriptCount === undefined) {
+            window.scriptCount = checkDOM;
+        } else if (window.scriptCount !== checkDOM) {
+            alert("Modifikasi DOM terdeteksi!");
+            window.location.reload();
+        }
+    }, 1000);
+    
+    // 6. Obfuskasi kode
+    // Gunakan layanan seperti https://obfuscator.io/ untuk mengobfuskasi kode JS Anda sebelum di-deploy
+    
+    // 7. Anti-debugging
+    function antiDebug() {
+        const startTime = new Date().getTime();
+        debugger;
+        const endTime = new Date().getTime();
+        
+        // Jika debugger sedang aktif, ini akan menghabiskan waktu lebih lama
+        if (endTime - startTime > 100) {
+            // Debugger terdeteksi
+            document.body.innerHTML = "<h1>Debugging detected. This action has been logged.</h1>";
+        }
+        
+        setTimeout(antiDebug, 1000);
+    }
+    antiDebug();
+    
+    // 8. Membuat script non-inspectable
+    (() => {
+        // Kode penting disini
+        const message = "Modified environment detected. This action has been logged.";
+        
+        // Deteksi perubahan fungsi native
+        const nativeToString = Object.prototype.toString;
+        const nativeFnToString = Function.prototype.toString;
+        const nativeSymbol = Symbol.prototype.toString;
+        
+        // Fungsi untuk memvalidasi integritas lingkungan
+        function checkEnvIntegrity() {
+            try {
+                if (
+                    Object.prototype.toString !== nativeToString ||
+                    Function.prototype.toString !== nativeFnToString ||
+                    Symbol.prototype.toString !== nativeSymbol
+                ) {
+                    throw new Error("Environment modified");
+                }
+                
+                return true;
+            } catch (e) {
+                document.body.innerHTML = message;
+                return false;
+            }
+        }
+        
+        // Pemeriksaan integritas secara berkala
+        setInterval(checkEnvIntegrity, 2000);
+    })();
+})();
+
+    // Servise Worker
+    // Daftarkan service worker (tambahkan pada script utama)
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+        console.log('ServiceWorker registration successful');
+    })
+    .catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // Sisipkan watermark tersembunyi
+    const watermark = document.createElement('div');
+    watermark.style.display = 'none';
+    watermark.setAttribute('data-owner', 'Website milik [Nama Anda] - Mencuri kode ini melanggar hukum');
+    watermark.setAttribute('data-timestamp', new Date().toISOString());
+    watermark.setAttribute('data-id', 'wm-' + Math.random().toString(36).substring(2, 15));
+    document.body.appendChild(watermark);
+});
+    // hidden watermark 
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    // Tambahkan ke script utama
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+//honyepot variable
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+</script>
+<!-- Loading Overlay -->
+<div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center; flex-direction: column;">
+    <!-- From Uiverse.io by Nawsome --> 
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+            <div class="hamster__body">
+                <div class="hamster__head">
+                    <div class="hamster__ear"></div>
+                    <div class="hamster__eye"></div>
+                    <div class="hamster__nose"></div>
+                </div>
+                <div class="hamster__limb hamster__limb--fr"></div>
+                <div class="hamster__limb hamster__limb--fl"></div>
+                <div class="hamster__limb hamster__limb--br"></div>
+                <div class="hamster__limb hamster__limb--bl"></div>
+                <div class="hamster__tail"></div>
+            </div>
+        </div>
+        <div class="spoke"></div>
+    </div>
+    <div style="margin-top: 30px; font-family: monospace; font-size: 1.5em; color: white;">
+        PLEASE WAIT
+        <span id="loading-dots"></span>
+    </div>
+    <script>
+        var loadingDots = document.getElementById('loading-dots');
+        var dots = '';
+        var dotCount = 0;
+        setInterval(function() {
+            dotCount = (dotCount + 1) % 4;
+            dots = '';
+            for (var i = 0; i < dotCount; i++) {
+                dots += '.';
+            }
+            loadingDots.innerText = dots;
+        }, 200);
+    </script>
+</div>
+</body>
+</html>
