@@ -288,8 +288,8 @@
 
         body {
             background-color: #1f2126;
-            color: #c9d1d9;
-            font-family: 'Courier New', monospace;
+            color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -559,12 +559,15 @@
 
         /* LIGHT MODE */
         .light-mode {
-            background-color: #ebe5e5;
+            background-color: #f6f6f6;
             color: #1a1a1a;
         }
 
+        .light-mode .warnaheader h1{
+            color: #0066cc;
+        }
         .light-mode nav {
-            background-color: #e0e0e0;
+            background-color: #f6f6f6;
             color: #1a1a1a;
         }
 
@@ -586,7 +589,7 @@
         }
 
         .light-mode .project-card {
-            background-color: #e0e0e0;
+            background-color: #f6f6f6;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -600,11 +603,11 @@
         }
 
         .light-mode .project-tag {
-            background-color: #d0d0d0;
+            background-color: #dddddd;
         }
 
         .light-mode .project-back {
-            background-color: #e0e0e0;
+            background-color: #f6f6f6;
         }
 
         .light-mode .project-link {
@@ -741,8 +744,9 @@
         <source src="mixkit-on-or-off-light-switch-tap-2585.wav" type="audio/wav">
     </audio>
     <nav>
-        
+        <div class="warnaheader">
         <h1>Asya's Web</h1>
+        </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -864,10 +868,12 @@
         </div>
     </div>
     <!-- Project 3 - Web Dev -->
-            <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
+     <div class="footerr">
+            <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #ffffff;">
                 Asya's@copyright
             </footer>
-        </div>
+    </div>
+</div>
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.querySelector('.theme-toggle');
