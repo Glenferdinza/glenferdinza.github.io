@@ -22,7 +22,7 @@
         }
         
         nav {
-            padding: 10px 5%;
+            padding: 10px 10%;
             background-color: transparent;
             display: flex;
             align-items: center;
@@ -80,7 +80,7 @@
     justify-content: center;
     color: white;
     text-align: center;
-    margin-top: -52px;
+    margin-top: -48px;
     z-index: 1;
     padding-left: 40px;
     padding-right: 40px;
@@ -871,7 +871,7 @@
         /* Grid layout for Random Things section */
         .random-things h2 {
             margin-bottom: 20px;
-            padding-inline: 16.5%;
+            padding-inline: 10%;
         }
         
         .light-mode .random-things h2 {
@@ -885,8 +885,12 @@
     gap: 16px;
     margin-top: 16px;
     padding-inline: 10%;
-    padding-inline: 20%;
 }
+    @media screen and (max-width: 1080px) {
+        .random-items-grid {
+            padding-inline: 12%;
+        }
+    }
 
 .random-item {
     background-color: #2d2d34;
@@ -1193,15 +1197,33 @@
 }    
     .status-section {
         margin: 17px auto;
-        padding-inline: 20%;
+        padding-inline: 26%;
     }
     
     .status-heading {
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 15px;
+        padding-inline: 0;
+    }
+    @media screen and (max-width: 600px) {
+        .status-section {
+            padding-inline: 14%;
+        }
     }
     
+    @media screen and (max-width: 1080px) {
+        .status-section {
+            padding-inline: 16%;
+        }
+    }
+    
+    @media screen and (max-width: 1080px) {
+        .status-heading {
+            margin-left: -13px;
+        }
+    }
+
     .status-card {
         border-radius: 12px;
         padding: 18px;
