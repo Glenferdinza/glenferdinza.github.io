@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asya's Web - Home</title>
+    <style>
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-padding-inline-start: 400px;
+        }
+
+        body {
+            background-color: #1f2126;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        
+        nav {
+            padding: 10px 10%;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.5s;
+            width: 100%;
+        }
+        
+        .scrolled-nav {
+            background-color: #1f2126;
+            transform: translateY(0px);
+            width: 100%;
+            height: 70px;
+            box-shadow: 0 0.5px 20px #2f2f2f;
+        }
+        
+        .light-mode nav {
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.5s;
+        }
+        
+        .light-mode .scrolled-nav {
+            background-color: #f9f9f9;
+        }
+
+        .profile img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* HERO SECTION */
+/* Modify your hero section to have a fixed background */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('glen.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* This makes the background stay in place */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-top: -48px;
+    z-index: 1;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-family: 'Poppins', sans-serif;
+    left: 0;
+    right: 0;
+}
+@media screen and (max-width: 840px) {
+    .hero-section {
+        margin-top: -47px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .hero-section {
+        margin-top: -43px;
+    }
+}
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text visibility */
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 10;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%; /* Responsive width */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive font size */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .typing-container {
+            min-height: 40px;
+        }
+
+        .text-slider {
+            color: #f8f8f8;
+            font-weight: 600;
+            position: relative;
+            font-size: clamp(1.2rem, 4vw, 2rem); /* Responsive font size */
+        }
+
+        /* Make sure the container slides over the fixed hero image */
+        .container {
+        position: relative;
+        background-color: #1f2126;
+        z-index: 2;
+        margin-top: 0;
+        padding-top: 100px;
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+        max-width: 100%;
+        /* Add this to ensure it's on top of the hero section */
+        box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* LOADING SCREEN */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1f2126;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #58a6ff;
+        }
+
+        /* HAMSTER LOADING ANIMATION */
+        /* From Uiverse.io by Nawsome */ 
+        .wheel-and-hamster {
+          --dur: 2s;
+          position: relative;
+          width: 12em;
+          height: 12em;
+          font-size: 14px;
+        }
+
+        .wheel,
+        .hamster,
+        .hamster div,
+        .spoke {
+          position: absolute;
+        }
+
+        .wheel,
+        .spoke {
+          border-radius: 50%;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .wheel {
+          background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+          z-index: 2;
+        }
+
+        .hamster {
+          animation: hamster var(--dur) ease-in-out infinite;
+          top: 50%;
+          left: calc(50% - 3.5em);
+          width: 7em;
+          height: 3.75em;
+          transform: rotate(4deg) translate(-0.8em,1.85em);
+          transform-origin: 50% 0;
+          z-index: 1;
+        }
+
+        .hamster__head {
+          animation: hamsterHead var(--dur) ease-in-out infinite;
+          background: hsl(30,90%,55%);
+          border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+          box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+                0.75em -1.55em 0 hsl(30,90%,90%) inset;
+          top: 0;
+          left: -2em;
+          width: 2.75em;
+          height: 2.5em;
+          transform-origin: 100% 50%;
+        }
+
+        .hamster__ear {
+          animation: hamsterEar var(--dur) ease-in-out infinite;
+          background: hsl(0,90%,85%);
+          border-radius: 50%;
+          box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+          top: -0.25em;
+          right: -0.25em;
+          width: 0.75em;
+          height: 0.75em;
+          transform-origin: 50% 75%;
+        }
+
+        .hamster__eye {
+          animation: hamsterEye var(--dur) linear infinite;
+          background-color: hsl(0,0%,0%);
+          border-radius: 50%;
+          top: 0.375em;
+          left: 1.25em;
+          width: 0.5em;
+          height: 0.5em;
+        }
+
+        .hamster__nose {
+          background: hsl(0,90%,75%);
+          border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+          top: 0.75em;
+          left: 0;
+          width: 0.2em;
+          height: 0.25em;
+        }
+
+        .hamster__body {
+          animation: hamsterBody var(--dur) ease-in-out infinite;
+          background: hsl(30,90%,90%);
+          border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+          box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+                0.15em -0.5em 0 hsl(30,90%,80%) inset;
+          top: 0.25em;
+          left: 2em;
+          width: 4.5em;
+          height: 3em;
+          transform-origin: 17% 50%;
+          transform-style: preserve-3d;
+        }
+
+        .hamster__limb--fr,
+        .hamster__limb--fl {
+          clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+          top: 2em;
+          left: 0.5em;
+          width: 1em;
+          height: 1.5em;
+          transform-origin: 50% 0;
+        }
+
+        .hamster__limb--fr {
+          animation: hamsterFRLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+          transform: rotate(15deg) translateZ(-1px);
+        }
+
+        .hamster__limb--fl {
+          animation: hamsterFLLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+          transform: rotate(15deg);
+        }
+
+        .hamster__limb--br,
+        .hamster__limb--bl {
+          border-radius: 0.75em 0.75em 0 0;
+          clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+          top: 1em;
+          left: 2.8em;
+          width: 1.5em;
+          height: 2.5em;
+          transform-origin: 50% 30%;
+        }
+
+        .hamster__limb--br {
+          animation: hamsterBRLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+          transform: rotate(-25deg) translateZ(-1px);
+        }
+
+        .hamster__limb--bl {
+          animation: hamsterBLLimb var(--dur) linear infinite;
+          background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+          transform: rotate(-25deg);
+        }
+
+        .hamster__tail {
+          animation: hamsterTail var(--dur) linear infinite;
+          background: hsl(0,90%,85%);
+          border-radius: 0.25em 50% 50% 0.25em;
+          box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+          top: 1.5em;
+          right: -0.5em;
+          width: 1em;
+          height: 0.5em;
+          transform: rotate(30deg) translateZ(-1px);
+          transform-origin: 0.25em 0.25em;
+        }
+
+        .spoke {
+          animation: spoke var(--dur) linear infinite;
+          background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+                linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+        }
+
+        /* Animations */
+        @keyframes hamster {
+          from, to {
+            transform: rotate(4deg) translate(-0.8em,1.85em);
+          }
+
+          50% {
+            transform: rotate(0) translate(-0.8em,1.85em);
+          }
+        }
+
+        @keyframes hamsterHead {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(8deg);
+          }
+        }
+
+        @keyframes hamsterEye {
+          from, 90%, to {
+            transform: scaleY(1);
+          }
+
+          95% {
+            transform: scaleY(0);
+          }
+        }
+
+        @keyframes hamsterEar {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(12deg);
+          }
+        }
+
+        @keyframes hamsterBody {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(0);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-2deg);
+          }
+        }
+
+        @keyframes hamsterFRLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(50deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-30deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes hamsterFLLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(-30deg);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(50deg);
+          }
+        }
+
+        @keyframes hamsterBRLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(-60deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(20deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes hamsterBLLimb {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(20deg);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(-60deg);
+          }
+        }
+
+        @keyframes hamsterTail {
+          from, 25%, 50%, 75%, to {
+            transform: rotate(30deg) translateZ(-1px);
+          }
+
+          12.5%, 37.5%, 62.5%, 87.5% {
+            transform: rotate(10deg) translateZ(-1px);
+          }
+        }
+
+        @keyframes spoke {
+          from {
+            transform: rotate(0);
+          }
+
+          to {
+            transform: rotate(-1turn);
+          }
+        }
+
+        /* MAIN CONTENT - INITIALLY HIDDEN */
+        .content-wrapper {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            width: 100%;
+        }
+        
+        .content-wrapper h1 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+        
+        .light-mode .content-wrapper h1 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #4594e4;
+        }
+        
+        nav h1 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(10px, 2vw, 20px); /* Responsive gap */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+            font-size: clamp(0.9rem, 2vw, 1.2rem); /* Responsive font size */
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #58a6ff;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
+        }
+
+        /* PROFILE */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%; /* Full width */
+        }
+
+        .profile img {
+            width: 100%; /* Full width of container */
+            max-width: 1000px; /* Maximum width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 0;
+            border: 2px dashed #58a6ff;
+            object-fit: cover;
+        }
+        
+        .greeting {
+            font-size: clamp(0.8rem, 2vw, 1rem); /* Responsive font size */
+            margin-bottom: 10px;
+        }
+
+        /* TYPING ANIMATION */
+        .intro-subtitle {
+            min-height: 28px;
+        }
+
+        .text-slider-items {
+            display: none;
+        }
+
+        .text-slider::after {
+            content: "|";
+            position: absolute;
+            right: -4px;
+            color: #eef6ff;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* SECTIONS */
+        .section {
+            padding-inline: 5%; /* Responsive padding */
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding-inline: 10%; /* More padding on larger screens */
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .section {
+                padding-inline: 20%; /* Even more padding on very large screens */
+            }
+        }
+
+        .section h2 {
+            color: #ffffff;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: clamp(1.3rem, 3vw, 1.8rem); /* Responsive font size */
+        }
+
+        /* ABOUT PAGE */
+        .about-content {
+            line-height: 1.6;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
+        }
+
+        /* WORK PAGE */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); /* Responsive grid */
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .project-card {
+            background-color: #2c2f34;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 150px;
+            background-color: #3a3d42;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #58a6ff;
+            font-size: 2rem;
+        }
+
+        .project-info {
+            padding: 15px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: #58a6ff;
+            font-size: clamp(1.1rem, 2vw, 1.3rem); /* Responsive font size */
+        }
+
+        .project-info p {
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem); /* Responsive font size */
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #58a6ff;
+            color: #1f2126 !important;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem); /* Responsive font size */
+        }
+
+        .project-link:hover {
+            background-color: #4090e0;
+            text-decoration: none !important;
+        }
+
+        /* LINKS */
+        .section a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        /* LIST STYLING */
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font size */
+        }
+
+        /* New styles for the interactive markers */
+        .marker {
+            display: inline-block;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+            user-select: none;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Default arrow style */
+        .marker:before {
+            content: "»";
+            color: #696060;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for entire list item */
+        ul li:hover .marker:before {
+            content: "•";
+            color: #58a6ff;
+            text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
+            font-size: 1.5rem;
+        }
+
+        /* STATS BOX */
+        .stats-box {
+            border: 2px dashed #58a6ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .stats-box p {
+            margin: 5px 0;
+            font-size: clamp(0.9rem, 1.5vw, 1rem); /* Responsive font size */
+        }
+
+        /* LIGHT MODE */
+        .light-mode {
+            background-color: #f9f9f9;
+            color: #1a1a1a;
+        }
+
+        .light-mode .hero-content h1 {
+            color: #ffffff;
+        }
+
+        /* For light mode */
+        .light-mode .container {
+        background-color: #f9f9f9;
+        }
+
+        .light-mode.scrolled-nav .hero-content h1 {
+            color: #0066cc;
+        }
+
+        .light-mode .loading-container {
+            background-color: #f0f0f0;
+        }
+
+        .light-mode .loading-text {
+            color: #0066cc;
+        }
+
+        .light-mode nav:not(.scrolled-nav) .nav-links a {
+            color: #ffffff;
+        }
+
+        .light-mode nav.scrolled-nav .nav-links a {
+            color: #1a1a1a;
+        }
+        
+        .light-mode nav.scrolled-nav .nav-links h1 {
+            color: #1a1a1a;
+        }
+        .light-mode .nav-links a.active,
+        .light-mode .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .light-mode .nav-links a.active::after {
+            background-color: #0066cc;
+        }
+
+        .light-mode .section a {
+            color: #0066cc;
+        }
+
+        .light-mode .text-slider {
+            color: #f7fbff;
+        }
+
+        .light-mode .text-slider::after {
+            color: #b1cae4;
+        }
+
+        .light-mode .stats-box {
+            border-color: #333333;
+        }
+
+        .light-mode ul li::before {
+            color: #1b1818;
+        }
+        
+        .light-mode .project-card {
+            background-color: #e0e0e0;
+        }
+        
+        .light-mode .project-img {
+            background-color: #d0d0d0;
+            color: #0066cc;
+        }
+        
+        .light-mode .project-info h3 {
+            color: #0066cc;
+        }
+        
+        .light-mode .project-link {
+            background-color: #0066cc;
+            color: #ffffff !important;
+        }
+        
+        .light-mode .project-link:hover {
+            background-color: #0055aa;
+        }
+        
+        .light-mode footer {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        /* RESPONSIVE DESIGN - Mobile first approach */
+        /* Base styles are already mobile-friendly */
+
+        /* Tablet and larger */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .text-slider {
+                font-size: 1.5rem;
+            }
+            
+            nav {
+                padding: 10px 8%;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop and larger */
+        @media (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .text-slider {
+                font-size: 2rem;
+            }
+            
+            nav {
+                padding: 10px 10%;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .hero-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            nav {
+                padding: 10px 3%;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+        }
+
+        /* Grid layout for Random Things section */
+        .random-things h2 {
+            margin-bottom: 20px;
+            padding-inline: 10%;
+        }
+        
+        .light-mode .random-things h2 {
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+
+        .random-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+    padding-inline: 10%;
+}
+    @media screen and (max-width: 1080px) {
+        .random-items-grid {
+            padding-inline: 12%;
+        }
+    }
+
+.random-item {
+    background-color: #2d2d34;
+    border-radius: 8px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.random-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(64, 144, 224, 0.4);
+}
+
+.random-item:active {
+    transform: translateY(-2px);
+}
+
+.random-item a {
+    color: #fff;
+    text-decoration: none; 
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+
+.random-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Animation classes */
+.lift-up {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(32, 32, 43, 0.3);
+}
+
+.ready-to-navigate {
+    background-color: #20202b;
+}
+
+/* Light mode styles */
+.light-mode .random-item {
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .random-item:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 12px rgba(0, 102, 204, 0.15);
+}
+
+.light-mode .random-item a {
+    color: #333;
+}
+
+.light-mode .random-icon {
+    color: #0066cc;
+}
+
+/* Add subtle accent/highlight effect on hover */
+.random-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    transition: height 0.25s ease;
+}
+
+.random-item:hover::after {
+    height: 30%;
+}
+
+.light-mode .random-item::after {
+    background: linear-gradient(to bottom, rgba(0,102,204,0.05), transparent);
+}
+/* Card container */
+.connect-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 90%; /* Changed from 100% to 90% for better margins on small devices */
+    max-width: 500px;
+    margin: 20px auto; /* Reduced margin for smaller screens */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    background: linear-gradient(135deg, #24262c, #2b2d34);
+    color: white;
+    padding: 16px; /* Slightly reduced padding */
+    text-align: center;
+}
+
+.header h2 {
+    font-size: clamp(18px, 5vw, 24px); /* Responsive font size */
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: clamp(14px, 4vw, 16px); /* Responsive font size */
+    margin: 0;
+}
+
+.links-container {
+    padding: 16px; /* Reduced padding for smaller screens */
+}
+
+/* Icon styles */
+.icon {
+    width: 36px; /* Slightly smaller icons */
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px; /* Reduced margin */
+    flex-shrink: 0;
+}
+
+.icon img {
+    width: 60%;
+    height: 60%;
+    filter: invert(1); /* Makes the SVG icons white */
+}
+
+/* Platform-specific backgrounds */
+.linkedin {
+    background-color: #0077b5;
+}
+
+.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.github {
+    background-color: #333;
+}
+
+.whatsapp {
+    background-color: #25d366;
+}
+
+/* Link item styles */
+.link-item {
+    display: flex;
+    align-items: center;
+    padding: clamp(10px, 3vw, 14px); /* Responsive padding */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    transform: translateY(0);
+}
+
+.link-item:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.link-item:last-child {
+    margin-bottom: 0;
+}
+
+.link-info {
+    flex-grow: 1;
+    overflow: hidden; /* Prevent text overflow */
+}
+
+.platform {
+    font-weight: 600;
+    font-size: clamp(14px, 4vw, 16px); /* Responsive font size */
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.username {
+    color: #6b7280;
+    font-size: clamp(12px, 3.5vw, 14px); /* Responsive font size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .connect-card {
+        background-color: #1f2937;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    
+    .link-item {
+        color: #e5e7eb;
+    }
+    
+    .link-item:hover {
+        background-color: #374151;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .username {
+        color: #9ca3af;
+    }
+}
+
+/* Light mode with explicit class */
+.light-mode .connect-card {
+    background-color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.light-mode .link-item {
+    color: #333;
+}
+
+.light-mode .link-item:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.light-mode .username {
+    color: #6b7280;
+}
+
+/* Responsiveness for different screen sizes */
+@media screen and (max-width: 600px) {
+    .connect-card {
+        width: 95%; /* Wider cards on very small screens */
+        margin: 15px auto;
+    }
+    
+    .header {
+        padding: 14px;
+    }
+    
+    .links-container {
+        padding: 12px;
+    }
+    
+    .icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .connect-card {
+        width: 98%; /* Even wider on tiny screens */
+        margin: 10px auto;
+    }
+    
+    .icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+    }
+    
+    .link-item {
+        padding: 8px;
+    }
+}
+
+/* Fix for the dark mode styles at the bottom of your original CSS */
+@media (prefers-color-scheme: dark) {
+    .connect-card {
+        background-color: #1f2126;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    
+    .link-item {
+        color: #e5e7eb;
+    }
+    
+    .link-item:hover {
+        background-color: #353434;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .username {
+        color: #9ca3af;
+    }
+}    
+    .status-section {
+        margin: 17px auto;
+        padding-inline: 26%;
+    }
+    
+    .status-heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        padding-inline: 0;
+    }
+    @media screen and (max-width: 600px) {
+        .status-section {
+            padding-inline: 14%;
+        }
+    }
+    
+    @media screen and (max-width: 1080px) {
+        .status-section {
+            padding-inline: 16%;
+        }
+    }
+    
+    @media screen and (max-width: 1080px) {
+        .status-heading {
+            margin-left: -13px;
+        }
+    }
+
+    .status-card {
+        border-radius: 12px;
+        padding: 18px;
+        position: relative;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .pulse-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #10b981;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .pulse-dot:after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        background-color: #10b981;
+        animation: pulse 2s infinite;
+        opacity: 0.7;
+        top: 0;
+        left: 0;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.7;
+        }
+        70% {
+            transform: scale(2);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .status-text {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .status-content {
+        padding-left: 5px;
+    }
+    
+    .status-name {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    
+    .status-message {
+        font-size: 0.95rem;
+        opacity: 0.85;
+    }
+    
+    /* Light mode (default) */
+    .light-mode .status-heading {
+    color: #0066cc;
+    }
+
+.light-mode .status-card {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .status-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.light-mode .status-text {
+    color: #059669;
+}
+
+.light-mode .status-name {
+    color: #111827;
+}
+
+.light-mode .status-message {
+    color: #4b5563;
+}
+    
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        .status-heading {
+            color: #f9fafb;
+        }
+        
+        .status-card {
+            background-color: #1f2937;
+            border-color: #374151;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .status-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-text {
+            color: #34d399;
+        }
+        
+        .status-name {
+            color: #f3f4f6;
+        }
+        
+        .status-message {
+            color: #9ca3af;
+        }
+    }
+    </style>
+</head>
+<body>
+    <audio id="clickSound" preload="auto">
+        <source src="mixkit-light-switch-sound-2579.wav" type="audio/wav">
+        <!-- Alternatif jika file pertama tidak bisa dimuat -->
+        <source src="mixkit-on-or-off-light-switch-tap-2585.wav" type="audio/wav">
+    </audio>
+    <!-- Loading Screen -->
+    <div class="loading-container">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+        <div class="loading-text"><b>Loading Asya's Web...</b></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <nav>
+            <h1>Asya's Web</h1>
+            <div class="nav-links">
+                <a href="index.html" class="active" onclick="setInternalNavigation()">Home</a>
+                <a href="about.html" onclick="setInternalNavigation()">About</a>
+                <a href="work.html" onclick="setInternalNavigation()">Work</a>
+            </div>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                🌙
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>👋 Olaaa efwione! introduce me as a</h1>
+                <div class="typing-container">
+                    <span class="text-slider-items">Backend-Engineer, AI Researcher, Problem Solver</span>
+                    <strong class="text-slider"></strong>
+                </div>
+            </div>
+        </div>
+<div class="status-section">
+    <h2 class="status-heading"># Current Status</h2>
+    <div class="status-card">
+        <div class="status-indicator">
+            <span class="pulse-dot"></span>
+            <span class="status-text">Online</span>
+        </div>
+        <div class="status-content">
+            <p class="status-name"><b>Asya 👀</b> Just Hopped Online</p>
+            <p class="status-message">↪ sleepy until graduate😴</p>
+        </div>
+    </div>
+</div>
+            <div class="section random-things">
+                <h2># Random Things</h2>
+                <div class="random-items-grid">
+                    <div class="random-item" data-href="books.html">
+                        <span class="random-icon">📚</span>
+                        <a href="books.html">Books read</a>
+                    </div>
+                    <div class="random-item" data-href="games.html">
+                        <span class="random-icon">🕹️</span>
+                        <a href="games.html">Games played</a>
+                    </div>
+                    <div class="random-item" data-href="movies.html">
+                        <span class="random-icon">🎞️</span>
+                        <a href="movies.html">Movies & series I've watched</a>
+                    </div>
+                    <div class="random-item" data-href="music.html">
+                        <span class="random-icon">🎼</span>
+                        <a href="music.html">Music that I usually play</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connect-card">
+                <div class="header">
+                    <h2>Connect With Me</h2>
+                    <p>Let's stay in touch!</p>
+                </div>
+                <div class="links-container">
+                    <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank" class="link-item">
+                        <div class="icon linkedin">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/linkedin.svg" alt="LinkedIn">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">LinkedIn</div>
+                            <div class="username">@Glenferdinza Efian</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/g.syaaaa" target="_blank" class="link-item">
+                        <div class="icon instagram">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/instagram.svg" alt="Instagram">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">Instagram</div>
+                            <div class="username">@g.syaaaa</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/Glenferdinza" target="_blank" class="link-item">
+                        <div class="icon github">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">GitHub</div>
+                            <div class="username">@Glenferdinza</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/6281225495018" target="_blank" class="link-item">
+                        <div class="icon whatsapp">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/whatsapp.svg" alt="WhatsApp">
+                        </div>
+                        <div class="link-info">
+                            <div class="platform">WhatsApp</div>
+                            <div class="username">(+62) 812-2549-5018</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    </div>        
+        <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
+            Asya's &copy; 2025
+        </footer>
+    </div>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const randomItems = document.querySelectorAll('.random-item');
+            
+            randomItems.forEach(item => {
+                let clickCount = 0;
+                const link = item.getAttribute('data-href');
+                
+                item.addEventListener('click', function() {
+                    clickCount++;
+                    
+                    if (clickCount === 1) {
+                        // First click: show animation of lifting up
+                        item.classList.add('lift-up');
+                        item.classList.add('ready-to-navigate');
+                        
+                        // Reset click count if not clicked again within 3 seconds
+                        setTimeout(() => {
+                            if (clickCount === 1) {
+                                item.classList.remove('lift-up');
+                                item.classList.remove('ready-to-navigate');
+                                clickCount = 0;
+                            }
+                        }, 3000);
+                    } else if (clickCount === 2) {
+                        // Second click: navigate to the link
+                        window.location.href = link;
+                    }
+                });
+            });
+        });
+    // Function to handle scroll events
+    function handleScroll() {
+        const navbar = document.querySelector('nav');
+        if (window.scrollY > 50) { // Change background after scrolling 50px
+            navbar.classList.add('scrolled-nav');
+        } else {
+            navbar.classList.remove('scrolled-nav');
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        handleScroll(); // Check initial scroll position
+    });
+        function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}       
+// STEP 1: Remove these conflicting functions
+// Remove this entire block:
+// STEP 1: Use sessionStorage to track first visit
+function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}
+
+// STEP 2: Add event listeners to all internal links
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click event to all internal links 
+    const internalLinks = document.querySelectorAll('a[href^="/"]:not([target="_blank"]), a[href^="./"]:not([target="_blank"]), a[href^="#"]:not([target="_blank"])');
+    
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            setInternalNavigation();
+        });
+    });
+    
+    // Reset navigation state when clicking external links
+    const externalLinks = document.querySelectorAll('a:not([href^="/"]):not([href^="./"]):not([href^="#"]):not([href^="javascript:"])');
+    externalLinks.forEach(link => {
+        if (link.getAttribute('target') === '_blank') return; // Skip links that open in new tab
+        
+        link.addEventListener('click', function() {
+            sessionStorage.removeItem('internalNavigation');
+        });
+    });
+    
+    // Handle loading screen
+    const loadingContainer = document.querySelector('.loading-container');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    // Check if this is the first visit or a navigation within the site
+    const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
+    
+    if (isInternalNavigation) {
+        // If navigating within the site, show content immediately
+        loadingContainer.style.opacity = '0';
+        loadingContainer.style.visibility = 'hidden';
+        contentWrapper.style.opacity = '1';
+        contentWrapper.style.visibility = 'visible';
+    } else {
+        // If coming from outside (new visit), show loading screen
+        const minLoadTime = 2000; // 3 seconds
+        const startTime = new Date().getTime();
+        
+        // Function to hide loader and show content
+        function hideLoader() {
+            loadingContainer.style.opacity = '0';
+            contentWrapper.style.opacity = '1';
+            contentWrapper.style.visibility = 'visible';
+            
+            // Completely remove the loader after transition completes
+            setTimeout(() => {
+                loadingContainer.style.visibility = 'hidden';
+            }, 500);
+            
+            // Set flag that we're now in the site
+            setInternalNavigation();
+        }
+        
+        // Calculate remaining time to meet minimum load time
+        window.addEventListener('load', function() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+            
+            // Hide loader after remaining time
+            setTimeout(hideLoader, remainingTime);
+        });
+        
+        // Fallback in case window.load doesn't trigger
+        setTimeout(hideLoader, minLoadTime + 1000);
+    }
+});
+
+// STEP 3: Let sessionStorage naturally expire when browser is closed
+// No need for beforeunload event - sessionStorage will automatically be cleared 
+// when the browser/tab is closed
+
+// STEP 2: Modify your setInternalNavigation function
+function setInternalNavigation() {
+    sessionStorage.setItem('internalNavigation', 'true');
+}
+
+// STEP 3: Add a clearInternalNavigation function for external links
+function clearInternalNavigation() {
+    sessionStorage.removeItem('internalNavigation');
+}
+
+// STEP 4: In DOMContentLoaded, modify your loading code
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingContainer = document.querySelector('.loading-container');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    // Check if this is a navigation within the site
+    const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
+    
+    if (isInternalNavigation) {
+        // If navigating within the site, show content immediately
+        loadingContainer.style.opacity = '0';
+        loadingContainer.style.visibility = 'hidden';
+        contentWrapper.style.opacity = '1';
+        contentWrapper.style.visibility = 'visible';
+    } else {
+        // If coming from outside (new visit), show loading screen
+        const minLoadTime = 3000; // 3 seconds
+        const startTime = new Date().getTime();
+        
+        // Function to hide loader and show content
+        function hideLoader() {
+            loadingContainer.style.opacity = '0';
+            contentWrapper.style.opacity = '1';
+            contentWrapper.style.visibility = 'visible';
+            
+            // Completely remove the loader after transition completes
+            setTimeout(() => {
+                loadingContainer.style.visibility = 'hidden';
+            }, 500);
+            
+            // Set flag that we're now in the site
+            sessionStorage.setItem('internalNavigation', 'true');
+        }
+        
+        // Calculate remaining time to meet minimum load time
+        window.addEventListener('load', function() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+            
+            // Hide loader after remaining time
+            setTimeout(hideLoader, remainingTime);
+        });
+        
+        // Fallback in case window.load doesn't trigger
+        setTimeout(hideLoader, minLoadTime + 1000);
+    }
+});
+        // Theme toggle function
+        function toggleTheme() {
+    // Mainkan suara klik
+    const clickSound = document.getElementById('clickSound');
+    clickSound.currentTime = 0; // Reset posisi audio ke awal
+    clickSound.play();
+    
+    // Kode tema yang sudah ada
+    document.body.classList.toggle('light-mode');
+    
+    // Change moon/sun icon
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (document.body.classList.contains('light-mode')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+        // Check for saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+            
+            // Initialize typing animation
+            const textElement = document.querySelector('.text-slider');
+            const words = document.querySelector('.text-slider-items').textContent.split(', ');
+            new TypeWriter(textElement, words, 2000);
+        });
+
+        // Update footer when theme is toggled
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const footer = document.querySelector('footer');
+            
+            // Apply light mode to footer if needed on page load
+            if (localStorage.getItem('theme') === 'light') {
+                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.color = '#1a1a1a';
+            }
+            
+            // Update footer when theme is toggled
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('light-mode')) {
+                    footer.style.backgroundColor = '#e0e0e0';
+                    footer.style.color = '#1a1a1a';
+                } else {
+                    footer.style.backgroundColor = '#2c2f34';
+                    footer.style.color = '#c9d1d9';
+                }
+            });
+        });
+
+        // Text typing animation
+        class TypeWriter {
+            constructor(textElement, words, wait = 3000) {
+                this.textElement = textElement;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+
+            type() {
+                // Current index of word
+                const current = this.wordIndex % this.words.length;
+                // Get full text of current word
+                const fullTxt = this.words[current];
+
+                // Check if deleting
+                if (this.isDeleting) {
+                    // Remove character
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    // Add character
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                // Insert txt into element
+                this.textElement.innerHTML = this.txt;
+
+                // Initial Type Speed
+                let typeSpeed = 100;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2; // Faster when deleting
+                }
+
+                // If word is complete
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    // Make pause at end
+                    typeSpeed = this.wait;
+                    // Set delete to true
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    // Move to next word
+                    this.wordIndex++;
+                    // Pause before start typing
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+        // Function untuk sanitasi input (tambahkan di bagian script)
+function sanitizeInput(input) {
+    if (!input) return input;
+    
+    // Konversi input menjadi string jika bukan string
+    if (typeof input !== 'string') {
+        input = String(input);
+    }
+    
+    // Escape karakter khusus HTML
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    
+    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// Fungsi untuk memvalidasi input
+function validateInput(input, pattern) {
+    if (!pattern) {
+        // Pattern default untuk text biasa (alfanumerik, spasi dan tanda baca umum)
+        pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
+    }
+    return pattern.test(input);
+}
+
+// Contoh penggunaan untuk form (tambahkan jika ada form)
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Validasi semua input dalam form
+            const inputs = this.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                const value = input.value;
+                const sanitized = sanitizeInput(value);
+                
+                // Jika ada perbedaan setelah sanitasi, berarti ada karakter mencurigakan
+                if (value !== sanitized) {
+                    isValid = false;
+                    input.classList.add('error');
+                    
+                    // Opsional: tambahkan pesan error
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.textContent = 'Input mengandung karakter yang tidak diperbolehkan';
+                    input.parentNode.appendChild(errorMsg);
+                }
+            });
+            
+            // Hentikan submit jika tidak valid
+            if (!isValid) {
+                e.preventDefault();
+                alert('Form mengandung input yang tidak valid. Mohon periksa kembali.');
+            }
+        });
+    });
+});
+
+    // Kode untuk mempersulit akses konsol dan modifikasi kode
+(function() {
+    // 1. Deteksi dan kembalikan jika konsol dibuka
+    let devtoolsOpen = false;
+    
+    // Metode 1: Deteksi melalui ukuran jendela (pendeteksi konsol samping)
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        devtoolsOpen = true;
+    }
+    
+    // Metode 2: Deteksi debugger
+    const div = document.createElement('div');
+    Object.defineProperty(div, 'id', {
+        get: function() {
+            devtoolsOpen = true;
+            return 'x';
+        }
+    });
+    console.log(div);
+    console.clear();
+    
+    // Metode 3: Periksa fungsi console.log
+    const originalConsoleLog = console.log;
+    console.log = function() {
+        if (arguments[0] === div && !arguments[0].id) {
+            devtoolsOpen = true;
+        }
+        originalConsoleLog.apply(console, arguments);
+    };
+    
+    // Fungsi untuk bertindak ketika developer tools terdeteksi
+    function handleDevTools() {
+        if (devtoolsOpen) {
+            // Redirect atau tutup jendela atau tampilkan pesan peringatan
+            document.body.innerHTML = "<h1>Developer tools detected. This action has been logged.</h1>";
+            // Atau sebagai alternatif:
+            // window.location.href = "blocked.html";
+            return true;
+        }
+        return false;
+    }
+    
+    // 2. Mencegah inspect element melalui klik kanan
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("Yaela mau nyoba inspect ya ka? xixixi😝");
+        return false;
+    });
+    
+    // 3. Mencegah shortcut keyboard umum untuk developer tools
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+        if (
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+            (e.keyCode === 123)
+        ) {
+            e.preventDefault();
+            alert("Shortcut untuk developer tools dinonaktifkan!");
+            return false;
+        }
+        
+        // Ctrl+U (Lihat source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Melihat source code dinonaktifkan!");
+            return false;
+        }
+    });
+    
+    // 4. Pencegahan copy-paste (opsional, sesuai kebutuhan)
+    document.addEventListener('copy', function(e) {
+        // Komentar baris berikut jika Anda ingin mengizinkan pengguna untuk menyalin teks
+        // e.preventDefault();
+        // alert("Menyalin konten dari website ini dinonaktifkan!");
+    });
+    
+    // 5. Self-defending code
+    setInterval(function() {
+        handleDevTools();
+        
+        // Periksa modifikasi DOM
+        const checkDOM = document.querySelectorAll('script').length;
+        if (window.scriptCount === undefined) {
+            window.scriptCount = checkDOM;
+        } else if (window.scriptCount !== checkDOM) {
+            alert("Modifikasi DOM terdeteksi!");
+            window.location.reload();
+        }
+    }, 1000);
+    
+    // 6. Obfuskasi kode
+    // Gunakan layanan seperti https://obfuscator.io/ untuk mengobfuskasi kode JS Anda sebelum di-deploy
+    
+    // 7. Anti-debugging
+    function antiDebug() {
+        const startTime = new Date().getTime();
+        debugger;
+        const endTime = new Date().getTime();
+        
+        // Jika debugger sedang aktif, ini akan menghabiskan waktu lebih lama
+        if (endTime - startTime > 100) {
+            // Debugger terdeteksi
+            document.body.innerHTML = "<h1>Debugging detected. This action has been logged.</h1>";
+        }
+        
+        setTimeout(antiDebug, 1000);
+    }
+    antiDebug();
+    
+    // 8. Membuat script non-inspectable
+    (() => {
+        // Kode penting disini
+        const message = "Modified environment detected. This action has been logged.";
+        
+        // Deteksi perubahan fungsi native
+        const nativeToString = Object.prototype.toString;
+        const nativeFnToString = Function.prototype.toString;
+        const nativeSymbol = Symbol.prototype.toString;
+        
+        // Fungsi untuk memvalidasi integritas lingkungan
+        function checkEnvIntegrity() {
+            try {
+                if (
+                    Object.prototype.toString !== nativeToString ||
+                    Function.prototype.toString !== nativeFnToString ||
+                    Symbol.prototype.toString !== nativeSymbol
+                ) {
+                    throw new Error("Environment modified");
+                }
+                
+                return true;
+            } catch (e) {
+                document.body.innerHTML = message;
+                return false;
+            }
+        }
+        
+        // Pemeriksaan integritas secara berkala
+        setInterval(checkEnvIntegrity, 2000);
+    })();
+})();
+
+    // Servise Worker
+    // Daftarkan service worker (tambahkan pada script utama)
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+        console.log('ServiceWorker registration successful');
+    })
+    .catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // Sisipkan watermark tersembunyi
+    const watermark = document.createElement('div');
+    watermark.style.display = 'none';
+    watermark.setAttribute('data-owner', 'Website milik [Nama Anda] - Mencuri kode ini melanggar hukum');
+    watermark.setAttribute('data-timestamp', new Date().toISOString());
+    watermark.setAttribute('data-id', 'wm-' + Math.random().toString(36).substring(2, 15));
+    document.body.appendChild(watermark);
+});
+    // hidden watermark 
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    // Tambahkan ke script utama
+window.__securityCheck = true;
+window.__honeypot = "Do not modify this value";
+//honyepot variable
+setInterval(function() {
+    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+        // Kode telah dimodifikasi
+        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
+        
+        // Atau redirect
+        // window.location.href = "security-violation.html";
+    }
+}, 2000);
+    </script>
+</body>
+</html>
