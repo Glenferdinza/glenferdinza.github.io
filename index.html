@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asya's Web</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <title>Asya's Web - Home</title>
     <style>
         /* BASE STYLES */
         * {
@@ -176,7 +175,22 @@
             font-size: 1.2rem;
             color: #58a6ff;
         }
+        @keyframes loadingDots {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+  100% { content: "."; }
+}
 
+.dots {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.dots::after {
+  content: ".";
+  animation: loadingDots 1s infinite;
+}
         /* HAMSTER LOADING ANIMATION */
         /* From Uiverse.io by Nawsome */ 
         .wheel-and-hamster {
@@ -1365,66 +1379,6 @@
             color: #9ca3af;
         }
     }
-        @media screen and (max-width: 360px) {
-    .connect-card {
-        width: 96%; /* Slightly wider than the 320px breakpoint */
-        margin: 12px auto;
-    }
-    
-    .header {
-        padding: 14px 12px;
-    }
-    
-    .links-container {
-        padding: 10px;
-    }
-    
-    .icon {
-        width: 30px;
-        height: 30px;
-        margin-right: 9px;
-    }
-    
-    .link-item {
-        padding: 9px;
-        margin-bottom: 8px;
-    }
-    
-    .platform {
-        font-size: 14px;
-        margin-bottom: 3px;
-    }
-    
-    .username {
-        font-size: 12px;
-    }
-    
-    /* Status section styles for 360px */
-    .status-section {
-        padding-inline: 15%;
-        margin: 15px auto;
-    }
-    
-    .status-heading {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-        margin-left: -10px;
-    }
-    
-    .status-card {
-        padding: 15px;
-        gap: 10px;
-    }
-    
-    .status-name {
-        font-size: 1rem;
-        margin-bottom: 4px;
-    }
-    
-    .status-message {
-        font-size: 0.9rem;
-    }
-}
     </style>
 </head>
 <body>
@@ -1453,7 +1407,7 @@
             </div>
             <div class="spoke"></div>
         </div>
-        <div class="loading-text"><b>Loading Asya's Web...</b></div>
+        <div class="loading-text"><b>Loading Asya's Web</b><span class="dots"></span></div>
     </div>
 
     <!-- Main Content -->
@@ -1487,7 +1441,7 @@
             <span class="status-text">Online</span>
         </div>
         <div class="status-content">
-            <p class="status-name"><b>Asya 👀</b> Just Hopped Online</p>
+            <p class="status-name"><b>Asya 👀</b>Online 1 minute ago</p>
             <p class="status-message">↪ sleepy until graduate😴</p>
         </div>
     </div>

@@ -543,6 +543,68 @@
             background-color: #58a6ff;
             color: #1f2126;
         }
+        /* Default styles */
+.mobile-filters {
+    display: none;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 480px) {
+    .desktop-filters {
+        display: none;
+    }
+    
+    .mobile-filters {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .filter-select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        font-size: 16px;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 1em;
+    }
+}
+    /* Default styles */
+.mobile-filters {
+    display: none;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 360px) {
+    .desktop-filters {
+        display: none;
+    }
+    
+    .mobile-filters {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .filter-select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        font-size: 16px;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 1em;
+    }
+}
 
         /* Coming Soon Label */
         .coming-soon {
@@ -766,6 +828,16 @@
                 <button class="filter-btn" data-filter="web">Web Dev</button>
                 <button class="filter-btn" data-filter="figma">Figma</button>
             </div>
+                    <!-- Mobile select - will only show on mobile -->
+        <div class="filter-controls mobile-filters">
+            <select id="project-filter" class="filter-select">
+                <option value="all" selected>All</option>
+                <option value="ai">AI/ML</option>
+                <option value="backend">Backend</option>
+                <option value="web">Web Dev</option>
+                <option value="figma">Figma</option>
+            </select>
+        </div>
             <div class="project-grid">
                 
                 <!-- Project 1 - AI -->
@@ -784,6 +856,7 @@
                                     <span class="project-tag">Python</span>
                                     <span class="project-tag">Flask</span>
                                     <span class="project-tag">Machine Learning</span>
+                                    <span class="project-tag">API</span>
                                 </div>
                             </div>
                         </div>
@@ -884,7 +957,7 @@
                                     <span class="project-tag">HTML & CSS</span>
                                     <span class="project-tag">Figma</span>
                                     <span class="project-tag">Javascript</span>
-                                    <span class="project-tag">Github</span>
+                                    <span class="project-tag">Git</span>
                                 </div>
                             </div>
                         </div>
@@ -939,7 +1012,7 @@
     <!-- Project 3 - Web Dev -->
      <div class="footerr">
             <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #ffffff;">
-                Asya's@copyright
+                Asya's &copy; 2025
             </footer>
     </div>
 </div>
@@ -1360,8 +1433,8 @@ setInterval(function() {
         </div>
         <div class="spoke"></div>
     </div>
-    <div style="margin-top: 30px; font-family: monospace; font-size: 1.5em; color: white;">
-        PLEASE WAIT
+    <div style="margin-top: 30px; font-family: 'Poppins', sans-serif; font-size: 1.5em; color: white;">
+        Please Wait
         <span id="loading-dots"></span>
     </div>
     <script>
@@ -1376,6 +1449,31 @@ setInterval(function() {
             }
             loadingDots.innerText = dots;
         }, 200);
+        // For desktop buttons (existing code)
+document.querySelectorAll('.desktop-filters .filter-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        filterProjects(filter);
+        
+        // Update active class
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+// For mobile select
+document.getElementById('project-filter').addEventListener('change', function() {
+    const filter = this.value;
+    filterProjects(filter);
+});
+
+function filterProjects(filter) {
+    // Your filtering logic here
+    console.log(`Filtering by: ${filter}`);
+    // Example: Show/hide projects based on filter value
+}
     </script>
 </div>
 </body>
