@@ -1733,50 +1733,40 @@ document.addEventListener('DOMContentLoaded', function() {
     clickSound.currentTime = 0; // Reset posisi audio ke awal
     clickSound.play();
     
-// Simplified theme toggle function
+// When toggling theme
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
-    updateFooterStyle();
     
-    // Change moon/sun icon and save preference
+    // Change moon/sun icon
     const themeToggle = document.querySelector('.theme-toggle');
+    const footer = document.querySelector('footer');
+    
     if (document.body.classList.contains('light-mode')) {
         themeToggle.textContent = '☀️';
         localStorage.setItem('theme', 'light');
+        footer.style.backgroundColor = '#e0e0e0';
+        footer.style.color = '#1a1a1a';
     } else {
         themeToggle.textContent = '🌙';
         localStorage.setItem('theme', 'dark');
-    }
-}
-
-// Separate function to update footer style
-function updateFooterStyle() {
-    const footer = document.querySelector('footer');
-    if (document.body.classList.contains('light-mode')) {
-        footer.style.backgroundColor = '#ffffff'; // White background for light mode
-        footer.style.color = '#1a1a1a';
-    } else {
         footer.style.backgroundColor = '#2c2f34';
         footer.style.color = '#f1f1f1';
     }
 }
 
-// Initialize on page load
+// Check for saved theme preference
 document.addEventListener('DOMContentLoaded', function() {
-    // Apply saved theme
+    const footer = document.querySelector('footer');
+    const themeToggle = document.querySelector('.theme-toggle');
+    
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
-        document.querySelector('.theme-toggle').textContent = '☀️';
+        themeToggle.textContent = '☀️';
+        footer.style.backgroundColor = '#e0e0e0'; // Same as in toggle function
+        footer.style.color = '#1a1a1a';
     }
     
-    // Update footer immediately after setting theme
-    updateFooterStyle();
-    
-    // Add click listener to theme toggle button
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', toggleTheme);
-    
-    // Initialize typing animation if present
+    // Initialize typing animation
     const textElement = document.querySelector('.text-slider');
     if (textElement) {
         const words = document.querySelector('.text-slider-items').textContent.split(', ');
