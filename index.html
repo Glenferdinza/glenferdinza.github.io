@@ -827,12 +827,10 @@
             background-color: #0055aa;
         }
         
-        light-mode footer {
-            background-color: #e0e0e0 !important;
-            color: #1a1a1a !important;
+        .light-mode footer {
+            color: #fefefe;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
         }
-
 
         /* RESPONSIVE DESIGN - Mobile first approach */
         /* Base styles are already mobile-friendly */
@@ -1531,11 +1529,10 @@
                     </a>
                 </div>
             </div>
-<div class='footer'>        
-    <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #f1f1f1;">
-        Asya's &copy; 2025
-    </footer>
-</div>
+    </div class='footer'>        
+        <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #f1f1f1;">
+            Asya's &copy; 2025
+        </footer>
     </div>
     <script>
          document.addEventListener('DOMContentLoaded', function() {
@@ -1733,51 +1730,54 @@ document.addEventListener('DOMContentLoaded', function() {
     clickSound.currentTime = 0; // Reset posisi audio ke awal
     clickSound.play();
     
-// When toggling theme
-function toggleTheme() {
+    // Kode tema yang sudah ada
     document.body.classList.toggle('light-mode');
     
     // Change moon/sun icon
     const themeToggle = document.querySelector('.theme-toggle');
-    const footer = document.querySelector('footer');
-    
     if (document.body.classList.contains('light-mode')) {
         themeToggle.textContent = '☀️';
         localStorage.setItem('theme', 'light');
-        footer.style.backgroundColor = '#e0e0e0';
-        footer.style.color = '#1a1a1a';
     } else {
         themeToggle.textContent = '🌙';
         localStorage.setItem('theme', 'dark');
-        footer.style.backgroundColor = '#2c2f34';
-        footer.style.color = '#f1f1f1';
     }
 }
+        // Check for saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+            
+            // Initialize typing animation
+            const textElement = document.querySelector('.text-slider');
+            const words = document.querySelector('.text-slider-items').textContent.split(', ');
+            new TypeWriter(textElement, words, 2000);
+        });
 
-// Check for saved theme preference
-document.addEventListener('DOMContentLoaded', function() {
-    const footer = document.querySelector('footer');
-    const themeToggle = document.querySelector('.theme-toggle');
-    
-    if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
-        themeToggle.textContent = '☀️';
-        footer.style.backgroundColor = '#e0e0e0'; // Same as in toggle function
-        footer.style.color = '#1a1a1a';
-    }
-    
-    // Initialize typing animation
-    const textElement = document.querySelector('.text-slider');
-    if (textElement) {
-        const words = document.querySelector('.text-slider-items').textContent.split(', ');
-        new TypeWriter(textElement, words, 2000);
-    }
-    
-    // Add event listener to theme toggle button
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-});
+        // Update footer when theme is toggled
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const footer = document.querySelector('footer');
+            
+            // Apply light mode to footer if needed on page load
+            if (localStorage.getItem('theme') === 'light') {
+                footer.style.backgroundColor = '#ffffff';
+                footer.style.color = '#1a1a1a';
+            }
+            
+            // Update footer when theme is toggled
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('light-mode')) {
+                    footer.style.backgroundColor = '#ffffff';
+                    footer.style.color = '#1a1a1a';
+                } else {
+                    footer.style.backgroundColor = '#2c2f34';
+                    footer.style.color = '#c9d1d9';
+                }
+            });
+        });
 
         // Text typing animation
         class TypeWriter {
