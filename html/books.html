@@ -4,580 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asya's Web - Books I've Read</title>
-    <style>
-        /* BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #1f2126;
-            color: #c9d1d9;
-            font-family: "Monserrat", sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* NAVBAR - FIXED */
-        nav {
-            padding: 15px 5%;
-            background-color: #2c2f34;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-            white-space: nowrap;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #58a6ff;
-        }
-
-        .nav-links a.active {
-            color: #58a6ff;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #58a6ff;
-        }
-
-        .theme-toggle {
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 20px;
-            min-height: calc(100vh - 120px);
-        }
-
-        /* SECTIONS */
-        .section {
-            margin-top: 30px;
-        }
-
-        .section h2 {
-            color: #58a6ff;
-            margin-bottom: 15px;
-        }
-
-        /* LINKS */
-        .section a {
-            color: #58a6ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .section a:hover {
-            text-decoration: underline;
-        }
-
-        /* LIST STYLING */
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        /* New styles for the interactive markers */
-        .marker {
-            display: inline-block;
-            margin-right: 5px;
-            transition: all 0.3s ease;
-            user-select: none;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Default arrow style */
-        .marker:before {
-            content: "»";
-            color: #696060;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect for entire list item */
-        ul li:hover .marker:before {
-            content: "•";
-            color: #58a6ff;
-            text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
-            font-size: 1.5rem;
-        }
-
-        /* LIGHT MODE */
-        .light-mode {
-            background-color: #ebe5e5;
-            color: #1a1a1a;
-        }
-
-        .light-mode nav {
-            background-color: #e0e0e0;
-            color: #1a1a1a;
-        }
-
-        .light-mode .nav-links a {
-            color: #1a1a1a;
-        }
-
-        .light-mode .nav-links a.active,
-        .light-mode .nav-links a:hover {
-            color: #0066cc;
-        }
-
-        .light-mode .nav-links a.active::after {
-            background-color: #0066cc;
-        }
-
-        .light-mode .section a {
-            color: #0066cc;
-        }
-
-        /* Default arrow style for light mode */
-        .light-mode .marker:before {
-            color: #1b1818;
-        }
-
-        /* Hover dot style for light mode */
-        .light-mode ul li:hover .marker:before {
-            color: #0066cc;
-            text-shadow: 0 0 8px #0066cc, 0 0 12px #0066cc;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            nav {
-                padding: 10px 5%;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .container {
-                width: 95%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav h1 {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                gap: 10px;
-            }
-            
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-        }
-
-        .notes {
-            color: #a0a0a0;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <audio id="clickSound" preload="auto">
         <source src="audio/mixkit-light-switch-sound-2579.wav" type="audio/wav">
-        <!-- Alternatif jika file pertama tidak bisa dimuat -->
         <source src="audio/mixkit-on-or-off-light-switch-tap-2585.wav" type="audio.wav">
     </audio>
+    
     <nav>
         <h1>Asya's Web</h1>
         <div class="nav-links">
-            <a href="index.html">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="work.html">Work</a>
         </div>
-        <div class="theme-toggle" onclick="toggleTheme()">
-            🌙
+        <div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+            <div class="sun-icon">
+                <div class="sun-core"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+            </div>
+            <div class="moon-icon">
+                <div class="moon-circle"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+            </div>
         </div>
     </nav>
 
     <div class="container">
         <div class="section"> 
-            <h2># Books that I have done read it in my entire life</h2>
-            <p><b>Caution!</b><br><br>I wrote this list a while ago, so it might not be up-to-date.
-            <br>Also maybe this list is not complete hehe, but I will update it if I read more books ^o^</p>
+            <h2># Books that I have read in my entire life</h2>
+            <div class="notes">
+                <p><b>Caution!</b><br>I wrote this list a while ago, so it might not be up-to-date.
+                <br>Also maybe this list is not complete hehe, but I will update it if I read more books ^o^</p>
+            </div>
         </div>
 
         <div class="section">
             <h2># Indonesian</h2>
-            <ul> <b>
-                <li><span class="marker"></span>Bumi By Tere Liye</li>
-                <li><span class="marker"></span>Bulan By Tere Liye</li>
-                <li><span class="marker"></span>Matahari By Tere Liye</li>
-                <li><span class="marker"></span>Bintang By Tere Liye</li>
-                <li><span class="marker"></span>Ceroz dan Batozar By Tere Liye</li>
-                <li><span class="marker"></span>Komet By Tere Liye</li>
-                <li><span class="marker"></span>Komet Minor By Tere Liye</li>
-                <li><span class="marker"></span>Selena By Tere Liye</li>
-                <li><span class="marker"></span>Nebula By Tere Liye</li>
-                <li><span class="marker"></span>Lumpu By Tere Liye</li>
-                <li><span class="marker"></span>Bibi Gill By Tere Liye</li>
-                <li><span class="marker"></span>SagaraS By Tere Liye</li>
-                <li><span class="marker"></span>Matahari Minor By Tere Liye</li>
-                <li><span class="marker"></span>ILY By Tere Liye</li>
-                <li><span class="marker"></span>Hujan By Tere Liye</li>
-                <li><span class="marker"></span>Mencuri Kreativitas Desainer By Raul Renanda</li>
-                <li><span class="marker"></span>Alter Ego By Afin Mu</li>
-                <li><span class="marker"></span>7 in 1 Pemograman Web untuk Pemula</li>
-                <li><span class="marker"></span>Kumpulan Solusi Pemograman Python</li></b>
-            </ul>
+            <div class="content-card">
+                <ul>
+                    <li><span class="marker"></span>Bumi By Tere Liye</li>
+                    <li><span class="marker"></span>Bulan By Tere Liye</li>
+                    <li><span class="marker"></span>Matahari By Tere Liye</li>
+                    <li><span class="marker"></span>Bintang By Tere Liye</li>
+                    <li><span class="marker"></span>Ceroz dan Batozar By Tere Liye</li>
+                    <li><span class="marker"></span>Komet By Tere Liye</li>
+                    <li><span class="marker"></span>Komet Minor By Tere Liye</li>
+                    <li><span class="marker"></span>Selena By Tere Liye</li>
+                    <li><span class="marker"></span>Nebula By Tere Liye</li>
+                    <li><span class="marker"></span>Lumpu By Tere Liye</li>
+                    <li><span class="marker"></span>Bibi Gill By Tere Liye</li>
+                    <li><span class="marker"></span>SagaraS By Tere Liye</li>
+                    <li><span class="marker"></span>Matahari Minor By Tere Liye</li>
+                    <li><span class="marker"></span>ILY By Tere Liye</li>
+                    <li><span class="marker"></span>Hujan By Tere Liye</li>
+                    <li><span class="marker"></span>Mencuri Kreativitas Desainer By Raul Renanda</li>
+                    <li><span class="marker"></span>Alter Ego By Afin Mu</li>
+                    <li><span class="marker"></span>7 in 1 Pemograman Web untuk Pemula</li>
+                    <li><span class="marker"></span>Kumpulan Solusi Pemograman Python</li>
+                </ul>
+            </div>
         </div>
 
         <div class="section">
             <h2># English</h2>
-            <ul><b>
-                <li><span class="marker"></span>Natural Language Processing with Transformers By Hugging Face</li></b>
-            </ul>
+            <div class="content-card">
+                <ul>
+                    <li><span class="marker"></span>Natural Language Processing with Transformers By Hugging Face</li>
+                </ul>
+            </div>
         </div>
     </div>
-    <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
-        <b>Asya's &copy; 2025</b>
+    
+    <footer>
+        Asya's &copy; 2025
     </footer>
+    
     <script>
+                // Function to handle scroll events
+                function handleScroll() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 50) { // Change background after scrolling 50px
+                navbar.classList.add('scrolled-nav');
+            } else {
+                navbar.classList.remove('scrolled-nav');
+            }
+        }
+    
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.querySelector('.theme-toggle');
-            const footer = document.querySelector('footer');
-            
-            // Apply light mode to footer if needed on page load
-            if (localStorage.getItem('theme') === 'light') {
-                document.body.classList.add('light-mode');
-                themeToggle.textContent = '☀️';
-                footer.style.backgroundColor = '#e0e0e0';
-                footer.style.color = '#1a1a1a';
-            }
-            
-            // Update footer when theme is toggled
-            themeToggle.addEventListener('click', function() {
-                if (document.body.classList.contains('light-mode')) {
-                    footer.style.backgroundColor = '#e0e0e0';
-                    footer.style.color = '#1a1a1a';
-                } else {
-                    footer.style.backgroundColor = '#2c2f34';
-                    footer.style.color = '#c9d1d9';
-                }
-            });
+            handleScroll(); // Check initial scroll position
         });
-
-        // Theme toggle function
+        
         function toggleTheme() {
-    // Mainkan suara klik
-    const clickSound = document.getElementById('clickSound');
-    clickSound.currentTime = 0; // Reset posisi audio ke awal
-    clickSound.play();
-    
-    // Kode tema yang sudah ada
-    document.body.classList.toggle('light-mode');
-    
-    // Change moon/sun icon
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (document.body.classList.contains('light-mode')) {
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'light');
-    } else {
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
-    }
-}   
-        // Function untuk sanitasi input (tambahkan di bagian script)
-        function sanitizeInput(input) {
-    if (!input) return input;
-    
-    // Konversi input menjadi string jika bukan string
-    if (typeof input !== 'string') {
-        input = String(input);
-    }
-    
-    // Escape karakter khusus HTML
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    
-    return input.replace(/[&<>"']/g, function(m) { return map[m]; });
-}
-
-// Fungsi untuk memvalidasi input
-function validateInput(input, pattern) {
-    if (!pattern) {
-        // Pattern default untuk text biasa (alfanumerik, spasi dan tanda baca umum)
-        pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
-    }
-    return pattern.test(input);
-}
-
-// Contoh penggunaan untuk form (tambahkan jika ada form)
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            let isValid = true;
+            // Play click sound
+            const clickSound = document.getElementById('clickSound');
+            clickSound.currentTime = 0; // Reset audio position
+            clickSound.play().catch(e => console.log("Audio play failed: ", e));
             
-            // Validasi semua input dalam form
-            const inputs = this.querySelectorAll('input, textarea');
-            inputs.forEach(input => {
-                const value = input.value;
-                const sanitized = sanitizeInput(value);
-                
-                // Jika ada perbedaan setelah sanitasi, berarti ada karakter mencurigakan
-                if (value !== sanitized) {
-                    isValid = false;
-                    input.classList.add('error');
+            // Toggle theme class
+            document.body.classList.toggle('light-mode');
+            
+            // Save theme preference
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+                // Initialize theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+    } else if (savedTheme === 'dark') {
+        document.body.classList.remove('light-mode');
+    }
+    // If no preference is saved, use the default (which is dark in your case)
+    
+    // Apply animation delay to sections for staggered fade-in
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((section, index) => {
+        section.style.animationDelay = `${index * 0.2}s`;
+    });
+});
+        
+        // Input sanitization function
+        function sanitizeInput(input) {
+            if (!input) return input;
+            
+            // Convert input to string if not a string
+            if (typeof input !== 'string') {
+                input = String(input);
+            }
+            
+            // Escape special HTML characters
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            
+            return input.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        // Function to validate input
+        function validateInput(input, pattern) {
+            if (!pattern) {
+                // Default pattern for plain text (alphanumeric, spaces, and common punctuation)
+                pattern = /^[a-zA-Z0-9\s.,!?-]+$/;
+            }
+            return pattern.test(input);
+        }
+
+        // Form validation (if forms are added)
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    let isValid = true;
                     
-                    // Opsional: tambahkan pesan error
-                    const errorMsg = document.createElement('div');
-                    errorMsg.className = 'error-message';
-                    errorMsg.textContent = 'Input mengandung karakter yang tidak diperbolehkan';
-                    input.parentNode.appendChild(errorMsg);
+                    // Validate all inputs in form
+                    const inputs = this.querySelectorAll('input, textarea');
+                    inputs.forEach(input => {
+                        const value = input.value;
+                        const sanitized = sanitizeInput(value);
+                        
+                        // If there's a difference after sanitization, there are suspicious characters
+                        if (value !== sanitized) {
+                            isValid = false;
+                            input.classList.add('error');
+                            
+                            // Optional: add error message
+                            const errorMsg = document.createElement('div');
+                            errorMsg.className = 'error-message';
+                            errorMsg.textContent = 'Input contains disallowed characters';
+                            input.parentNode.appendChild(errorMsg);
+                        }
+                    });
+                    
+                    // Stop submission if not valid
+                    if (!isValid) {
+                        e.preventDefault();
+                        alert('Form contains invalid input. Please check again.');
+                    }
+                });
+            });
+        });
+
+        // Security measures
+        (function() {
+            // Prevent right-click context menu
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                alert("Yaela mau nyoba inspect ya ka? xixixi😝");
+                return false;
+            });
+            
+            // Prevent keyboard shortcuts for developer tools
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+                if (
+                    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+                    (e.keyCode === 123)
+                ) {
+                    e.preventDefault();
+                    alert("Shortcut for developer tools is disabled!");
+                    return false;
+                }
+                
+                // Ctrl+U (View source)
+                if (e.ctrlKey && e.keyCode === 85) {
+                    e.preventDefault();
+                    alert("Viewing source code is disabled!");
+                    return false;
                 }
             });
             
-            // Hentikan submit jika tidak valid
-            if (!isValid) {
-                e.preventDefault();
-                alert('Form mengandung input yang tidak valid. Mohon periksa kembali.');
-            }
-        });
-    });
-});
+            // Hidden watermark 
+            window.__securityCheck = true;
+            window.__honeypot = "Do not modify this value";
 
-    // Kode untuk mempersulit akses konsol dan modifikasi kode
-(function() {
-    // 1. Deteksi dan kembalikan jika konsol dibuka
-    let devtoolsOpen = false;
-    
-    // Metode 1: Deteksi melalui ukuran jendela (pendeteksi konsol samping)
-    const threshold = 160;
-    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    if (widthThreshold || heightThreshold) {
-        devtoolsOpen = true;
-    }
-    
-    // Metode 2: Deteksi debugger
-    const div = document.createElement('div');
-    Object.defineProperty(div, 'id', {
-        get: function() {
-            devtoolsOpen = true;
-            return 'x';
-        }
-    });
-    console.log(div);
-    console.clear();
-    
-    // Metode 3: Periksa fungsi console.log
-    const originalConsoleLog = console.log;
-    console.log = function() {
-        if (arguments[0] === div && !arguments[0].id) {
-            devtoolsOpen = true;
-        }
-        originalConsoleLog.apply(console, arguments);
-    };
-    
-    // Fungsi untuk bertindak ketika developer tools terdeteksi
-    function handleDevTools() {
-        if (devtoolsOpen) {
-            // Redirect atau tutup jendela atau tampilkan pesan peringatan
-            document.body.innerHTML = "<h1>Developer tools detected. This action has been logged.</h1>";
-            // Atau sebagai alternatif:
-            // window.location.href = "blocked.html";
-            return true;
-        }
-        return false;
-    }
-    
-    // 2. Mencegah inspect element melalui klik kanan
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        alert("Yaela mau nyoba inspect ya ka? xixixi😝");
-        return false;
-    });
-    
-    // 3. Mencegah shortcut keyboard umum untuk developer tools
-    document.addEventListener('keydown', function(e) {
-        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
-        if (
-            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
-            (e.keyCode === 123)
-        ) {
-            e.preventDefault();
-            alert("Shortcut untuk developer tools dinonaktifkan!");
-            return false;
-        }
-        
-        // Ctrl+U (Lihat source)
-        if (e.ctrlKey && e.keyCode === 85) {
-            e.preventDefault();
-            alert("Melihat source code dinonaktifkan!");
-            return false;
-        }
-    });
-    
-    // 4. Pencegahan copy-paste (opsional, sesuai kebutuhan)
-    document.addEventListener('copy', function(e) {
-        // Komentar baris berikut jika Anda ingin mengizinkan pengguna untuk menyalin teks
-        // e.preventDefault();
-        // alert("Menyalin konten dari website ini dinonaktifkan!");
-    });
-    
-    // 5. Self-defending code
-    setInterval(function() {
-        handleDevTools();
-        
-        // Periksa modifikasi DOM
-        const checkDOM = document.querySelectorAll('script').length;
-        if (window.scriptCount === undefined) {
-            window.scriptCount = checkDOM;
-        } else if (window.scriptCount !== checkDOM) {
-            alert("Modifikasi DOM terdeteksi!");
-            window.location.reload();
-        }
-    }, 1000);
-    
-    // 6. Obfuskasi kode
-    // Gunakan layanan seperti https://obfuscator.io/ untuk mengobfuskasi kode JS Anda sebelum di-deploy
-    
-    // 7. Anti-debugging
-    function antiDebug() {
-        const startTime = new Date().getTime();
-        debugger;
-        const endTime = new Date().getTime();
-        
-        // Jika debugger sedang aktif, ini akan menghabiskan waktu lebih lama
-        if (endTime - startTime > 100) {
-            // Debugger terdeteksi
-            document.body.innerHTML = "<h1>Debugging detected. This action has been logged.</h1>";
-        }
-        
-        setTimeout(antiDebug, 1000);
-    }
-    antiDebug();
-    
-    // 8. Membuat script non-inspectable
-    (() => {
-        // Kode penting disini
-        const message = "Modified environment detected. This action has been logged.";
-        
-        // Deteksi perubahan fungsi native
-        const nativeToString = Object.prototype.toString;
-        const nativeFnToString = Function.prototype.toString;
-        const nativeSymbol = Symbol.prototype.toString;
-        
-        // Fungsi untuk memvalidasi integritas lingkungan
-        function checkEnvIntegrity() {
-            try {
-                if (
-                    Object.prototype.toString !== nativeToString ||
-                    Function.prototype.toString !== nativeFnToString ||
-                    Symbol.prototype.toString !== nativeSymbol
-                ) {
-                    throw new Error("Environment modified");
+            setInterval(function() {
+                if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
+                    // Code has been modified
+                    document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
                 }
-                
-                return true;
-            } catch (e) {
-                document.body.innerHTML = message;
-                return false;
-            }
+            }, 2000);
+        })();
+
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+                console.log('ServiceWorker registration successful');
+            })
+            .catch(function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
         }
-        
-        // Pemeriksaan integritas secara berkala
-        setInterval(checkEnvIntegrity, 2000);
-    })();
-})();
-
-    // Servise Worker
-    // Daftarkan service worker (tambahkan pada script utama)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-    .then(function(registration) {
-        console.log('ServiceWorker registration successful');
-    })
-    .catch(function(err) {
-        console.log('ServiceWorker registration failed: ', err);
-    });
-}
-document.addEventListener('DOMContentLoaded', function() {
-    // Sisipkan watermark tersembunyi
-    const watermark = document.createElement('div');
-    watermark.style.display = 'none';
-    watermark.setAttribute('data-owner', 'Website milik [Nama Anda] - Mencuri kode ini melanggar hukum');
-    watermark.setAttribute('data-timestamp', new Date().toISOString());
-    watermark.setAttribute('data-id', 'wm-' + Math.random().toString(36).substring(2, 15));
-    document.body.appendChild(watermark);
-});
-    // hidden watermark 
-window.__securityCheck = true;
-window.__honeypot = "Do not modify this value";
-
-setInterval(function() {
-    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
-        // Kode telah dimodifikasi
-        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
-        
-        // Atau redirect
-        // window.location.href = "security-violation.html";
-    }
-}, 2000);
-    // Tambahkan ke script utama
-window.__securityCheck = true;
-window.__honeypot = "Do not modify this value";
-//honyepot variable
-setInterval(function() {
-    if (window.__securityCheck !== true || window.__honeypot !== "Do not modify this value") {
-        // Kode telah dimodifikasi
-        document.body.innerHTML = "<h1>Security violation detected. This incident has been logged.</h1>";
-        
-        // Atau redirect
-        // window.location.href = "security-violation.html";
-    }
-}, 2000);
     </script>
 </body>
 </html>

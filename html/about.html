@@ -13,28 +13,182 @@
         }
 
         body {
-            background-color: #1f2126;
-            color: #e4ebf1;
-            font-family: 'Monserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Light mode variables */
+            --light-bg: #ffffff;
+            --light-text: #1a1a1a;
+            --light-footer-bg: #ffffff;
+            --light-footer-text: #1a1a1a;
+            
+            /* Dark mode variables */
+            --dark-bg: #1f2126;
+            --dark-text: #ffffff;
+            --dark-footer-bg: #1f2126;
+            --dark-footer-text: #c9d1d9;
+            
+            /* Theme toggle colors */
+            --sun-color: #ffd700;
+            --sun-glow: rgba(255, 215, 0, 0.6);
+            --moon-color: #d9d9ff;
+        }
+        
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+        
+        footer {
+            background-color: var(--dark-footer-bg);
+            color: var(--dark-footer-text);
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.light-mode footer {
+            background-color: var(--light-footer-bg);
+            color: var(--light-footer-text);
+            box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
+        }
+        
+        /* Sun Icon */
+        .sun-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Sun core */
+        .sun-core {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--sun-color);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--sun-glow);
+        }
+        
+        /* Sun rays */
+        .sun-ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 2px;
+            background: var(--sun-color);
+            border-radius: 2px;
+            transform-origin: 0 50%;
+        }
+        
+        /* Create 8 rays with cleaner positioning */
+        .sun-ray:nth-child(1) { transform: translateY(-50%) rotate(0deg); }
+        .sun-ray:nth-child(2) { transform: translateY(-50%) rotate(45deg); }
+        .sun-ray:nth-child(3) { transform: translateY(-50%) rotate(90deg); }
+        .sun-ray:nth-child(4) { transform: translateY(-50%) rotate(135deg); }
+        .sun-ray:nth-child(5) { transform: translateY(-50%) rotate(180deg); }
+        .sun-ray:nth-child(6) { transform: translateY(-50%) rotate(225deg); }
+        .sun-ray:nth-child(7) { transform: translateY(-50%) rotate(270deg); }
+        .sun-ray:nth-child(8) { transform: translateY(-50%) rotate(315deg); }
+        
+        /* Moon Icon */
+        .moon-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .moon-icon .moon-circle {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--moon-color);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px var(--moon-color);
+        }
+        
+        .moon-icon .moon-crater {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+        }
+        
+        .moon-icon .moon-crater:nth-child(1) {
+            width: 5px;
+            height: 5px;
+            top: 25%;
+            left: 30%;
+        }
+        
+        .moon-icon .moon-crater:nth-child(2) {
+            width: 4px;
+            height: 4px;
+            top: 50%;
+            left: 60%;
+        }
+        
+        .moon-icon .moon-crater:nth-child(3) {
+            width: 3px;
+            height: 3px;
+            top: 65%;
+            left: 35%;
+        }
+        
+        /* Light mode active states */
+        body.light-mode .sun-icon {
+            opacity: 1;
+        }
+        
+        body.light-mode .moon-icon {
+            opacity: 0;
         }
 
         /* NAVBAR - FIXED */
         nav {
-            padding: 15px 5%;
-            background-color: #2c2f34;
+            padding: 20px 10%;
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+            transition: background-color 0.2s;
+            width: 100%;
         }
-
+        
         nav h1 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             white-space: nowrap;
         }
 
@@ -48,6 +202,7 @@
             text-decoration: none;
             transition: color 0.3s;
             position: relative;
+            font-size: clamp(0.9rem, 2vw, 1.2rem); /* Responsive font size */
         }
 
         .nav-links a:hover {
@@ -66,11 +221,6 @@
             width: 100%;
             height: 2px;
             background-color: #58a6ff;
-        }
-
-        .theme-toggle {
-            cursor: pointer;
-            font-size: 1.2rem;
         }
 
         /* CONTAINER */
@@ -98,7 +248,7 @@
             border-radius: 50%;
             border: 2px dashed #58a6ff;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.2s;
         }
 
         .profile img:hover {
@@ -113,6 +263,10 @@
         .section h2 {
             color: #58a6ff;
             margin-bottom: 15px;
+        }
+
+        .light-mode .section h2 {
+            color: #0066cc;
         }
 
         /* ABOUT PAGE */
@@ -235,13 +389,13 @@
 
         /* LIGHT MODE */
         .light-mode {
-            background-color: #ebe5e5;
-            color: #1a1a1a;
+            background-color: #ffffff;
+            color: #0066cc;
         }
 
         .light-mode nav {
-            background-color: #e1dddd;
-            color: #1a1a1a;
+            background-color: #ffffff;
+            color: #0066cc;
         }
 
         .light-mode .nav-links a {
@@ -278,14 +432,14 @@
         }
         
         .light-mode .skill-item {
-            background-color: #e4e4e4;
-            box-shadow: 0 0 1px 2px rgba(85, 85, 85, 0.2); /* Outline tipis default */
+            background-color: #fefefe;
+            box-shadow: 0 2px 10px 5px rgba(85, 85, 85, 0.15); /* Outline tipis default */
             transition: all 0.3s ease-in-out; /* Animasi smooth */
         }
         
         .light-mode .skill-item:hover {
-            background-color: #e1e1e1;
-            box-shadow: 0 0 20px 10px rgba(85, 85, 85, 0.2); /* Outline lebih tebal saat hover */
+            background-color: #ffffff;
+            box-shadow: 0 0 20px 5px rgba(4, 120, 178, 0.6); /* Outline lebih tebal saat hover */
         }
         
         .light-mode .skill-icon {
@@ -295,7 +449,7 @@
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             nav {
-                padding: 10px 5%;
+                padding: 20px 10%;
             }
             
             .nav-links {
@@ -352,7 +506,30 @@
             text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
             font-size: 1.5rem;
         }
-
+        /* Scrolled nav*/
+        .scrolled-nav {
+            background-color: #2c2f34;
+            transform: translateY(0px);
+            width: 100%;
+            height: 70px;
+            box-shadow: 0 0.5px 20px #322f2f;
+        }
+        .light-mode .scrolled-nav {
+            background-color: #f9f9f9;
+        }
+        .light-mode.scrolled-nav .hero-content h1 {
+            color: #0066cc;
+        }
+        .light-mode nav:not(.scrolled-nav) .nav-links a {
+            color: #000000;
+        }
+        .light-mode nav.scrolled-nav .nav-links a {
+            color: #1a1a1a;
+        }
+        .light-mode nav.scrolled-nav .nav-links h1 {
+            color: #1a1a1a;
+        }
+        
     </style>
 </head>
 <body>
@@ -368,8 +545,24 @@
             <a href="about.html" class="active">About</a>
             <a href="work.html">Work</a>
         </div>
-        <div class="theme-toggle" onclick="toggleTheme()">
-            🌙
+        <div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+            <div class="sun-icon">
+                <div class="sun-core"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+                <div class="sun-ray"></div>
+            </div>
+            <div class="moon-icon">
+                <div class="moon-circle"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+            </div>
         </div>
     </nav>
 
@@ -377,13 +570,13 @@
         <div class="profile">
             <img src="img/glenferdinzaa.jpg" alt="Profile Picture">
             <h2>Glenferdinza Aghis Asyadda R.E</h2>
-            <p>Machine Learning Engineer | Backend Engineer | AI Researcher | Problem Solver</p>
+            <p>Machine Learning Engineer | Backend Engineer | Problem Solver</p>
         </div>
 
         <div class="section">
             <h2># About Me</h2>
             <div class="about-content">
-                <p>Hello! I'm Glenferdinza. <br> A student who study at Yogyakarta University State who passionate in backend engineer and AI enthusiast. I spend my days crafting efficient code and exploring the fascinating world of artificial intelligence.</p>
+                <p>Hello! I'm Glenferdinza. <br> A student who study at Yogyakarta University State who passionate in Machine Learning Engineer and AI Enthusiasts. I spend my days crafting efficient code and exploring the fascinating world of artificial intelligence.</p>
                 
                 <p>With a background in Information Technology and a love for problem-solving, I've dedicated myself to creating robust systems and innovative solutions. When I'm not coding, you can find me reading tech blogs, experimenting with new technologies, or enjoying a good book.</p>
                 
@@ -467,57 +660,128 @@
             </ul>
         </div>
     </div>
-    <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #c9d1d9;">
+    <footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #2c2f34; color: #f3f3f3; box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2);">
         Asya's &copy; 2025
     </footer>
     <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const themeToggle = document.querySelector('.theme-toggle');
-        const footer = document.querySelector('footer');
-         // Check for saved theme preference and apply it
-    if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
-        document.querySelector('.theme-toggle').textContent = '☀️';
+        // Function to handle scroll events
+        function handleScroll() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 50) { // Change background after scrolling 50px
+                navbar.classList.add('scrolled-nav');
+            } else {
+                navbar.classList.remove('scrolled-nav');
+            }
+        }
+    
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScroll(); // Check initial scroll position
+        });
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded, initializing theme toggle");
+    
+    // Get DOM elements
+    const themeToggle = document.querySelector('.theme-toggle');
+    const footer = document.querySelector('footer');
+    
+    // Check if elements exist
+    if (!themeToggle) {
+        console.error("Theme toggle element (.theme-toggle) not found!");
+        return;
     }
-        // Apply light mode to footer if needed on page load
-        if (localStorage.getItem('theme') === 'light') {
-            footer.style.backgroundColor = '#e0e0e0';
-            footer.style.color = '#1a1a1a';
+    
+    if (!footer) {
+        console.warn("Footer element not found, theme might not apply to footer");
+    }
+    
+    // Theme toggle function
+    function toggleTheme() {
+        console.log("Toggle theme clicked");
+        
+        // Play click sound if exists
+        const clickSound = document.getElementById('clickSound');
+        if (clickSound) {
+            clickSound.currentTime = 0; // Reset audio position
+            clickSound.play().catch(e => console.log("Audio play failed: ", e));
+        } else {
+            console.warn("Click sound element not found");
         }
         
+        // Toggle theme class
+        document.body.classList.toggle('light-mode');
+        console.log("Light mode is now:", document.body.classList.contains('light-mode'));
+        
         // Update footer when theme is toggled
-        themeToggle.addEventListener('click', function() {
+        if (footer) {
             if (document.body.classList.contains('light-mode')) {
-                footer.style.backgroundColor = '#e0e0e0';
+                footer.style.backgroundColor = '#ffffff';
                 footer.style.color = '#1a1a1a';
+                localStorage.setItem('theme', 'light');
             } else {
                 footer.style.backgroundColor = '#2c2f34';
                 footer.style.color = '#c9d1d9';
+                localStorage.setItem('theme', 'dark');
             }
-        });
-    });
-       // Theme toggle function
-       function toggleTheme() {
-        
-    // Mainkan suara klik
-    const clickSound = document.getElementById('clickSound');
-    clickSound.currentTime = 0; // Reset posisi audio ke awal
-    clickSound.play();
-    
-    // Kode tema yang sudah ada
-    document.body.classList.toggle('light-mode');
-    
-    // Change moon/sun icon
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (document.body.classList.contains('light-mode')) {
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'light');
-    } else {
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
+        }
     }
-}        // Function untuk sanitasi input (tambahkan di bagian script)
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    console.log("Saved theme from localStorage:", savedTheme);
+    
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (footer) {
+            footer.style.backgroundColor = '#ffffff';
+            footer.style.color = '#1a1a1a';
+        }
+    }
+    
+    // Add click event to theme toggle
+    console.log("Adding click event listener to theme toggle");
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // Add alternative event listener in case there's an issue with the click event
+    themeToggle.onclick = function() {
+        console.log("Alternative click handler triggered");
+        toggleTheme();
+    };
+    
+    // Try also adding the event listener directly to the body
+    document.body.addEventListener('click', function(event) {
+        if (event.target.matches('.theme-toggle') || event.target.closest('.theme-toggle')) {
+            console.log("Theme toggle clicked via delegation");
+            toggleTheme();
+        }
+    });
+    
+    // Initialize typing animation if exists
+    try {
+        const textElement = document.querySelector('.text-slider');
+        if (textElement) {
+            const textSliderItems = document.querySelector('.text-slider-items');
+            if (textSliderItems) {
+                const words = textSliderItems.textContent.split(', ');
+                if (typeof TypeWriter === 'function') {
+                    new TypeWriter(textElement, words, 2000);
+                } else {
+                    console.error("TypeWriter function not defined");
+                }
+            }
+        }
+    } catch (e) {
+        console.error("Error initializing typing animation:", e);
+    }
+    
+    console.log("Theme toggle initialization complete");
+});
+
+// Function untuk sanitasi input (tambahkan di bagian script)
 function sanitizeInput(input) {
     if (!input) return input;
     
