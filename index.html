@@ -247,7 +247,7 @@
     justify-content: center;
     color: white;
     text-align: center;
-    margin-top: -57px;
+    margin-top: -77px;
     z-index: 1;
     padding-left: 40px;
     padding-right: 40px;
@@ -257,7 +257,7 @@
 }
 @media screen and (max-width: 840px) {
     .hero-section {
-        margin-top: -67px;
+        margin-top: -77px;
     }
 }
 @media screen and (max-width: 640px) {
@@ -1052,21 +1052,218 @@
         }
 
         /* Mobile specific adjustments */
-        @media (max-width: 480px) {
-            .hero-section {
-                font-size: 2rem;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            
-            nav {
-                padding: 10px 3%;
-            }
-            
-            .nav-links {
-                gap: 8px;
-            }
-        }
+/* Mobile specific adjustments */
+@media (max-width: 480px) {
+    /* General adjustments */
+    body {
+        font-size: 14px;
+    }
+    
+    /* Navigation */
+    nav {
+        padding: 8px 3%;
+    }
+    
+    nav h1 {
+        font-size: 1rem;
+    }
+    
+    .nav-links {
+        gap: 6px;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        padding: 60px 15px 30px;
+        min-height: auto;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .text-slider {
+        font-size: 1.2rem;
+    }
+    
+    /* Content sections */
+    .section {
+        padding-inline: 4%;
+        margin-bottom: 30px;
+    }
+    
+    .section h2 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        margin-bottom: 8px;
+    }
+    
+    /* Profile section */
+    .profile {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .profile img {
+        border-width: 1px;
+    }
+    
+    .greeting {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+    
+    /* Project cards */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .project-card {
+        width: 100%;
+    }
+    
+    .project-img {
+        height: 120px;
+    }
+    
+    .project-info {
+        padding: 12px;
+    }
+    
+    .project-info h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .project-info p {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .project-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    /* Random items grid */
+    .random-items-grid {
+        width: 95%;
+        gap: 12px;
+    }
+    
+    .random-item {
+        padding: 15px 10px;
+    }
+    
+    .random-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+    
+    .random-item a {
+        font-size: 13px;
+    }
+    
+    /* Connect card */
+    .connect-card {
+        width: 98%;
+        margin: 10px auto;
+    }
+    
+    .header {
+        padding: 12px;
+    }
+    
+    .header h2 {
+        font-size: 16px;
+    }
+    
+    .header p {
+        font-size: 13px;
+    }
+    
+    .links-container {
+        padding: 10px;
+    }
+    
+    .icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+    }
+    
+    .platform {
+        font-size: 14px;
+    }
+    
+    .username {
+        font-size: 12px;
+    }
+    
+    .link-item {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    
+    /* Status section */
+    .status-section {
+        padding-inline: 5%;
+        margin: 15px auto;
+    }
+    
+    .status-heading {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .status-card {
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .status-name {
+        font-size: 0.95rem;
+        margin-bottom: 3px;
+    }
+    
+    .status-message {
+        font-size: 0.85rem;
+    }
+    
+    /* List items */
+    ul li {
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .marker {
+        width: 15px;
+    }
+    
+    /* Stats box */
+    .stats-box {
+        padding: 15px;
+        border-width: 1px;
+        margin-bottom: 15px;
+    }
+    
+    .stats-box p {
+        margin: 3px 0;
+        font-size: 0.85rem;
+    }
+    
+    /* Footer adjustments */
+    footer {
+        padding: 15px 5%;
+        font-size: 0.8rem;
+    }
+}
 
         /* Grid layout for Random Things section */
         .random-things h2 {
@@ -1587,6 +1784,22 @@
             color: #9ca3af;
         }
     }
+    /* Hidden class for filtering */
+.hidden {
+  display: none;
+}
+
+/* Animations for scroll effects */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
     </style>
 </head>
 <body>
@@ -1648,7 +1861,7 @@
             </div>
         </nav>
 
-        <div class="hero-section">
+        <div class="hero-section fade-in">
             <div class="hero-content">
                 <h1>👋 Olaaa efwione! introduce me as a</h1>
                 <div class="typing-container">
@@ -1657,7 +1870,7 @@
                 </div>
             </div>
         </div>
-<div class="status-section">
+<div class="status-section fade-in">
     <h2 class="status-heading"># Current Status</h2>
     <div class="status-card">
         <div class="status-indicator">
@@ -1670,34 +1883,34 @@
         </div>
     </div>
 </div>
-            <div class="section random-things">
+            <div class="section random-things fade-in">
                 <h2># Random Things</h2>
-                <div class="random-items-grid">
-                    <div class="random-item" data-href="html/books.html">
+                <div class="random-items-grid fade-in">
+                    <div class="random-item" data-href="books.html">
                         <span class="random-icon">📚</span>
                         <a href="html/books.html">Books read</a>
                     </div>
-                    <div class="random-item" data-href="html/games.html">
+                    <div class="random-item" data-href="games.html">
                         <span class="random-icon">🕹️</span>
                         <a href="html/games.html">Games played</a>
                     </div>
-                    <div class="random-item" data-href="html/movies.html">
+                    <div class="random-item" data-href="movies.html">
                         <span class="random-icon">🎞️</span>
                         <a href="html/movies.html">Movies & series I've watched</a>
                     </div>
-                    <div class="random-item" data-href="html/music.html">
+                    <div class="random-item" data-href="music.html">
                         <span class="random-icon">🎼</span>
                         <a href="html/music.html">Music that I usually play</a>
                     </div>
                 </div>
             </div>
 
-            <div class="connect-card">
+            <div class="connect-card fade-in">
                 <div class="header">
                     <h2>Connect With Me</h2>
                     <p>Let's stay in touch!</p>
                 </div>
-                <div class="links-container">
+                <div class="links-container fade-in">
                     <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank" class="link-item">
                         <div class="icon linkedin">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/linkedin.svg" alt="LinkedIn">
@@ -1745,6 +1958,28 @@
         </footer>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  // Mengambil semua elemen dengan class fade-in
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  function checkFade() {
+    fadeElements.forEach(element => {
+      // Mengecek posisi elemen relatif terhadap viewport
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150; // Jarak elemen dari bawah viewport untuk memicu animasi
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  // Jalankan pengecekan saat halaman dimuat
+  checkFade();
+  
+  // Jalankan pengecekan saat scroll
+  window.addEventListener('scroll', checkFade);
+});
          document.addEventListener('DOMContentLoaded', function() {
             const randomItems = document.querySelectorAll('.random-item');
             

@@ -5,288 +5,288 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asya's Web - About</title>
     <style>
-        /* BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            margin: 0;
-            padding: 0;
-        }
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    margin: 0;
+    padding: 0;
+}
 
-        :root {
-            /* Light mode variables */
-            --light-bg: #ffffff;
-            --light-text: #1a1a1a;
-            --light-footer-bg: #ffffff;
-            --light-footer-text: #1a1a1a;
-            
-            /* Dark mode variables */
-            --dark-bg: #1f2126;
-            --dark-text: #ffffff;
-            --dark-footer-bg: #1f2126;
-            --dark-footer-text: #c9d1d9;
-            
-            /* Theme toggle colors */
-            --sun-color: #ffd700;
-            --sun-glow: rgba(255, 215, 0, 0.6);
-            --moon-color: #d9d9ff;
-        }
-        
-        body.light-mode {
-            background-color: var(--light-bg);
-            color: var(--light-text);
-        }
-        
-        footer {
-            background-color: var(--dark-footer-bg);
-            color: var(--dark-footer-text);
-            padding: 20px;
-            text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        body.light-mode footer {
-            background-color: var(--light-footer-bg);
-            color: var(--light-footer-text);
-            box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: relative;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
-        }
-        
-        /* Sun Icon */
-        .sun-icon {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        /* Sun core */
-        .sun-core {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: var(--sun-color);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px var(--sun-glow);
-        }
-        
-        /* Sun rays */
-        .sun-ray {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 2px;
-            background: var(--sun-color);
-            border-radius: 2px;
-            transform-origin: 0 50%;
-        }
-        
-        /* Create 8 rays with cleaner positioning */
-        .sun-ray:nth-child(1) { transform: translateY(-50%) rotate(0deg); }
-        .sun-ray:nth-child(2) { transform: translateY(-50%) rotate(45deg); }
-        .sun-ray:nth-child(3) { transform: translateY(-50%) rotate(90deg); }
-        .sun-ray:nth-child(4) { transform: translateY(-50%) rotate(135deg); }
-        .sun-ray:nth-child(5) { transform: translateY(-50%) rotate(180deg); }
-        .sun-ray:nth-child(6) { transform: translateY(-50%) rotate(225deg); }
-        .sun-ray:nth-child(7) { transform: translateY(-50%) rotate(270deg); }
-        .sun-ray:nth-child(8) { transform: translateY(-50%) rotate(315deg); }
-        
-        /* Moon Icon */
-        .moon-icon {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-        
-        .moon-icon .moon-circle {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background: var(--moon-color);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 8px var(--moon-color);
-        }
-        
-        .moon-icon .moon-crater {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-        }
-        
-        .moon-icon .moon-crater:nth-child(1) {
-            width: 5px;
-            height: 5px;
-            top: 25%;
-            left: 30%;
-        }
-        
-        .moon-icon .moon-crater:nth-child(2) {
-            width: 4px;
-            height: 4px;
-            top: 50%;
-            left: 60%;
-        }
-        
-        .moon-icon .moon-crater:nth-child(3) {
-            width: 3px;
-            height: 3px;
-            top: 65%;
-            left: 35%;
-        }
-        
-        /* Light mode active states */
-        body.light-mode .sun-icon {
-            opacity: 1;
-        }
-        
-        body.light-mode .moon-icon {
-            opacity: 0;
-        }
+:root {
+    /* Light mode variables */
+    --light-bg: #ffffff;
+    --light-text: #1a1a1a;
+    --light-footer-bg: #ffffff;
+    --light-footer-text: #1a1a1a;
+    
+    /* Dark mode variables */
+    --dark-bg: #1f2126;
+    --dark-text: #ffffff;
+    --dark-footer-bg: #1f2126;
+    --dark-footer-text: #c9d1d9;
+    
+    /* Theme toggle colors */
+    --sun-color: #ffd700;
+    --sun-glow: rgba(255, 215, 0, 0.6);
+    --moon-color: #d9d9ff;
+}
 
-        /* NAVBAR - FIXED */
-        nav {
-            padding: 20px 10%;
-            background-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: background-color 0.2s;
-            width: 100%;
-        }
-        
-        nav h1 {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            white-space: nowrap;
-        }
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
+footer {
+    background-color: var(--dark-footer-bg);
+    color: var(--dark-footer-text);
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-            position: relative;
-            font-size: clamp(0.9rem, 2vw, 1.2rem); /* Responsive font size */
-        }
+body.light-mode footer {
+    background-color: var(--light-footer-bg);
+    color: var(--light-footer-text);
+    box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2);
+}
 
-        .nav-links a:hover {
-            color: #58a6ff;
-        }
+/* Theme Toggle Button */
+.theme-toggle {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
+}
 
-        .nav-links a.active {
-            color: #58a6ff;
-        }
+/* Sun Icon */
+.sun-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #58a6ff;
-        }
+/* Sun core */
+.sun-core {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--sun-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--sun-glow);
+}
 
-        /* CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 20px;
-            min-height: calc(100vh - 120px);
-        }
+/* Sun rays */
+.sun-ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    background: var(--sun-color);
+    border-radius: 2px;
+    transform-origin: 0 50%;
+}
 
-        /* PROFILE */
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+/* Create 8 rays with cleaner positioning */
+.sun-ray:nth-child(1) { transform: translateY(-50%) rotate(0deg); }
+.sun-ray:nth-child(2) { transform: translateY(-50%) rotate(45deg); }
+.sun-ray:nth-child(3) { transform: translateY(-50%) rotate(90deg); }
+.sun-ray:nth-child(4) { transform: translateY(-50%) rotate(135deg); }
+.sun-ray:nth-child(5) { transform: translateY(-50%) rotate(180deg); }
+.sun-ray:nth-child(6) { transform: translateY(-50%) rotate(225deg); }
+.sun-ray:nth-child(7) { transform: translateY(-50%) rotate(270deg); }
+.sun-ray:nth-child(8) { transform: translateY(-50%) rotate(315deg); }
 
-        .profile img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 2px dashed #58a6ff;
-            object-fit: cover;
-            transition: transform 0.2s;
-        }
+/* Moon Icon */
+.moon-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
 
-        .profile img:hover {
-            transform: scale(1.05);
-        }
+.moon-icon .moon-circle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--moon-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px var(--moon-color);
+}
 
-        /* SECTIONS */
-        .section {
-            margin-top: 30px;
-        }
+.moon-icon .moon-crater {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
 
-        .section h2 {
-            color: #58a6ff;
-            margin-bottom: 15px;
-        }
+.moon-icon .moon-crater:nth-child(1) {
+    width: 5px;
+    height: 5px;
+    top: 25%;
+    left: 30%;
+}
 
-        .light-mode .section h2 {
-            color: #0066cc;
-        }
+.moon-icon .moon-crater:nth-child(2) {
+    width: 4px;
+    height: 4px;
+    top: 50%;
+    left: 60%;
+}
 
-        /* ABOUT PAGE */
-        .about-content {
-            line-height: 1.6;
-        }
+.moon-icon .moon-crater:nth-child(3) {
+    width: 3px;
+    height: 3px;
+    top: 65%;
+    left: 35%;
+}
 
-        .about-content p {
-            margin-bottom: 15px;
-        }
+/* Light mode active states */
+body.light-mode .sun-icon {
+    opacity: 1;
+}
 
-        /* SKILLS SECTION */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
+body.light-mode .moon-icon {
+    opacity: 0;
+}
 
-        .skill-item {
+/* NAVBAR - FIXED */
+nav {
+    padding: 20px 10%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+nav h1 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+    font-size: clamp(0.9rem, 2vw, 1.2rem); /* Responsive font size */
+}
+
+.nav-links a:hover {
+    color: #58a6ff;
+}
+
+.nav-links a.active {
+    color: #58a6ff;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #58a6ff;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+    min-height: calc(100vh - 120px);
+}
+
+/* PROFILE */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px dashed #58a6ff;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.profile img:hover {
+    transform: scale(1.05);
+}
+
+/* SECTIONS */
+.section {
+    margin-top: 30px;
+}
+
+.section h2 {
+    color: #58a6ff;
+    margin-bottom: 15px;
+}
+
+.light-mode .section h2 {
+    color: #0066cc;
+}
+
+/* ABOUT PAGE */
+.about-content {
+    line-height: 1.6;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+/* SKILLS SECTION */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.skill-item {
     background-color: #2c2f34;
     border-radius: 8px;
     padding: 12px;
@@ -308,227 +308,244 @@
     box-shadow: 0 0 20px 1px #4989c9; /* Adjusted blue glow for light mode */
     background-color: rgba(255, 255, 255, 0.5); /* Putih semi-transparan */
 }
-        .skill-icon img {
-            width: 45px;
-            height: 45px;
-            margin-top: 15px;
-        }
+.skill-icon img {
+    width: 45px;
+    height: 45px;
+    margin-top: 15px;
+}
 
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            color: #58a6ff;
-        }
+.skill-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #58a6ff;
+}
 
-        /* TIMELINE */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-            margin-top: 20px;
-        }
+/* TIMELINE */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 20px;
+}
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #58a6ff;
-        }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #58a6ff;
+}
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-        }
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -34px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #58a6ff;
-        }
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #58a6ff;
+}
 
-        .timeline-date {
-            font-weight: bold;
-            color: #58a6ff;
-            margin-bottom: 5px;
-        }
+.timeline-date {
+    font-weight: bold;
+    color: #58a6ff;
+    margin-bottom: 5px;
+}
 
-        .timeline-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+.timeline-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
-        /* LINKS */
-        .section a {
-            color: #58a6ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+/* LINKS */
+.section a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-        .section a:hover {
-            text-decoration: underline;
-        }
+.section a:hover {
+    text-decoration: underline;
+}
 
-        /* LIST STYLING */
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+/* LIST STYLING */
+ul {
+    list-style: none;
+    padding: 0;
+}
 
-        ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
+ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
 
-        /* LIGHT MODE */
-        .light-mode {
-            background-color: #ffffff;
-            color: #0066cc;
-        }
+/* LIGHT MODE */
+.light-mode {
+    background-color: #ffffff;
+    color: #0066cc;
+}
 
-        .light-mode nav {
-            background-color: #ffffff;
-            color: #0066cc;
-        }
+.light-mode nav {
+    background-color: #ffffff;
+    color: #0066cc;
+}
 
-        .light-mode .nav-links a {
-            color: #1a1a1a;
-        }
+.light-mode .nav-links a {
+    color: #1a1a1a;
+}
 
-        .light-mode .nav-links a.active,
-        .light-mode .nav-links a:hover {
-            color: #0066cc;
-        }
+.light-mode .nav-links a.active,
+.light-mode .nav-links a:hover {
+    color: #0066cc;
+}
 
-        .light-mode .nav-links a.active::after {
-            background-color: #0066cc;
-        }
+.light-mode .nav-links a.active::after {
+    background-color: #0066cc;
+}
 
-        .light-mode .section a {
-            color: #0066cc;
-        }
+.light-mode .section a {
+    color: #0066cc;
+}
 
-        .light-mode .timeline::before {
-            background-color: #0066cc;
-        }
+.light-mode .timeline::before {
+    background-color: #0066cc;
+}
 
-        .light-mode .timeline-item::before {
-            background-color: #0066cc;
-        }
+.light-mode .timeline-item::before {
+    background-color: #0066cc;
+}
 
-        .light-mode .timeline-date {
-            color: #0066cc;
-        }
+.light-mode .timeline-date {
+    color: #0066cc;
+}
 
-        .light-mode ul li::before {
-            color: #1b1818;
-        }
-        
-        .light-mode .skill-item {
-            background-color: #fefefe;
-            box-shadow: 0 2px 10px 5px rgba(85, 85, 85, 0.15); /* Outline tipis default */
-            transition: all 0.3s ease-in-out; /* Animasi smooth */
-        }
-        
-        .light-mode .skill-item:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 20px 5px rgba(4, 120, 178, 0.6); /* Outline lebih tebal saat hover */
-        }
-        
-        .light-mode .skill-icon {
-            color: #0066cc;
-        }
+.light-mode ul li::before {
+    color: #1b1818;
+}
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            nav {
-                padding: 20px 10%;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .container {
-                width: 95%;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-        }
+.light-mode .skill-item {
+    background-color: #fefefe;
+    box-shadow: 0 2px 10px 5px rgba(85, 85, 85, 0.15); /* Outline tipis default */
+    transition: all 0.3s ease-in-out; /* Animasi smooth */
+}
 
-        @media (max-width: 480px) {
-            nav h1 {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                gap: 10px;
-            }
-            
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-                /* New styles for the interactive markers */
-                .marker {
-            display: inline-block;
-            margin-right: 5px;
-            transition: all 0.3s ease;
-            user-select: none;
-            width: 20px;
-            text-align: center;
-        }
+.light-mode .skill-item:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 20px 5px rgba(4, 120, 178, 0.6); /* Outline lebih tebal saat hover */
+}
 
-        /* Default arrow style */
-        .marker:before {
-            content: "»";
-            color: #696060;
-            transition: all 0.3s ease;
-        }
+.light-mode .skill-icon {
+    color: #0066cc;
+}
 
-        /* Hover effect for entire list item */
-        ul li:hover .marker:before {
-            content: "•";
-            color: #58a6ff;
-            text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
-            font-size: 1.5rem;
-        }
-        /* Scrolled nav*/
-        .scrolled-nav {
-            background-color: #2c2f34;
-            transform: translateY(0px);
-            width: 100%;
-            height: 70px;
-            box-shadow: 0 0.5px 20px #322f2f;
-        }
-        .light-mode .scrolled-nav {
-            background-color: #f9f9f9;
-        }
-        .light-mode.scrolled-nav .hero-content h1 {
-            color: #0066cc;
-        }
-        .light-mode nav:not(.scrolled-nav) .nav-links a {
-            color: #000000;
-        }
-        .light-mode nav.scrolled-nav .nav-links a {
-            color: #1a1a1a;
-        }
-        .light-mode nav.scrolled-nav .nav-links h1 {
-            color: #1a1a1a;
-        }
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 10%;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .container {
+        width: 95%;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    nav h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+        /* New styles for the interactive markers */
+        .marker {
+    display: inline-block;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+    user-select: none;
+    width: 20px;
+    text-align: center;
+}
+
+/* Default arrow style */
+.marker:before {
+    content: "»";
+    color: #696060;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for entire list item */
+ul li:hover .marker:before {
+    content: "•";
+    color: #58a6ff;
+    text-shadow: 0 0 8px #58a6ff, 0 0 12px #58a6ff;
+    font-size: 1.5rem;
+}
+/* Scrolled nav*/
+.scrolled-nav {
+    background-color: #2c2f34;
+    transform: translateY(0px);
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0.5px 20px #322f2f;
+}
+.light-mode .scrolled-nav {
+    background-color: #f9f9f9;
+}
+.light-mode.scrolled-nav .hero-content h1 {
+    color: #0066cc;
+}
+.light-mode nav:not(.scrolled-nav) .nav-links a {
+    color: #000000;
+}
+.light-mode nav.scrolled-nav .nav-links a {
+    color: #1a1a1a;
+}
+.light-mode nav.scrolled-nav .nav-links h1 {
+    color: #1a1a1a;
+}
+
+/* Hidden class for filtering */
+.hidden {
+  display: none;
+}
+
+/* Animations for scroll effects */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
         
     </style>
 </head>
@@ -566,14 +583,14 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container fade-in">
         <div class="profile">
             <img src="img/glenferdinzaa.jpg" alt="Profile Picture">
             <h2>Glenferdinza Aghis Asyadda R.E</h2>
             <p>Machine Learning Engineer | Backend Engineer | Problem Solver</p>
         </div>
 
-        <div class="section">
+        <div class="section fade-in">
             <h2># About Me</h2>
             <div class="about-content">
                 <p>Hello! I'm Glenferdinza. <br> A student who study at Yogyakarta University State who passionate in Machine Learning Engineer and AI Enthusiasts. I spend my days crafting efficient code and exploring the fascinating world of artificial intelligence.</p>
@@ -584,7 +601,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-in">
             <h2># Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
@@ -632,7 +649,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-in">
             <h2># Education & Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -648,7 +665,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section fade-in">
             <h2># My Interests 🧐</h2>
             <ul>
                 <li><span class="marker"></span>Artificial Intelligence & Machine Learning</li>
@@ -1038,6 +1055,26 @@ setInterval(function() {
         // window.location.href = "security-violation.html";
     }
 }, 2000);
+document.addEventListener('DOMContentLoaded', function() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  function checkFade() {
+    fadeElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  // Check pada saat load
+  checkFade();
+  
+  // Check saat scroll
+  window.addEventListener('scroll', checkFade);
+});
     </script>
 </body>
 </html>

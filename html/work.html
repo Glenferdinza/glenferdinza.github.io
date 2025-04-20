@@ -842,7 +842,7 @@
         padding: 10px;
         border-radius: 8px;
         border: 1px solid #ddd;
-        background-color: #fff;
+        background-color: #4090e0;
         font-size: 16px;
         appearance: none;
         background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -873,7 +873,33 @@
         padding: 10px;
         border-radius: 8px;
         border: 1px solid #ddd;
-        background-color: #fff;
+        background-color: #4090e0;
+        font-size: 16px;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 1em;
+    }
+}
+/* Mobile styles */
+@media screen and (max-width: 240px) {
+    .desktop-filters {
+        display: none;
+    }
+    
+    .mobile-filters {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .filter-select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #4090e0;
         font-size: 16px;
         appearance: none;
         background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -1075,7 +1101,22 @@
     padding: 0 20px;
     min-height: calc(100vh - 120px); /* Increase this value to account for the footer */
 }
+/* Hidden class for filtering */
+.hidden {
+  display: none;
+}
 
+/* Animations for scroll effects */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
     </style>
 </head>
 <body>
@@ -1113,7 +1154,7 @@
                 </div>
             </div>
     </nav>
-    <div class="container">
+    <div class="container fade-in">
         <div class="section">
             <h2 class="section-title"># My Projects</h2>
             
@@ -1127,7 +1168,7 @@
                 </select>
             </div>
     
-            <div class="project-grid">
+            <div class="project-grid fade-in">
                 <!-- Project 1 - AI -->
                 <div class="project-card" data-category="ai">
                     <div class="project-inner">
@@ -1162,7 +1203,7 @@
                 </div>
                 
                 <!-- Project 2 - Figma -->
-                <div class="project-card" data-category="figma">
+                <div class="project-card fade-in" data-category="figma">
                     <div class="project-inner">
                         <div class="project-front">
                             <div class="project-img" style="background-image: url('img/figmaa.png');">
@@ -1196,7 +1237,7 @@
                 </div>
                 
                 <!-- Project 3 - Figma -->
-                <div class="project-card" data-category="figma">
+                <div class="project-card fade-in" data-category="figma">
                     <div class="project-inner">
                         <div class="project-front">
                             <div class="project-img" style="background-image: url('img/figma2.png');">
@@ -1232,7 +1273,7 @@
                 </div>
                 
                 <!-- Project 4 - Web -->
-                <div class="project-card" data-category="web">
+                <div class="project-card fade-in" data-category="web">
                     <div class="project-inner">
                         <div class="project-front">
                             <div class="project-img" style="background-image: url('img/webdev1.png');">
@@ -1268,7 +1309,7 @@
                 </div>
                 
                 <!-- Project 5 - Backend -->
-                <div class="project-card" data-category="backend">
+                <div class="project-card fade-in" data-category="backend">
                     <div class="project-inner">
                         <div class="project-front">
                             <div class="project-img" style="background-image: url('img/project.png');">
@@ -1830,6 +1871,28 @@ function filterProjects(filter) {
     console.log(`Filtering by: ${filter}`);
     // Example: Show/hide projects based on filter value
 }
+document.addEventListener('DOMContentLoaded', function() {
+  // Mengambil semua elemen dengan class fade-in
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  function checkFade() {
+    fadeElements.forEach(element => {
+      // Mengecek posisi elemen relatif terhadap viewport
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150; // Jarak elemen dari bawah viewport untuk memicu animasi
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  // Jalankan pengecekan saat halaman dimuat
+  checkFade();
+  
+  // Jalankan pengecekan saat scroll
+  window.addEventListener('scroll', checkFade);
+});
     </script>
 </div>
 </body>
