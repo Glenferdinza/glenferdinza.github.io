@@ -1,0 +1,120 @@
+{
+  "name": "Glenferdinza - Portfolio",
+  "short_name": "Glenferdinza",
+  "description": "Professional landing page for Glenferdinza - Web Developer & ML Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#4a90e2",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["portfolio", "professional", "developer"],
+  "icons": [
+    {
+      "src": "assets/images/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/screenshot-mobile.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/images/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View my portfolio",
+      "url": "https://gsya.my.id",
+      "icons": [
+        {
+          "src": "assets/images/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Articles",
+      "short_name": "Articles",
+      "description": "Read my articles",
+      "url": "https://medium.com/@glenferdinzaaghis.2024",
+      "icons": [
+        {
+          "src": "assets/images/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contact via WhatsApp",
+      "url": "https://wa.me/6281225495018",
+      "icons": [
+        {
+          "src": "assets/images/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glenferdinza - Web Developer & ML Engineer</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Glenferdinza - Professional Web Developer and Machine Learning Engineer. Portfolio, articles, and contact information.">
+    <meta name="keywords" content="web developer, machine learning, portfolio, glenferdinza">
+    <meta name="author" content="Glenferdinza">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Glenferdinza - Web Developer & ML Engineer">
+    <meta property="og:description" content="Professional Web Developer and Machine Learning Engineer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/images/profile.jpg">
+    
+    <!-- Favicon -->
+        <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMxYTFhMWEiIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOTBlMiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YWI3ZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiM0YTkwZTIiLz4KICA8cGF0aCBkPSJNMTYgNiBMMTggOCBMMTYgMTAgTDE0IDggWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik0yNiAxNiBMMjQgMTggTDIyIDE2IEwyNDE0IFoiIGZpbGw9IiM2YWI3ZmYiLz4KICA8cGF0aCBkPSJNMTYgMjYgTDE0IDI0IEwxNiAyMiBMMTggMjQgWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik02IDE2IEw4IDE0IEwxMCAxNiBMOCAxOCBaIiBmaWxsPSIjNmFiN2ZmIi8+Cjwvc3ZnPg==">
+    <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMxYTFhMWEiIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOTBlMiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YWI3ZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiM0YTkwZTIiLz4KICA8cGF0aCBkPSJNMTYgNiBMMTggOCBMMTYgMTAgTDE0IDggWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik0yNiAxNiBMMjQgMTggTDIyIDE2IEwyNDE0IFoiIGZpbGw9IiM2YWI3ZmYiLz4KICA8cGF0aCBkPSJNMTYgMjYgTDE0IDI0IEwxNiAyMiBMMTggMjQgWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik02IDE2IEw4IDE0IEwxMCAxNiBMOCAxOCBaIiBmaWxsPSIjNmFiN2ZmIi8+Cjwvc3ZnPg==">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgMTgwIDE4MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiMxYTFhMWEiIHJ4PSIyMCIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iOTAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTkwZTIiIHN0cm9rZS13aWR0aD0iOCIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iOTAiIHI9IjMwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2YWI3ZmYiIHN0cm9rZS13aWR0aD0iNSIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iOTAiIHI9IjEwIiBmaWxsPSIjNGE5MGUyIi8+Cjwvc3ZnPg==">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMxYTFhMWEiIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOTBlMiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YWI3ZmYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiM0YTkwZTIiLz4KICA8cGF0aCBkPSJNMTYgNiBMMTggOCBMMTYgMTAgTDE0IDggWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik0yNiAxNiBMMjQgMTggTDIyIDE2IEwyNDE0IFoiIGZpbGw9IiM2YWI3ZmYiLz4KICA8cGF0aCBkPSJNMTYgMjYgTDE0IDI0IEwxNiAyMiBMMTggMjQgWiIgZmlsbD0iIzZhYjdmZiIvPgogIDxwYXRoIGQ9Ik02IDE2IEw4IDE0IEwxMCAxNiBMOCAxOCBaIiBmaWxsPSIjNmFiN2ZmIi8+Cjwvc3ZnPg==">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading...</p>
+    </div>
+
+    <!-- Constellation Background -->
+    <div class="constellation" id="constellation">
+        <canvas id="starCanvas"></canvas>
+    </div>
+    
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="card" id="mainCard">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="./assets/images/profile.jpg" alt="Glenferdinza Profile" class="profile-image" id="profileImage">
+                    <div class="profile-ring"></div>
+                </div>
+                
+                <h1 class="name-title">Glenferdinza</h1>
+                <p class="role-subtitle">Web Developer & ML Engineer</p>
+                <div class="typing-text" id="typingText"></div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="https://gsya.my.id" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn btn-primary"
+                   data-text="My Portfolio">
+                    <i class="fas fa-briefcase btn-icon"></i>
+                    <span>My Portfolio</span>
+                    <i class="fas fa-external-link-alt link-icon"></i>
+                </a>
+                
+                <a href="https://medium.com/@glenferdinzaaghis.2024" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn btn-secondary"
+                   data-text="Read Articles">
+                    <i class="fas fa-article btn-icon"></i>
+                    <span>Read my articles</span>
+                    <i class="fas fa-external-link-alt link-icon"></i>
+                </a>
+                
+                <a href="https://wa.me/6281225495018" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn btn-whatsapp"
+                   data-text="WhatsApp Contact">
+                    <i class="fab fa-whatsapp btn-icon"></i>
+                    <span>WhatsApp Contact</span>
+                    <i class="fas fa-external-link-alt link-icon"></i>
+                </a>
+            </div>
+            
+            <!-- Divider -->
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">Connect with me</div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-section">
+                <div class="social-links">
+                    <a href="https://github.com/Glenferdinza" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-icon"
+                       data-platform="GitHub">
+                        <i class="fab fa-github"></i>
+                        <span class="social-tooltip">GitHub</span>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/glenferdinza-efian" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-icon"
+                       data-platform="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span class="social-tooltip">LinkedIn</span>
+                    </a>
+                    
+                    <a href="https://instagram.com/g.syaaaa" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-icon"
+                       data-platform="Instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span class="social-tooltip">Instagram</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="footer-section">
+                <div class="footer-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Glenferdinza. All rights reserved.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Custom JavaScript -->
+    <script src="./assets/js/constellation.js"></script>
+    <script src="./assets/js/animations.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

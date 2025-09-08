@@ -1,0 +1,56 @@
+{
+  "name": "glenferdinza-landing-page",
+  "version": "1.0.0",
+  "description": "Professional landing page for Glenferdinza - Web Developer & ML Engineer",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'No build process required for vanilla HTML/CSS/JS'",
+    "test": "echo 'No tests specified'",
+    "lint:css": "echo 'CSS linting can be added with stylelint'",
+    "lint:js": "echo 'JS linting can be added with ESLint'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glenferdinza/landing-page.git"
+  },
+  "keywords": [
+    "landing-page",
+    "portfolio",
+    "web-developer",
+    "machine-learning",
+    "responsive",
+    "professional",
+    "constellation",
+    "animation",
+    "pwa"
+  ],
+  "author": {
+    "name": "Glenferdinza",
+    "email": "glenferdinzaaghis.2024@gmail.com",
+    "url": "https://gsya.my.id"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Glenferdinza/landing-page/issues"
+  },
+  "homepage": "https://github.com/Glenferdinza/landing-page#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "files": [
+    "index.html",
+    "assets/",
+    "README.md",
+    "LICENSE"
+  ]
+}

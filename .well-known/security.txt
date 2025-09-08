@@ -1,0 +1,6 @@
+Contact: mailto:glenferdinzaaghis.2024@gmail.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en, id
+Canonical: https://glenferdinza.github.io/Landingpage/.well-known/security.txt
+Policy: https://github.com/Glenferdinza/Landingpage/blob/main/SECURITY.md
+Acknowledgments: https://github.com/Glenferdinza/Landingpage/blob/main/CONTRIBUTORS.md
