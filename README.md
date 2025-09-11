@@ -2,11 +2,11 @@
 
 A professional, secure, and responsive landing page for Glenferdinza - Web Developer & ML Engineer.
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 👤 Author
+## Author
 
 **Glenferdinza**
 - Portfolio: [https://gsya.my.id](https://gsya.my.id)
