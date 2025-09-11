@@ -1,10 +1,14 @@
 /**
- * CONSTELLATION BACKGROUND SYSTEM
- * Creates an animated star field with connecting lines
- * Professional implementation for Glenferdinza's landing page
+ * Constellation System - Protected
+ * Copyright (c) 2025 Glenferdinza
  */
 
-class ConstellationBackground {
+(function() {
+    'use strict';
+    
+    const _0x2c3d = function() { return 'ConstellationBackground'; };
+    
+    class ConstellationBackground {
     constructor() {
         this.canvas = document.getElementById('starCanvas');
         this.ctx = this.canvas.getContext('2d');
@@ -294,3 +298,5 @@ if (typeof window !== 'undefined') {
         initConstellation();
     }
 }
+
+})(); // Close wrapper

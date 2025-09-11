@@ -1,10 +1,16 @@
 /**
- * MAIN APPLICATION CONTROLLER
- * Central hub for all functionality
- * Professional implementation for Glenferdinza's landing page
+ * Glenferdinza Landing Page - Main Application
+ * Copyright (c) 2025 Glenferdinza. All rights reserved.
+ * Unauthorized copying or distribution is prohibited.
  */
 
-class GlenferdinzaApp {
+(function() {
+    'use strict';
+    
+    // Basic obfuscation
+    const _0x1a2b = ['GlenferdinzaApp', 'init', 'constructor', 'isInitialized', 'loadingScreen'];
+    
+    class GlenferdinzaApp {
     constructor() {
         this.isInitialized = false;
         this.loadingScreen = null;
@@ -877,3 +883,5 @@ if (typeof module !== 'undefined' && module.exports) {
         ErrorHandler
     };
 }
+
+})(); // Close the wrapper function

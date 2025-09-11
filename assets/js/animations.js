@@ -1,10 +1,14 @@
 /**
- * ANIMATION SYSTEM
- * Simplified interactive animations and effects
- * Professional implementation for Glenferdinza's landing page
+ * Animation System - Protected
+ * Copyright (c) 2025 Glenferdinza
  */
 
-class AnimationController {
+(function() {
+    'use strict';
+    
+    const _0x4e5f = ['AnimationController', 'init', 'observers'];
+    
+    class AnimationController {
     constructor() {
         this.observers = [];
         this.typingAnimation = null;
@@ -203,3 +207,5 @@ if (typeof module !== 'undefined' && module.exports) {
         PerformanceMonitor
     };
 }
+
+})(); // Close wrapper
