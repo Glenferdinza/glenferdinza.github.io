@@ -1,13 +1,11 @@
 /**
- * SECURITY & ANTI-DEBUGGING PROTECTION
- * Protects source code from inspection and debugging
- * Professional implementation for source code protection
+ * Security Protection System
+ * Copyright (c) 2025 Glenferdinza
  */
 
 (function() {
     'use strict';
     
-    // Anti-debugging measures
     const Protection = {
         // Disable console methods
         disableConsole() {
@@ -17,174 +15,92 @@
             });
         },
         
-        // Disable right-click context menu
-        disableRightClick() {
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
+        // Hide assets in debugger (keep right-click enabled)
+        hideDebuggerAssets() {
+            // This method is kept but disabled for better UX
+            // Users can right-click, but debugger won't show clear source
         },
         
-        // Disable common keyboard shortcuts
-        disableKeyboardShortcuts() {
+        // Light keyboard protection (only block view source)
+        lightKeyboardProtection() {
             document.addEventListener('keydown', function(e) {
-                // Disable F12 (Developer Tools)
-                if (e.keyCode === 123) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+I (Developer Tools)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+C (Element Inspector)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+J (Console)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+U (View Source)
+                // Only disable Ctrl+U (View Source) to hide raw code
                 if (e.ctrlKey && e.keyCode === 85) {
                     e.preventDefault();
                     return false;
                 }
-                
-                // Disable Ctrl+S (Save Page)
-                if (e.ctrlKey && e.keyCode === 83) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+A (Select All)
-                if (e.ctrlKey && e.keyCode === 65) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+P (Print)
-                if (e.ctrlKey && e.keyCode === 80) {
-                    e.preventDefault();
-                    return false;
-                }
             });
         },
         
-        // Detect developer tools
-        detectDevTools() {
-            let devtools = {
-                open: false,
-                orientation: null
+        // Subtle debugger obfuscation (no redirect)
+        obfuscateDebugger() {
+            // Create noise in debugger without blocking access
+            const createDebuggerNoise = () => {
+                // Add fake variables and functions to confuse debugger
+                const _fakeVar1 = 'decoy_data_' + Math.random();
+                const _fakeVar2 = 'noise_' + Date.now();
+                const _fakeFunction = function() { return 'protected'; };
+                
+                // Make debugging harder but not impossible
+                return { _fakeVar1, _fakeVar2, _fakeFunction };
             };
             
-            const threshold = 160;
-            
-            setInterval(function() {
-                if (window.outerHeight - window.innerHeight > threshold || 
-                    window.outerWidth - window.innerWidth > threshold) {
-                    if (!devtools.open) {
-                        devtools.open = true;
-                        Protection.handleDevToolsOpen();
-                    }
-                } else {
-                    devtools.open = false;
-                }
-            }, 500);
+            setInterval(createDebuggerNoise, 1000);
         },
         
-        // Handle developer tools detection
-        handleDevToolsOpen() {
-            // Redirect or show warning
-            document.body.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-family: 'Inter', sans-serif;
-                    color: white;
-                    text-align: center;
-                    z-index: 99999;
-                ">
-                    <div>
-                        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">🔒 Access Restricted</h1>
-                        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Developer tools are not allowed on this page.</p>
-                        <button onclick="location.reload()" style="
-                            background: rgba(255,255,255,0.2);
-                            border: 2px solid white;
-                            color: white;
-                            padding: 12px 24px;
-                            font-size: 1rem;
-                            border-radius: 8px;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                        ">Reload Page</button>
-                    </div>
-                </div>
-            `;
-        },
-        
-        // Obfuscate source code
+        // Advanced source code obfuscation for debugger
         obfuscateCode() {
             // Remove comments and minify inline scripts
             const scripts = document.querySelectorAll('script');
             scripts.forEach(script => {
                 if (script.innerHTML) {
-                    // Basic obfuscation - remove comments and extra whitespace
+                    // Advanced obfuscation
                     script.innerHTML = script.innerHTML
                         .replace(/\/\*[\s\S]*?\*\//g, '')
                         .replace(/\/\/.*$/gm, '')
                         .replace(/\s+/g, ' ')
+                        .replace(/function\s+(\w+)/g, 'function _$1')
+                        .replace(/class\s+(\w+)/g, 'class _$1')
+                        .replace(/const\s+(\w+)/g, 'const _$1')
+                        .replace(/let\s+(\w+)/g, 'let _$1')
+                        .replace(/var\s+(\w+)/g, 'var _$1')
                         .trim();
                 }
             });
+            
+            // Create dummy scripts to confuse debugger
+            this.createDecoyScripts();
         },
         
-        // Disable text selection
-        disableTextSelection() {
-            document.addEventListener('selectstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
+        // Create decoy scripts to hide real assets
+        createDecoyScripts() {
+            const decoyCount = 5;
+            for (let i = 0; i < decoyCount; i++) {
+                const decoyScript = document.createElement('script');
+                decoyScript.textContent = `
+                    // Decoy Script ${i + 1}
+                    (function() {
+                        const _decoy${i} = {
+                            init: function() { return 'decoy_${i}_${Math.random()}'; },
+                            process: function() { return Math.random() * 1000; },
+                            data: 'protected_content_${Date.now()}'
+                        };
+                        window._decoy${i} = _decoy${i};
+                    })();
+                `;
+                document.head.appendChild(decoyScript);
+            }
+        },
+        
+        // Light selection protection (allow normal selection)
+        lightSelectionProtection() {
+            // Only prevent drag on images, allow text selection
             document.addEventListener('dragstart', function(e) {
-                e.preventDefault();
-                return false;
+                if (e.target.tagName === 'IMG') {
+                    e.preventDefault();
+                    return false;
+                }
             });
-            
-            // CSS-based selection prevention
-            const style = document.createElement('style');
-            style.innerHTML = `
-                * {
-                    -webkit-user-select: none !important;
-                    -moz-user-select: none !important;
-                    -ms-user-select: none !important;
-                    user-select: none !important;
-                    -webkit-touch-callout: none !important;
-                    -webkit-tap-highlight-color: transparent !important;
-                }
-                
-                input, textarea {
-                    -webkit-user-select: text !important;
-                    -moz-user-select: text !important;
-                    -ms-user-select: text !important;
-                    user-select: text !important;
-                }
-            `;
-            document.head.appendChild(style);
         },
         
         // Disable image saving
@@ -226,17 +142,39 @@
             throw new Error('Debugging not allowed');
         },
         
-        // Clear traces
+        // Advanced trace clearing
         clearTraces() {
             // Clear console
             if (console.clear) {
                 console.clear();
             }
             
-            // Remove script source maps
+            // Don't remove src attributes, but obfuscate them
             const scripts = document.querySelectorAll('script[src]');
-            scripts.forEach(script => {
-                script.removeAttribute('src');
+            scripts.forEach((script, index) => {
+                // Create shadow scripts to confuse debugger sources panel
+                const shadowScript = script.cloneNode(true);
+                shadowScript.src = `./assets/js/shadow_${index}_${Math.random().toString(36).substr(2, 9)}.js`;
+                shadowScript.style.display = 'none';
+                document.head.appendChild(shadowScript);
+            });
+            
+            // Add fake source maps
+            this.addFakeSourceMaps();
+        },
+        
+        // Add fake source maps to confuse debugger
+        addFakeSourceMaps() {
+            const fakeSourceMaps = [
+                '//# sourceMappingURL=fake1.js.map',
+                '//# sourceMappingURL=fake2.js.map',
+                '//# sourceMappingURL=fake3.js.map'
+            ];
+            
+            fakeSourceMaps.forEach((map, index) => {
+                const fakeScript = document.createElement('script');
+                fakeScript.textContent = `console.log('Fake source ${index}'); ${map}`;
+                document.head.appendChild(fakeScript);
             });
         },
         
@@ -252,29 +190,28 @@
             }
         },
         
-        // Enable all protection measures
+        // Enable subtle protection measures
         enableProtections() {
             try {
-                // Basic protections
-                this.disableRightClick();
-                this.disableKeyboardShortcuts();
-                this.disableTextSelection();
+                // Light protections - keep UX friendly
+                this.lightKeyboardProtection(); // Only block Ctrl+U
+                this.lightSelectionProtection(); // Only prevent image drag
                 this.disableImageSaving();
                 
-                // Advanced protections
-                this.detectDevTools();
+                // Debugger obfuscation without blocking
+                this.obfuscateDebugger();
                 this.monitorDebugging();
                 
                 // Code obfuscation
                 this.obfuscateCode();
                 this.clearTraces();
                 
-                // Console protection
+                // Light console protection (delay to allow initial logs)
                 setTimeout(() => {
                     this.disableConsole();
-                }, 2000);
+                }, 3000);
                 
-                console.log('🔒 Protection measures activated');
+                // Protection measures activated
                 
             } catch (error) {
                 // Silently handle any errors
@@ -325,6 +262,6 @@
 })();
 
 // Source code protection notice
-console.log('%c🔒 This website is protected against inspection and debugging.', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
-console.log('%c⚠️ Unauthorized access to source code is prohibited.', 'color: #ffa500; font-size: 14px;');
-console.log('%c© 2025 Glenferdinza. All rights reserved.', 'color: #4a90e2; font-size: 12px;');
+// This website is protected against inspection and debugging
+// Unauthorized access to source code is prohibited
+// Copyright 2025 Glenferdinza. All rights reserved.

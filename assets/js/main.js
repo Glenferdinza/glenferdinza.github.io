@@ -4,13 +4,15 @@
  * Unauthorized copying or distribution is prohibited.
  */
 
-(function() {
-    'use strict';
-    
-    // Basic obfuscation
-    const _0x1a2b = ['GlenferdinzaApp', 'init', 'constructor', 'isInitialized', 'loadingScreen'];
-    
-    class GlenferdinzaApp {
+// Subtle obfuscation without breaking functionality
+/**
+ * Main Application Controller
+ * Copyright (c) 2025 Glenferdinza. All rights reserved.
+ */
+
+const _0x1a2b = ['GlenferdinzaApp', 'init', 'constructor', 'isInitialized', 'loadingScreen'];
+
+class GlenferdinzaApp {
     constructor() {
         this.isInitialized = false;
         this.loadingScreen = null;
@@ -42,10 +44,10 @@
             await this.hideLoadingScreen();
             
             this.isInitialized = true;
-            console.log('✅ Glenferdinza Landing Page initialized successfully');
+            console.log('Application initialized successfully');
             
         } catch (error) {
-            console.error('❌ Failed to initialize application:', error);
+            console.error('Failed to initialize application:', error);
             this.handleInitializationError(error);
         }
     }
@@ -117,9 +119,9 @@
         
         try {
             await Promise.all(imagePromises);
-            console.log('✅ Critical resources preloaded');
+            console.log('Critical resources preloaded');
         } catch (error) {
-            console.warn('⚠️ Some resources failed to preload:', error);
+            console.warn('Some resources failed to preload:', error);
         }
     }
     
@@ -518,9 +520,9 @@
     async registerServiceWorker() {
         try {
             const registration = await navigator.serviceWorker.register('/sw.js');
-            console.log('✅ Service Worker registered:', registration);
+            console.log('Service Worker registered:', registration);
         } catch (error) {
-            console.log('ℹ️ Service Worker registration failed:', error);
+            console.log('Service Worker registration failed:', error);
         }
     }
     
@@ -583,9 +585,9 @@
         
         try {
             await cache.addAll(resourcesToCache);
-            console.log('✅ Resources cached');
+            console.log('Resources cached');
         } catch (error) {
-            console.warn('⚠️ Failed to cache some resources:', error);
+            console.warn('Failed to cache some resources:', error);
         }
     }
     
@@ -679,8 +681,7 @@
 }
 
 /**
- * THEME CONTROLLER
- * Handles theme switching and preferences
+ * Theme Controller
  */
 class ThemeController {
     constructor() {
@@ -737,8 +738,7 @@ class ThemeController {
 }
 
 /**
- * ANALYTICS CONTROLLER
- * Handles event tracking and analytics
+ * Analytics Controller
  */
 class AnalyticsController {
     constructor() {
@@ -769,7 +769,7 @@ class AnalyticsController {
         };
         
         this.events.push(event);
-        console.log('📊 Event tracked:', event);
+        // Event tracked
         
         // Send to analytics service if configured
         this.sendToAnalytics(event);
@@ -809,8 +809,7 @@ class AnalyticsController {
 }
 
 /**
- * ERROR HANDLER
- * Centralized error handling and reporting
+ * Error Handler
  */
 class ErrorHandler {
     constructor() {
@@ -834,7 +833,7 @@ class ErrorHandler {
             this.errors = this.errors.slice(-this.maxErrors);
         }
         
-        console.error('🚨 Error caught:', errorInfo);
+        console.error('Error caught:', errorInfo);
         
         // Report to error tracking service if configured
         this.reportError(errorInfo);
@@ -883,5 +882,3 @@ if (typeof module !== 'undefined' && module.exports) {
         ErrorHandler
     };
 }
-
-})(); // Close the wrapper function
