@@ -2,10 +2,6 @@
 
 A professional, secure, and responsive landing page for Glenferdinza - Web Developer & ML Engineer.
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## Author
 
 **Glenferdinza**
