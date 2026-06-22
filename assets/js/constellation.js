@@ -171,11 +171,23 @@ class ConstellationBackground {
         });
     }
     
+    getThemeColors() {
+        const style = getComputedStyle(document.documentElement);
+        const accent = style.getPropertyValue('--color-accent-primary').trim() || '#ff5c00';
+        const text = style.getPropertyValue('--color-text-primary').trim() || '#ffffff';
+        return {
+            star: text,
+            line: accent,
+            mouseInfluence: accent
+        };
+    }
+
     drawStars() {
+        const colors = this.getThemeColors();
         this.stars.forEach(star => {
             this.ctx.save();
             this.ctx.globalAlpha = star.opacity;
-            this.ctx.fillStyle = this.config.colors.star;
+            this.ctx.fillStyle = colors.star;
             this.ctx.beginPath();
             this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
             this.ctx.fill();
@@ -183,7 +195,7 @@ class ConstellationBackground {
             // Add glow effect for larger stars
             if (star.size > 2) {
                 this.ctx.shadowBlur = 10;
-                this.ctx.shadowColor = this.config.colors.star;
+                this.ctx.shadowColor = colors.star;
                 this.ctx.fill();
             }
             
@@ -194,11 +206,12 @@ class ConstellationBackground {
     drawLines() {
         // Update connections dynamically
         this.updateConnections();
+        const colors = this.getThemeColors();
         
         this.lines.forEach(line => {
             this.ctx.save();
             this.ctx.globalAlpha = line.opacity;
-            this.ctx.strokeStyle = this.config.colors.line;
+            this.ctx.strokeStyle = colors.line;
             this.ctx.lineWidth = 0.5;
             this.ctx.beginPath();
             this.ctx.moveTo(line.star1.x, line.star1.y);
@@ -210,10 +223,11 @@ class ConstellationBackground {
     
     drawMouseInfluence() {
         if (!this.isMouseActive) return;
+        const colors = this.getThemeColors();
         
         this.ctx.save();
         this.ctx.globalAlpha = 0.1;
-        this.ctx.fillStyle = this.config.colors.mouseInfluence;
+        this.ctx.fillStyle = colors.mouseInfluence;
         this.ctx.beginPath();
         this.ctx.arc(this.mousePos.x, this.mousePos.y, this.config.mouseInfluenceRadius, 0, Math.PI * 2);
         this.ctx.fill();
@@ -279,6 +293,7 @@ let constellation = null;
 function initConstellation() {
     if (document.getElementById('starCanvas')) {
         constellation = new ConstellationBackground();
+        window.constellation = constellation; // Expose on window object
     }
 }
 

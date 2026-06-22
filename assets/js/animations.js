@@ -73,10 +73,10 @@ class TypingAnimation {
     constructor(element) {
         this.element = element;
         this.phrases = [
-            'Building innovative web solutions',
-            'Creating intelligent ML systems',
-            'Designing user experiences',
-            'Developing scalable applications'
+            'Architecting clean data pipelines',
+            'Orchestrating backend systems',
+            'Bridging edge servers with web apps',
+            'Automating systems infrastructure'
         ];
         this.currentPhraseIndex = 0;
         this.currentCharIndex = 0;
