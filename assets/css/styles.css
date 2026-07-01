@@ -729,7 +729,7 @@ body {
     content: '';
     width: 24px;
     height: 24px;
-    background-color: var(--color-text-primary);
+    background-color: var(--color-accent-primary);
     -webkit-mask-image: url('../images/logo.svg');
     mask-image: url('../images/logo.svg');
     -webkit-mask-size: contain;
