@@ -99,10 +99,11 @@ html {
     font-size: 16px;
     scrollbar-width: none; /* Hide scrollbar Firefox */
     -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
-    overflow: hidden !important; /* Prevent scrolling completely on desktop */
+    overflow-y: auto !important; /* Enable vertical scrolling */
 }
 
-html::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
     display: none; /* Hide scrollbar Safari/Chrome */
 }
 
@@ -113,16 +114,12 @@ body {
     background-size: 24px 24px;
     color: var(--color-text-primary);
     line-height: 1.6;
-    overflow: hidden !important; /* Prevent scrolling completely on desktop */
+    overflow-y: auto !important; /* Enable vertical scrolling */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
     min-height: 100vh;
     position: relative;
     transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-@media (max-width: 768px) {
-    html, body {
-        overflow-y: auto; /* Allow scroll on mobile devices if needed */
-    }
 }
 
 /* ============= LOADING SCREEN ============= */
@@ -723,6 +720,28 @@ body {
     font-weight: 700;
     color: var(--color-text-primary);
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-logo::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-text-primary);
+    -webkit-mask-image: url('../images/logo.svg');
+    mask-image: url('../images/logo.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    display: inline-block;
+    transition: background-color var(--transition-normal), transform var(--transition-fast);
+}
+
+.nav-logo:hover::before {
+    transform: rotate(-12deg) scale(1.08);
 }
 
 .theme-toggle-btn {
