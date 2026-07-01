@@ -445,11 +445,12 @@ body {
     background-color: var(--color-accent-primary);
     color: #000000;
     transform: translateY(-3px);
+    z-index: 10;
 }
 
 .social-tooltip {
     position: absolute;
-    bottom: -35px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--color-bg-primary);
@@ -464,6 +465,7 @@ body {
     transition: all var(--transition-fast);
     white-space: nowrap;
     border: 2px solid var(--color-text-primary);
+    z-index: 20;
 }
 
 .social-icon:hover .social-tooltip {
