@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GLENFERDINZA CV VIEWER // MODERN CLEAN STYLES v4.0
+   GLENFERDINZA CV VIEWER // 1-SCREEN MODERN CLEAN STYLES v8.0
    Typography: Plus Jakarta Sans + Space Grotesk
    Universal scrollbar suppression & mobile-first responsiveness.
    ========================================================================== */
@@ -17,7 +17,6 @@
   --accent-rgb: 255, 42, 95;
   --accent-glow: rgba(255, 42, 95, 0.25);
   
-  --green: #10b981;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
@@ -25,7 +24,7 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-title: 'Space Grotesk', sans-serif;
   
-  --navbar-height: 64px;
+  --navbar-height: 54px;
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -73,11 +72,14 @@ html, body, *, .viewer-container, .pdf-wrapper, object, iframe {
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-base);
   color: var(--text-main);
   font-family: var(--font-sans);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -112,13 +114,13 @@ a {
   height: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   width: 100%;
 }
 
 .nav-logo {
   font-family: var(--font-title);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--text-main);
@@ -131,13 +133,13 @@ a {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .nav-btn {
   font-size: 0.78rem;
   font-weight: 600;
-  padding: 0.45rem 0.95rem;
+  padding: 0.4rem 0.85rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -171,8 +173,8 @@ a {
   background: var(--bg-pill);
   border: 1px solid var(--border);
   color: var(--text-main);
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   cursor: pointer;
   display: flex;
@@ -209,9 +211,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.5rem;
   height: calc(100vh - var(--navbar-height));
+  height: calc(100dvh - var(--navbar-height));
   position: relative;
+  overflow: hidden;
 }
 
 /* PDF Embedded Section (Desktop) */
@@ -233,8 +237,8 @@ a {
 .pdf-header-bar {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.65rem 1.25rem;
+  gap: 0.85rem;
+  padding: 0.6rem 1.15rem;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid var(--border);
   font-size: 0.75rem;
@@ -281,8 +285,8 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 460px;
-  padding: 1rem;
+  max-width: 440px;
+  padding: 0.5rem;
 }
 
 .cv-mobile-card {
@@ -291,7 +295,7 @@ a {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   width: 100%;
-  padding: 2rem 1.5rem;
+  padding: 1.65rem 1.35rem;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
 }
 
@@ -301,12 +305,12 @@ a {
   letter-spacing: 0.08em;
   color: var(--accent);
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .candidate-name {
   font-family: var(--font-title);
-  font-size: 2rem;
+  font-size: 1.85rem;
   font-weight: 700;
   line-height: 1.15;
   margin-bottom: 0.2rem;
@@ -317,25 +321,25 @@ a {
 }
 
 .candidate-title {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 600;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
 }
 
 .card-desc {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  margin-bottom: 1.75rem;
+  line-height: 1.45;
+  margin-bottom: 1.35rem;
 }
 
 .card-buttons {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .card-btn {
@@ -344,37 +348,11 @@ a {
   justify-content: center;
   width: 100%;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
-}
-
-.card-footer {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--green);
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
 }
 
 /* Responsive adjustments */
@@ -392,8 +370,8 @@ a {
   }
   
   .viewer-container {
-    padding: 1rem;
-    height: auto;
-    min-height: calc(100vh - var(--navbar-height));
+    padding: 0.75rem;
+    height: calc(100vh - var(--navbar-height));
+    height: calc(100dvh - var(--navbar-height));
   }
 }
