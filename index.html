@@ -1,185 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asya's Page</title>
+    <title>Glenferdinza | AI Engineer &amp; Systems Architect</title>
 
-    <!-- Theme Initialization to Prevent Flashing -->
+    <!-- Theme Initialization -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light' || savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            } else {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-            }
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
 
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/styles.css?v=2.0">
+    <link rel="stylesheet" href="./assets/css/styles.css?v=3.0">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Glenferdinza - Professional Web Developer and Machine Learning Engineer. Portfolio, articles, and contact information.">
-    <meta name="keywords" content="web developer, machine learning, portfolio, glenferdinza">
+    <meta name="description" content="Official Gateway Hub for Glenferdinza — AI Engineer &amp; Systems Architect specializing in RAG architectures, backend automation, and high-performance IoT edge systems.">
+    <meta name="keywords" content="Glenferdinza, AI Engineer, Systems Architect, RAG Architecture, Backend Automation, IoT Mesh, Sangkara, Machine Learning">
     <meta name="author" content="Glenferdinza">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Glenferdinza - Web Developer & ML Engineer">
-    <meta property="og:description" content="Professional Web Developer and Machine Learning Engineer">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Glenferdinza | AI Engineer &amp; Systems Architect">
+    <meta property="og:description" content="AI Engineer &amp; problem solver dedicated to building production-grade AI systems, robust backend automation, and high-performance edge architectures.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="./assets/images/profile.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg?v=2">
-    <link rel="shortcut icon" href="./assets/images/logo.svg?v=2">
-    <link rel="apple-touch-icon" href="./assets/images/logo.svg?v=2">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg?v=3">
+    <link rel="shortcut icon" href="./assets/images/logo.svg?v=3">
+    <link rel="apple-touch-icon" href="./assets/images/logo.svg?v=3">
 </head>
 <body>
-    <!-- Header / Navbar -->
-    <header class="top-navbar">
-        <div class="nav-logo">GLENFERDINZA</div>
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-            <i class="fas fa-sun theme-icon-light"></i>
-            <i class="fas fa-moon theme-icon-dark"></i>
-        </button>
+    <!-- Interactive Background Particle Canvas -->
+    <div class="canvas-bg-container">
+        <canvas id="techCanvas"></canvas>
+    </div>
+
+    <!-- Technical Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-bracket">[</span>
+                <span class="brand-text">GLENFERDINZA // GATEWAY</span>
+                <span class="brand-bracket">]</span>
+                <span class="pulse-dot"></span>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="system-status-chip">
+                    <span class="status-indicator"></span>
+                    <span class="status-label">SYS: ONLINE</span>
+                </div>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme" title="Toggle Theme">
+                    <i class="fas fa-sun icon-sun"></i>
+                    <i class="fas fa-moon icon-moon"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-spinner"></div>
-        <p class="loading-text">Loading...</p>
-    </div>
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <div class="hub-card" id="hubCard">
+            <!-- Corner Crosshair Tech Accents -->
+            <span class="corner-crosshair top-left">+</span>
+            <span class="corner-crosshair top-right">+</span>
+            <span class="corner-crosshair bottom-left">+</span>
+            <span class="corner-crosshair bottom-right">+</span>
 
-    <!-- Constellation Background -->
-    <div class="constellation" id="constellation">
-        <canvas id="starCanvas"></canvas>
-    </div>
-    
-    <!-- Main Container -->
-    <main class="main-container">
-        <div class="card" id="mainCard">
-            <!-- Profile Section -->
-            <div class="profile-section">
-                <div class="profile-image-container">
-                    <img src="./assets/images/profile.jpg" alt="Glenferdinza Profile" class="profile-image" id="profileImage">
-                    <div class="profile-ring"></div>
+            <!-- Terminal Window Top Bar -->
+            <div class="terminal-bar">
+                <div class="terminal-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
                 </div>
-                
-                <h1 class="name-title">Glenferdinza</h1>
-                <p class="role-subtitle">Systems &amp; Automation Infrastructure Engineer</p>
-                <div class="typing-text" id="typingText"></div>
+                <div class="terminal-title">glen@gateway:~/$ view-hub --production</div>
+                <div class="terminal-ping">[ PING: 18ms ]</div>
             </div>
-            
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-                <a href="https://glen-dev.vercel.app" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="btn btn-primary"
-                   data-text="My Portfolio">
-                    <i class="fas fa-briefcase btn-icon"></i>
-                    <span>My Portfolio</span>
-                    <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-                
-                <a href="https://glen-dev.vercel.app/writing" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="btn btn-secondary"
-                   data-text="Read Articles">
-                    <i class="fas fa-article btn-icon"></i>
-                    <span>Read my articles</span>
-                    <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-                
-                <a href="https://wa.me/6281225495018" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="btn btn-whatsapp"
-                   data-text="WhatsApp Contact">
-                    <i class="fab fa-whatsapp btn-icon"></i>
-                    <span>WhatsApp Contact</span>
-                    <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-            </div>
-            
-            <!-- Divider -->
-            <div class="divider">
-                <div class="divider-line"></div>
-                <div class="divider-text">Connect with me</div>
-                <div class="divider-line"></div>
-            </div>
-            
-            <!-- Social Links -->
-            <div class="social-section">
-                <div class="social-links">
-                    <a href="https://github.com/Glenferdinza" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-icon"
-                       data-platform="GitHub">
-                        <i class="fab fa-github"></i>
-                        <span class="social-tooltip">GitHub</span>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/glenferdinza-efian" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-icon"
-                       data-platform="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span class="social-tooltip">LinkedIn</span>
-                    </a>
-                    
-                    <a href="https://instagram.com/g.syaaaa" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-icon"
-                       data-platform="Instagram">
-                        <i class="fab fa-instagram"></i>
-                        <span class="social-tooltip">Instagram</span>
-                    </a>
+
+            <!-- Profile & Header Section -->
+            <section class="profile-header">
+                <div class="avatar-wrapper">
+                    <div class="avatar-ring-outer"></div>
+                    <div class="avatar-ring-inner"></div>
+                    <img src="./assets/images/profile.jpg" alt="Glenferdinza" class="avatar-img" />
+                    <div class="avatar-status-badge" title="Available for Collaboration">
+                        <span class="badge-dot"></span>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Footer -->
-            <footer class="footer-section">
-                <div class="footer-content">
-                    <p class="copyright">
-                        © <span id="currentYear"></span> Glenferdinza. All rights reserved.
+
+                <div class="profile-info">
+                    <div class="eyebrow-tag">[ SYSTEMS ARCHITECT // AI ENGINEER ]</div>
+                    <h1 class="profile-name">
+                        <span class="name-first">Glenferdinza</span>
+                        <span class="name-accent">.</span>
+                    </h1>
+                    <p class="profile-fullname">Glenferdinza Aghis Asyadda Rayndika Efian</p>
+                    
+                    <p class="profile-bio">
+                        AI Engineer &amp; technical problem solver dedicated to building production-grade AI systems, robust backend automation, and high-performance IoT edge architectures.
                     </p>
+
+                    <!-- Core Competency Badges -->
+                    <div class="tag-cloud">
+                        <span class="tech-tag"><i class="fas fa-brain"></i> RAG &amp; Vector Search</span>
+                        <span class="tech-tag"><i class="fas fa-microchip"></i> Sangkara IoT Mesh</span>
+                        <span class="tech-tag"><i class="fas fa-server"></i> Backend Automation</span>
+                        <span class="tech-tag"><i class="fas fa-chart-line"></i> Macroeconomic NLP</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Specs Metric Bar -->
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <span class="spec-label">CORE FOCUS</span>
+                    <span class="spec-value">AI &amp; Distributed Systems</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">INFRASTRUCTURE</span>
+                    <span class="spec-value">Cloud, Edge &amp; Microservices</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">AVAILABILITY</span>
+                    <span class="spec-value text-accent">Open for Projects</span>
+                </div>
+            </div>
+
+            <!-- Action Gateway Section -->
+            <section class="gateway-section">
+                <div class="section-heading">
+                    <span class="section-title-tag">[ EXPLORE PLATFORMS &amp; SYSTEMS ]</span>
+                    <div class="section-divider-line"></div>
+                </div>
+
+                <div class="action-links">
+                    <!-- Featured: Primary Portfolio -->
+                    <a href="https://glen-dev.vercel.app" target="_blank" rel="noopener noreferrer" class="action-card featured-card">
+                        <div class="card-icon-box">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="card-text-box">
+                            <div class="card-title-row">
+                                <span class="card-title">Production Portfolio</span>
+                                <span class="card-badge">[ FEATURED // LIVE ]</span>
+                            </div>
+                            <p class="card-desc">Interactive portfolio featuring integrated RAG chatbot, architecture showcases, and live systems telemetry.</p>
+                        </div>
+                        <div class="card-arrow-box">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
+
+                    <!-- Articles & Deep Dives -->
+                    <a href="https://glen-dev.vercel.app/writing" target="_blank" rel="noopener noreferrer" class="action-card">
+                        <div class="card-icon-box">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="card-text-box">
+                            <div class="card-title-row">
+                                <span class="card-title">Systems Logs &amp; Research</span>
+                                <span class="card-badge">[ ARTICLES ]</span>
+                            </div>
+                            <p class="card-desc">Technical deep-dives into RAG retrieval pipelines, edge mesh routing, and BRICS geopolitical analysis.</p>
+                        </div>
+                        <div class="card-arrow-box">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
+
+                    <!-- Interactive Labs -->
+                    <a href="https://glen-dev.vercel.app/labs" target="_blank" rel="noopener noreferrer" class="action-card">
+                        <div class="card-icon-box">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="card-text-box">
+                            <div class="card-title-row">
+                                <span class="card-title">Interactive Systems Labs</span>
+                                <span class="card-badge">[ PLAYGROUND ]</span>
+                            </div>
+                            <p class="card-desc">Live IoT sensor stream emulator, telemetry visualizers, and LLM inference cost calculator.</p>
+                        </div>
+                        <div class="card-arrow-box">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp Direct Contact -->
+                    <a href="https://wa.me/6281225495018" target="_blank" rel="noopener noreferrer" class="action-card whatsapp-card">
+                        <div class="card-icon-box">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="card-text-box">
+                            <div class="card-title-row">
+                                <span class="card-title">Direct WhatsApp Channel</span>
+                                <span class="card-badge">[ FAST RESPONSE ]</span>
+                            </div>
+                            <p class="card-desc">Direct line for consulting inquiries, technical discussions, and collaborative engineering projects.</p>
+                        </div>
+                        <div class="card-arrow-box">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Social & Communication Network Grid -->
+            <section class="social-section">
+                <div class="section-heading">
+                    <span class="section-title-tag">[ NETWORKS &amp; CONNECTIVITY ]</span>
+                    <div class="section-divider-line"></div>
+                </div>
+
+                <div class="social-chips-grid">
+                    <a href="https://github.com/Glenferdinza" target="_blank" rel="noopener noreferrer" class="social-chip">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/glenferdinza-efian" target="_blank" rel="noopener noreferrer" class="social-chip">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:glenferdinza21@gmail.com" class="social-chip">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://instagram.com/g.syaaaa" target="_blank" rel="noopener noreferrer" class="social-chip">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Technical Footer -->
+            <footer class="hub-footer">
+                <div class="footer-line">
+                    <span>© <span id="year">2026</span> GLENFERDINZA</span>
+                    <span class="footer-divider">//</span>
+                    <span>ENGINEERING &amp; AI SYSTEMS</span>
                 </div>
             </footer>
         </div>
     </main>
 
-    <!-- Security Protection -->
-    <script src="./assets/js/protection.js"></script>
-    <script src="./assets/js/debugger-obfuscation.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script src="./assets/js/constellation.js"></script>
-    <script src="./assets/js/animations.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <!-- Custom Main Script -->
+    <script src="./assets/js/main.js?v=3.0"></script>
 </body>
 </html>
