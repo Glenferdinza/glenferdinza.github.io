@@ -1,7 +1,6 @@
 /* ==========================================================================
-   GLENFERDINZA GATEWAY // CLEAN MODERN DESIGN SYSTEM v4.0
-   Typography: Plus Jakarta Sans + Space Grotesk
-   No visual clutter, no icons, 100% mobile-optimized.
+   GLENFERDINZA GATEWAY // IMPECCABLE DESIGN SYSTEM v5.0
+   Clean, confident typography, zero AI-slop, 100% mobile-crafted.
    ========================================================================== */
 
 :root {
@@ -9,15 +8,15 @@
   --bg-base: #090a0f;
   --bg-card: rgba(15, 18, 26, 0.85);
   --bg-card-hover: rgba(22, 27, 39, 0.95);
-  --bg-pill: rgba(255, 255, 255, 0.05);
-  --bg-pill-hover: rgba(255, 255, 255, 0.1);
-  --border: rgba(255, 255, 255, 0.08);
+  --bg-pill: rgba(255, 255, 255, 0.04);
+  --bg-pill-hover: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.07);
   --border-hover: rgba(255, 42, 95, 0.4);
   
-  --accent: #ff2a5f; /* Electric Vermilion / Neon Crimson */
+  --accent: #ff2a5f;
   --accent-light: #fb7185;
   --accent-rgb: 255, 42, 95;
-  --accent-glow: rgba(255, 42, 95, 0.2);
+  --accent-glow: rgba(255, 42, 95, 0.18);
   
   --green: #10b981;
   --text-main: #f8fafc;
@@ -27,12 +26,12 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-title: 'Space Grotesk', sans-serif;
   
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --dot-color: rgba(255, 255, 255, 0.06);
+  --dot-color: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="light"] {
@@ -40,7 +39,7 @@
   --bg-card: rgba(255, 255, 255, 0.95);
   --bg-card-hover: #ffffff;
   --bg-pill: rgba(0, 0, 0, 0.04);
-  --bg-pill-hover: rgba(0, 0, 0, 0.08);
+  --bg-pill-hover: rgba(0, 0, 0, 0.07);
   --border: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(225, 29, 72, 0.4);
   
@@ -53,7 +52,7 @@
   --text-muted: #475569;
   --text-dim: #94a3b8;
   
-  --dot-color: rgba(0, 0, 0, 0.04);
+  --dot-color: rgba(0, 0, 0, 0.035);
 }
 
 /* --- Universal Scrollbar Suppression --- */
@@ -91,14 +90,14 @@ body {
   background-size: 24px 24px;
 }
 
-/* Ambient glow blobs */
+/* Ambient glow */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.25;
+  opacity: 0.22;
 }
 .glow-top {
   top: -150px;
@@ -133,7 +132,7 @@ body {
 
 .nav-container {
   width: 100%;
-  max-width: 680px;
+  max-width: 620px;
   margin: 0 auto;
   padding: 0 1.25rem;
   display: flex;
@@ -143,9 +142,9 @@ body {
 
 .nav-brand {
   font-family: var(--font-title);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
   color: var(--text-main);
 }
 
@@ -155,15 +154,15 @@ body {
   gap: 0.75rem;
 }
 
-.status-pill {
+.status-badge {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   padding: 0.25rem 0.65rem;
   background: var(--bg-pill);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-muted);
 }
@@ -173,20 +172,19 @@ body {
   height: 6px;
   border-radius: 50%;
   background-color: var(--green);
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
 }
 
 .theme-btn {
   background: var(--bg-pill);
   border: 1px solid var(--border);
   color: var(--text-main);
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.8rem;
   border-radius: var(--radius-full);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
@@ -205,7 +203,7 @@ body {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 680px;
+  max-width: 620px;
   margin: 0 auto;
   padding: 5.5rem 1.25rem 3rem;
 }
@@ -217,7 +215,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2.25rem;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
   transition: border-color 0.3s ease;
 }
 
@@ -226,15 +224,15 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-bottom: 2.25rem;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--border);
 }
 
 .avatar-box {
   position: relative;
-  width: 88px;
-  height: 88px;
+  width: 84px;
+  height: 84px;
   flex-shrink: 0;
 }
 
@@ -264,18 +262,17 @@ body {
 
 .role-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
   color: var(--accent);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .profile-name {
   font-family: var(--font-title);
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--text-main);
   letter-spacing: -0.02em;
 }
@@ -284,47 +281,48 @@ body {
   color: var(--accent);
 }
 
-.profile-fullname {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 0.65rem;
+.profile-role {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
 }
 
 .profile-bio {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
 /* --- Section Label --- */
 .section-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   color: var(--text-dim);
-  margin-bottom: 0.95rem;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
 }
 
-/* --- Action Links (No icons, clean minimal cards) --- */
+/* --- Action Links --- */
 .action-links {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
 .action-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.15rem 1.35rem;
+  padding: 1.25rem 1.4rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   text-decoration: none;
   color: var(--text-main);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
@@ -332,12 +330,12 @@ body {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Featured: Primary Portfolio */
+/* Featured Card */
 .featured-card {
-  border-color: rgba(var(--accent-rgb), 0.3);
+  border-color: rgba(var(--accent-rgb), 0.35);
   background: rgba(var(--accent-rgb), 0.04);
 }
 
@@ -351,38 +349,17 @@ body {
   padding-right: 1rem;
 }
 
-.card-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.25rem;
-}
-
 .card-title {
   font-family: var(--font-title);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-main);
-}
-
-.card-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  padding: 0.15rem 0.45rem;
-  background: rgba(var(--accent-rgb), 0.1);
-  border-radius: var(--radius-sm);
-}
-
-.tag-whatsapp {
-  color: #25d366;
-  background: rgba(37, 211, 102, 0.1);
+  margin-bottom: 0.25rem;
 }
 
 .card-desc {
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.45;
 }
@@ -396,7 +373,7 @@ body {
 
 .action-card:hover .card-arrow {
   color: var(--accent);
-  transform: translate(2px, -2px);
+  transform: translateX(3px);
 }
 
 /* --- Social Network Grid --- */
@@ -404,7 +381,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.65rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .social-pill {
@@ -431,10 +408,10 @@ body {
 
 /* --- Footer --- */
 .hub-footer {
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--border);
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
 }
 
@@ -442,13 +419,13 @@ body {
    Mobile Optimization
    ========================================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 540px) {
   .main-wrapper {
     padding: 4.75rem 1rem 2rem;
   }
 
   .hub-card {
-    padding: 1.5rem 1.15rem;
+    padding: 1.4rem 1.15rem;
     border-radius: var(--radius-md);
   }
 
@@ -456,29 +433,29 @@ body {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .avatar-box {
-    width: 80px;
-    height: 80px;
+    width: 76px;
+    height: 76px;
   }
 
   .profile-name {
-    font-size: 1.75rem;
+    font-size: 1.7rem;
   }
 
   .action-card {
-    padding: 1rem;
+    padding: 1.1rem;
   }
 
   .card-title {
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
 
   .card-desc {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 
   .social-grid {
