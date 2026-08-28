@@ -73,9 +73,17 @@
   --shadow-accent: 0 8px 24px var(--accent-glow);
 }
 
-/* ==========================================================================
-   Base & Reset
-   ========================================================================== */
+/* --- Universal Scrollbar Annihilation --- */
+html, body, * {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome / Safari / Edge */
+  width: 0 !important;
+  height: 0 !important;
+}
 
 * {
   margin: 0;
