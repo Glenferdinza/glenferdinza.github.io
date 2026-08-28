@@ -1,6 +1,9 @@
 // Theme Management System
 const initTheme = () => {
-  const savedTheme = localStorage.getItem('theme') || localStorage.getItem('cv-theme') || 'dark';
+  let savedTheme = localStorage.getItem('theme') || localStorage.getItem('cv-theme');
+  if (!savedTheme) {
+    savedTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
   setTheme(savedTheme);
 };
 
@@ -31,4 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.setAttribute('data-theme', newTheme);
     }
   });
+
+  // System OS preference change listener
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme') && !localStorage.getItem('cv-theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
 });

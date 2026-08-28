@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Controller
+    // 1. Intelligent Theme Controller (Auto-detect + Persist)
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlEl = document.documentElement;
 
@@ -18,6 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentTheme = htmlEl.getAttribute('data-theme') || 'dark';
             const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
             updateTheme(nextTheme);
+        });
+    }
+
+    // Cross-tab synchronization
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'theme' && e.newValue) {
+            htmlEl.setAttribute('data-theme', e.newValue);
+        }
+    });
+
+    // Auto-adapt to OS / Browser scheme changes if user hasn't explicitly set one
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                updateTheme(e.matches ? 'dark' : 'light');
+            }
         });
     }
 

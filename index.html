@@ -11,8 +11,11 @@
     <!-- Theme & Cache Management -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            let currentTheme = localStorage.getItem('theme');
+            if (!currentTheme) {
+                currentTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', currentTheme);
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistrations().then(function(registrations) {
                     for(let r of registrations) r.unregister();
